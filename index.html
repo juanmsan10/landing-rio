@@ -120,12 +120,12 @@
     .container { max-width: 1100px; margin: 0 auto; }
     .section-label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--lbl); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
     .section-label::before { content: ''; width: 24px; height: 1px; background: var(--lbl); }
-    .section-h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; max-width: 700px; margin-bottom: 1.5rem; color: var(--t); }
+    .section-h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; max-width: 700px; margin-bottom: 2.5rem; color: var(--t); }
     .section-h2 em { font-style: normal; color: var(--em); }
     .section-sub { font-size: 1.05rem; color: var(--t2); line-height: 1.8; font-weight: 300; max-width: 560px; margin-bottom: 4rem; }
 
     /* ── PROBLEMA (dark) ───────────────────────── */
-    .problema-intro { background: var(--intro-bg); border: 0.5px solid var(--border); border-left: 2px solid var(--g); border-radius: 12px; padding: 2rem 2.5rem; margin-bottom: 3rem; max-width: 720px; }
+    .problema-intro { background: var(--intro-bg); border: 0.5px solid var(--border); border-left: 2px solid var(--g); border-radius: 12px; padding: 2rem 2.5rem; margin-top: 1rem; margin-bottom: 3rem; max-width: 720px; }
     .problema-intro p { font-size: 1.1rem; line-height: 1.8; color: var(--t2); font-weight: 300; }
     .problema-intro p strong { color: var(--t); font-weight: 500; }
     .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; }
@@ -269,9 +269,9 @@
       .stat-label { font-size: 18px; }
 
       /* Sections */
-      section { padding: 3.5rem 1.25rem; }
+      section { padding: 5rem 1.25rem; }
       .section-label { font-size: 16px; }
-      .section-h2 { font-size: 2.4rem; }
+      .section-h2 { font-size: 2.4rem; margin-bottom: 2rem; }
       .section-sub { font-size: 1.4rem; margin-bottom: 2.5rem; line-height: 1.6; }
 
       /* Ticker */
@@ -279,6 +279,7 @@
 
       /* Problema */
       .problema-intro p { font-size: 1.35rem; line-height: 1.6; }
+      .problema-intro { margin-top: 2rem; }
       .pain-title { font-size: 22px; }
       .pain-desc { font-size: 20px; line-height: 1.6; }
       .pain-item { padding: 1.75rem; }
