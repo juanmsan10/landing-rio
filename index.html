@@ -207,11 +207,11 @@
     .cta-bullet-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lbl); flex-shrink: 0; }
     .cta-bullet span { font-size: 16px; font-weight: 300; color: var(--t2); line-height: 1.5; }
     .cta-form { background: var(--card-bg); border: 0.5px solid var(--border); border-radius: 16px; padding: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    .form-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; color: var(--t); }
+    .form-title { font-size: 20px; font-weight: 600; margin-bottom: 6px; color: var(--t); }
     .form-sub { font-size: 15px; color: var(--t2); margin-bottom: 2rem; line-height: 1.6; }
     .form-group { margin-bottom: 1.5rem; }
-    .form-label { display: block; font-size: 12px; font-weight: 400; color: var(--t); margin-bottom: 8px; font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.06em; }
-    .form-input, .form-select, .form-textarea { width: 100%; font-family: var(--sans); font-size: 15px; background: var(--bg); color: var(--t); border: 0.5px solid var(--bmd); border-radius: 8px; transition: border-color 0.2s; }
+    .form-label { display: block; font-size: 13px; font-weight: 400; color: var(--t); margin-bottom: 8px; font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-input, .form-select, .form-textarea { width: 100%; font-family: var(--sans); font-size: 16px; background: var(--bg); color: var(--t); border: 0.5px solid var(--bmd); border-radius: 8px; transition: border-color 0.2s; }
     .form-input, .form-select { height: 48px; padding: 0 16px; }
     .form-select { padding-right: 44px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888882' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
     .form-textarea { padding: 14px 16px; min-height: 100px; resize: vertical; line-height: 1.65; }
@@ -219,9 +219,9 @@
     .form-input::placeholder, .form-textarea::placeholder { color: var(--t3); font-weight: 300; }
     .form-select option { background: var(--bg); }
     .form-select.unselected { color: var(--t3); font-weight: 300; }
-    .form-submit { width: 100%; height: 54px; background: #1a1a18; color: #f8f7f4; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--sans); cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .form-submit { width: 100%; height: 54px; background: #1a1a18; color: #f8f7f4; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--sans); cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .form-submit:hover { background: #2e2e2e; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
-    .form-note { font-size: 13px; color: #1e7018; text-align: center; margin-top: 1rem; font-family: var(--mono); line-height: 1.6; }
+    .form-note { font-size: 14px; color: #1e7018; text-align: center; margin-top: 1rem; font-family: var(--mono); line-height: 1.6; }
 
     /* FOOTER */
     footer { background: #161616; border-top: 0.5px solid rgba(255,255,255,0.08); padding: 1.75rem 3rem; display: flex; align-items: center; justify-content: center; }
@@ -320,12 +320,11 @@
       .cta-section { padding: 3.5rem 1.25rem; }
       .cta-bullet span { font-size: 20px; line-height: 1.5; }
       .cta-form { padding: 1.75rem; }
-      .form-title { font-size: 24px; }
-      .form-sub { font-size: 19px; }
-      .form-label { font-size: 15px; }
-      .form-input, .form-select, .form-textarea { font-size: 18px; }
-      .form-submit { font-size: 16px; height: 58px; }
-      .form-note { font-size: 16px; }
+      .form-title { font-size: 26px; }
+      .form-label { font-size: 16px; }
+      .form-input, .form-select, .form-textarea { font-size: 19px; }
+      .form-submit { font-size: 17px; height: 58px; }
+      .form-note { font-size: 17px; }
     }
 
     /* ── SCROLL PROGRESS ─────────────────────── */
@@ -684,7 +683,6 @@
     </div>
     <div class="cta-form reveal reveal-delay-2">
       <div class="form-title">Solicitar diagnóstico</div>
-      <div class="form-sub">Revisa que cumples el perfil antes de enviar.</div>
       <form onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label class="form-label">Facturación anual</label>
