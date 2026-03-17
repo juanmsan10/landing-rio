@@ -239,7 +239,7 @@
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
-      section { padding: 5rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
       .hero { padding: 100px 1.5rem 60px; }
       .pain-grid { grid-template-columns: 1fr 1fr; }
       .niveles { grid-template-columns: 1fr; }
@@ -255,6 +255,66 @@
     }
     @media (max-width: 560px) {
       .pain-grid, .diag-grid { grid-template-columns: 1fr; }
+
+      /* Hero */
+      .hero { padding: 90px 1.25rem 50px; }
+      .hero-eyebrow { font-size: 11px; margin-bottom: 1.5rem; }
+      .hero-h1 { font-size: 2.4rem; margin-bottom: 1.25rem; }
+      .hero-sub { font-size: 1.05rem; margin-bottom: 2rem; }
+      .btn-primary { height: 50px; font-size: 13px; padding: 0 24px; }
+      .btn-ghost-light { height: 50px; font-size: 14px; padding: 0 20px; }
+      .hero-stats { max-width: 100%; margin-top: 3rem; grid-template-columns: repeat(3,1fr); }
+      .stat-item { padding: 1.25rem 1rem; white-space: normal; }
+      .stat-num { font-size: 2rem; }
+      .stat-label { font-size: 12px; }
+
+      /* Sections */
+      section { padding: 3.5rem 1.25rem; }
+      .section-label { font-size: 11px; }
+      .section-h2 { font-size: 2rem; }
+      .section-sub { font-size: 1rem; margin-bottom: 2.5rem; }
+
+      /* Ticker */
+      .ticker-item { font-size: 12px; padding: 0 1.5rem; }
+
+      /* Problema */
+      .problema-intro p { font-size: 1rem; }
+      .pain-title { font-size: 15px; }
+      .pain-desc { font-size: 14px; }
+      .pain-item { padding: 1.5rem; }
+
+      /* Solución */
+      .solucion-tag { font-size: 13px; padding: 8px 16px; }
+      .nivel-card { padding: 1.5rem; }
+      .nivel-title { font-size: 20px; }
+      .nivel-sub { font-size: 15px; }
+      .nivel-examples li { font-size: 14px; }
+
+      /* Método */
+      .fase-title { font-size: 20px; }
+      .fase-desc { font-size: 15px; }
+
+      /* Diagnóstico */
+      .diag-step-card { padding: 1.5rem; }
+      .diag-step-title { font-size: 15px; }
+      .diag-step-desc { font-size: 14px; }
+      .precio-num { font-size: 2rem; }
+      .diag-razon p { font-size: 14px; }
+
+      /* Para quién */
+      .pq-card { padding: 1.75rem; }
+      .pq-list li { font-size: 15px; }
+
+      /* CTA */
+      .cta-section { padding: 3.5rem 1.25rem; }
+      .cta-bullet span { font-size: 15px; }
+      .cta-form { padding: 1.75rem; }
+      .form-title { font-size: 17px; }
+      .form-sub { font-size: 14px; }
+      .form-label { font-size: 11px; }
+      .form-input, .form-select, .form-textarea { font-size: 16px; } /* 16px evita zoom en iOS */
+      .form-submit { font-size: 13px; height: 50px; }
+      .form-note { font-size: 12px; }
     }
 
     /* ── SCROLL PROGRESS ─────────────────────── */
@@ -524,7 +584,7 @@
     <div class="diag-header reveal">
       <div class="section-label">El primer paso</div>
       <h2 class="section-h2">La sesión de <em>diagnóstico.</em></h2>
-      <p>90 minutos. Virtual. Con el dueño y su equipo líder.</p>
+      <p>90 minutos. Virtual. Con el dueño/gerente y su equipo líder.</p>
     </div>
     <div class="diag-grid reveal reveal-delay-1">
       <div class="diag-step-card">
