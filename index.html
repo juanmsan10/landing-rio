@@ -207,6 +207,10 @@
     .cta-bullet-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lbl); flex-shrink: 0; }
     .cta-bullet span { font-size: 16px; font-weight: 300; color: var(--t2); line-height: 1.5; }
     .cta-form { background: var(--card-bg); border: 0.5px solid var(--border); border-radius: 16px; padding: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .cta-card-title { font-size: 26px; font-weight: 600; color: var(--t); margin-bottom: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; }
+    .cta-card-sub { font-size: 17px; color: var(--t2); font-weight: 300; line-height: 1.75; margin-bottom: 2.5rem; }
+    .cta-card-btn { font-size: 16px; height: 62px; }
+    .cta-card-note { font-family: var(--mono); font-size: 13px; color: var(--t3); margin-top: 1.25rem; text-align: center; }
     .form-title { font-size: 20px; font-weight: 600; margin-bottom: 1.25rem; color: var(--t); }
     .form-sub { font-size: 15px; color: var(--t2); margin-bottom: 2rem; line-height: 1.6; }
     .form-group { margin-bottom: 1.5rem; }
@@ -327,6 +331,11 @@
       .cta-section { padding: 3.5rem 1.25rem; }
       .cta-bullet span { font-size: 20px; line-height: 1.5; }
       .cta-form { padding: 1.75rem; }
+      .cta-card { padding: 2rem 1.5rem !important; }
+      .cta-card-title { font-size: 30px !important; margin-bottom: 1.25rem !important; }
+      .cta-card-sub { font-size: 21px !important; margin-bottom: 2rem !important; }
+      .cta-card-btn { font-size: 19px !important; height: 70px !important; }
+      .cta-card-note { font-size: 16px !important; margin-top: 1.25rem !important; }
       .form-title { font-size: 26px; }
       .form-label { font-size: 16px; }
       .form-input, .form-select, .form-textarea { font-size: 19px; }
@@ -675,14 +684,14 @@
       </div>
     </div>
     <div class="reveal reveal-delay-2">
-      <div style="background:var(--card-bg);border:0.5px solid var(--border);border-radius:16px;padding:3rem;box-shadow:0 2px 16px rgba(0,0,0,0.09);">
-        <div style="font-size:26px;font-weight:600;color:var(--t);margin-bottom:1.25rem;line-height:1.2;letter-spacing:-0.02em;">La llamada es gratis.<br>Tu tiempo, no.</div>
-        <div style="font-size:17px;color:var(--t2);font-weight:300;line-height:1.75;margin-bottom:2.5rem;">15 minutos para saber si podemos ayudarte — o para que inviertas ese tiempo en otra cosa. Sin rodeos.</div>
-        <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary" style="display:flex;text-decoration:none;justify-content:center;width:100%;font-size:16px;height:62px;">
+      <div class="cta-card" style="background:var(--card-bg);border:0.5px solid var(--border);border-radius:16px;padding:3rem;box-shadow:0 2px 16px rgba(0,0,0,0.09);">
+        <div class="cta-card-title">La llamada es gratis.<br>Tu tiempo, no.</div>
+        <div class="cta-card-sub">15 minutos para saber si podemos ayudarte — o para que inviertas ese tiempo en otra cosa. Sin rodeos.</div>
+        <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary cta-card-btn" style="display:flex;text-decoration:none;justify-content:center;width:100%;">
           AGENDAR LLAMADA
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:10px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
-        <p style="font-family:var(--mono);font-size:13px;color:var(--t3);margin-top:1.25rem;text-align:center;">Sin costo · Confirmación inmediata · Elige el horario</p>
+        <p class="cta-card-note">Sin costo · Confirmación inmediata</p>
       </div>
     </div>
   </div>
