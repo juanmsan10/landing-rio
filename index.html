@@ -169,7 +169,7 @@
     /* ── DIAGNÓSTICO (light) ──────────────────── */
     .diag-header { margin-bottom: 3rem; }
     .diag-header p { font-size: 1.05rem; color: var(--t2); font-weight: 300; margin-top: 0.75rem; }
-    .diag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 2rem; }
+    .diag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 2rem; }
     .diag-step-card { background: var(--card-bg); padding: 2rem; transition: background 0.25s; }
     .diag-step-card:hover { background: var(--card-bg2); }
     .diag-step-icon { width: 38px; height: 38px; background: var(--icon-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
@@ -247,7 +247,11 @@
       .fases { flex-direction: column; gap: 2.5rem; }
       .fases-line { display: none; }
       .fase { padding-right: 0; }
-      .diag-grid { grid-template-columns: 1fr 1fr; }
+      .diag-grid { grid-template-columns: 1fr; border-radius: 12px; }
+      .diag-step-card { border-bottom: 0.5px solid var(--border); }
+      .diag-step-card:last-child { border-bottom: none; }
+      .diag-step-title { font-size: 18px; }
+      .diag-step-desc { font-size: 16px; line-height: 1.7; }
       .diag-bottom { grid-template-columns: 1fr; }
       .pq-grid { grid-template-columns: 1fr; }
       .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -303,9 +307,9 @@
 
       /* Diagnóstico */
       .diag-header p { font-size: 1.35rem; }
-      .diag-step-card { padding: 1.75rem; }
-      .diag-step-title { font-size: 21px; }
-      .diag-step-desc { font-size: 19px; line-height: 1.6; }
+      .diag-step-card { padding: 1.5rem 1.25rem; }
+      .diag-step-title { font-size: 20px; }
+      .diag-step-desc { font-size: 18px; line-height: 1.65; }
       .precio-num { font-size: 2.8rem; }
       .precio-label { font-size: 16px; }
       .precio-sub { font-size: 19px; }
@@ -418,7 +422,7 @@
     <li><a href="#metodo">El método</a></li>
     <li><a href="#diagnostico">Diagnóstico</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">EMPEZAR</a>
+  <a href="#cta" class="nav-cta">AGENDAR LLAMADA</a>
 </nav>
 
 <!-- ░░ HERO — dark ░░ -->
@@ -432,7 +436,7 @@
   </h1>
   <p class="hero-sub">Construimos e implementamos sistemas operativos potenciados con IA en semanas. Para que tu equipo opere con orden, visibilidad y sin reprocesos.</p>
   <div class="hero-actions">
-    <a href="#cta" class="btn-primary">Solicitar diagnóstico <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+    <a href="#cta" class="btn-primary">AGENDAR LLAMADA <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
     <a href="#metodo" class="btn-ghost-light">Cómo trabajamos</a>
   </div>
   <div class="hero-stats">
@@ -596,10 +600,10 @@
       <h2 class="section-h2">3 pasos. <em>Un sistema instalado.</em></h2>
       <p>Así es el proceso desde que nos contactas hasta que tu operación funciona sola.</p>
     </div>
-    <div class="diag-grid reveal reveal-delay-1" style="grid-template-columns: repeat(3,1fr);">
+    <div class="diag-grid reveal reveal-delay-1">
       <div class="diag-step-card">
         <div class="diag-step-num">PASO 01</div>
-        <div class="diag-step-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="diag-step-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
         <div class="diag-step-title">Llamada de encaje</div>
         <div class="diag-step-desc">15 minutos. Gratis. Evaluamos si podemos ayudarte y te explicamos cómo. Si no hay fit, te lo decimos directo.</div>
       </div>
@@ -607,13 +611,13 @@
         <div class="diag-step-num">PASO 02</div>
         <div class="diag-step-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
         <div class="diag-step-title">Sesión de diagnóstico</div>
-        <div class="diag-step-desc">90 minutos. Virtual. Con el líder y las piezas clave del equipo. Mapeamos los procesos críticos, definimos la solución y cuantificamos el costo del desorden. <span style="color:var(--lbl);font-weight:500;">USD $500 — descontable del proyecto.</span></div>
+        <div class="diag-step-desc">90 minutos. Virtual. Con el líder y las piezas clave del equipo. Mapeamos los procesos críticos, definimos la solución y cuantificamos el costo del desorden.<br><span style="color:var(--lbl);font-weight:500;">USD $500 — descontable del proyecto.</span></div>
       </div>
       <div class="diag-step-card">
         <div class="diag-step-num">PASO 03</div>
         <div class="diag-step-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div class="diag-step-title">Proyecto</div>
-        <div class="diag-step-desc">4 semanas. Diseñamos, construimos e implementamos el sistema. Al final tienes procesos que funcionan solos — con o sin ti.</div>
+        <div class="diag-step-desc">4 semanas. Diseñamos, construimos e implementamos junto a tu equipo. Al final tienes procesos documentados, herramientas funcionando y un equipo que sabe exactamente qué hacer.</div>
       </div>
     </div>
   </div>
@@ -627,7 +631,7 @@
   <div class="container">
     <div class="section-label reveal">Selección de clientes</div>
     <h2 class="section-h2 reveal reveal-delay-1"><em>Esto no es</em><br>para cualquier empresa.</h2>
-    <p class="section-sub reveal reveal-delay-2">Solo trabajamos con empresas que están listas para ordenar su operación.<br>Si no hay fit, te lo decimos de una.</p>
+    <p class="section-sub reveal reveal-delay-2">Solo trabajamos con empresas que están listas para ordenar su operación. Si no hay fit, te lo decimos de una.</p>
     <div class="pq-grid reveal reveal-delay-3">
       <div class="pq-card yes">
         <div class="pq-heading">Esto es para ti si...</div>
@@ -697,7 +701,7 @@
           <input type="text" class="form-input" placeholder="+57 300 000 0000" required>
         </div>
         <button type="submit" class="form-submit">
-          EMPEZAR
+          AGENDAR LLAMADA
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </button>
         <div class="form-note">Te confirmamos la llamada en menos de 24 horas.</div>
