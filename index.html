@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Río Abierto — Orden operativo para pymes</title>
+  <title>Río Abierto | Orden operativo para pymes</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M12%202C6.48%202%202%206.48%202%2012C2%2017.52%206.48%2022%2012%2022C17.52%2022%2022%2017.52%2022%2012%22%20stroke%3D%22%237ef474%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M13.5%205L7.5%2013H11.5L10.5%2019L16.5%2011H12.5L13.5%205Z%22%20fill%3D%22%237ef474%22%2F%3E%0A%3C%2Fsvg%3E%0A">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -143,7 +143,7 @@
     .solucion-intro strong { font-weight: 600; color: var(--t); }
     .solucion-tag { display: inline-block; font-family: var(--mono); font-size: 15px; color: var(--lbl); background: var(--icon-bg); padding: 10px 20px; border-radius: 20px; margin-top: 1rem; margin-bottom: 1.5rem; }
     .niveles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 10px; }
-    .nivel-card { background: var(--card-bg); border: 0.5px solid var(--border); border-radius: 14px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .nivel-card { background: var(--card-bg); border: 0.5px solid var(--border); border-radius: 14px; padding: calc(2rem + 20px) 2rem; position: relative; overflow: hidden; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
     .nivel-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
     .nivel-card.n1::before { background: #8c8c88; }
     .nivel-card.n2::before { background: var(--g-dark); }
@@ -153,7 +153,7 @@
     .nivel-card.n1 .nivel-num { color: #8c8c88; background: rgba(140,140,136,0.06); border-color: rgba(140,140,136,0.38); box-shadow: inset 0 0 12px rgba(140,140,136,0.03), 0 0 16px rgba(140,140,136,0.03); }
     .nivel-card.n2 .nivel-num { color: var(--g-dark); background: rgba(30,112,24,0.06); border-color: rgba(30,112,24,0.34); box-shadow: inset 0 0 12px rgba(30,112,24,0.03), 0 0 16px rgba(30,112,24,0.03); }
     .nivel-card.n3 .nivel-num { color: var(--g); background: rgba(126,244,116,0.08); border-color: rgba(126,244,116,0.42); box-shadow: inset 0 0 12px rgba(126,244,116,0.04), 0 0 16px rgba(126,244,116,0.04); }
-    .nivel-title { font-size: 22px; font-weight: 600; margin-bottom: 16px; color: var(--t); }
+    .nivel-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: var(--t); }
     .nivel-sub { font-size: 16px; color: var(--t2); line-height: 1.75; margin-bottom: 0; }
 
     /* ── MÉTODO (dark) ────────────────────────── */
@@ -225,7 +225,7 @@
       section { padding: 4rem 1.5rem; }
       .hero { padding: 100px 1.5rem 60px; }
       .pain-grid { grid-template-columns: 1fr 1fr; }
-      .niveles { grid-template-columns: 1fr; gap: 2rem; }
+      .niveles { grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
       .fases { flex-direction: column; gap: 2.5rem; }
       .fases-line { display: none; }
       .fase { padding-right: 0; }
@@ -262,9 +262,9 @@
       .pain-desc { font-size: 20px; line-height: 1.6; }
       .pain-item { padding: 1.75rem; }
       .solucion-intro { font-size: 1.35rem; line-height: 1.35; white-space: normal; }
-      .solucion-tag { font-size: 19px; padding: 18px 24px; line-height: 1.5; }
+      .solucion-tag { font-size: 19px; padding: 18px 24px; line-height: 1.5; margin-bottom: calc(1.5rem + 10px); }
       .mobile-br { display: block; }
-      .nivel-card { padding: 1.75rem; }
+      .nivel-card { padding: calc(1.75rem + 20px) 1.75rem; }
       .nivel-num { min-height: 0; padding: 0.42rem 0.72rem; font-size: 15px; }
       .nivel-title { font-size: 24px; }
       .nivel-sub { font-size: 20px; line-height: 1.6; }
@@ -473,8 +473,8 @@
 <section class="light-s" id="solucion">
   <div class="container">
     <div class="section-label reveal">Cómo lo resolvemos</div>
-    <h2 class="section-h2 reveal reveal-delay-1">Del caos al <em>sistema. Sin humo.</em></h2>
-    <p class="solucion-intro reveal reveal-delay-2">No dejamos un PDF con recomendaciones.<br class="mobile-br"> Instalamos el sistema y lo dejamos funcionando.<br><strong>La tecnología no es el punto de partida — los resultados sí.</strong></p>
+    <h2 class="section-h2 reveal reveal-delay-1">Del caos al <em>sistema.</em></h2>
+    <p class="solucion-intro reveal reveal-delay-2">No dejamos un PDF con recomendaciones.<br class="mobile-br"> Instalamos el sistema y lo dejamos funcionando.<br><strong>La tecnología no es el punto de partida, los resultados sí.</strong></p>
     <div class="solucion-tag reveal reveal-delay-2">Sprint de Orden Operativo</div>
     <div class="niveles">
       <div class="nivel-card n1 reveal reveal-delay-1">
@@ -500,7 +500,7 @@
   <div class="particles" id="particles-metodo"></div>
   <div class="container">
     <div class="section-label reveal">El método</div>
-    <h2 class="section-h2 reveal reveal-delay-1"><em>3 fases. 4-6 semanas.</em><br>Un proceso que funciona de verdad.</h2>
+    <h2 class="section-h2 reveal reveal-delay-1"><em>3 fases. 4-6 semanas.</em><br>Un proceso que funciona.</h2>
     <p class="section-sub reveal reveal-delay-2">No reformamos toda tu empresa. Resolvemos un proceso crítico con la profundidad necesaria para que el cambio sea real y sostenible.</p>
     <div class="fases reveal reveal-delay-2">
       <div class="fases-line"></div>
@@ -545,7 +545,7 @@
         <div class="diag-step-num">PASO 02</div>
         <div class="diag-step-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
         <div class="diag-step-title">Sesión de diagnóstico</div>
-        <div class="diag-step-desc">90 minutos. Virtual. Con el líder y las piezas clave del equipo. Mapeamos los procesos críticos, identificamos los cuellos de botella y definimos juntos la solución. Esto no es una charla superficial — es una sesión profunda para entender de verdad cómo opera tu negocio.<br><span style="color:var(--lbl);font-weight:500;">USD $500 — descontable del proyecto.</span></div>
+        <div class="diag-step-desc">90 minutos. Virtual. Con el líder y las piezas clave del equipo. Mapeamos los procesos críticos, identificamos los cuellos de botella y definimos juntos la solución. Esto no es una charla superficial, es una sesión profunda para entender de verdad cómo opera tu negocio.<br><span style="color:var(--lbl);font-weight:500;">USD $500 (descontable del proyecto).</span></div>
       </div>
       <div class="diag-step-card">
         <div class="diag-step-num">PASO 03</div>
@@ -597,7 +597,7 @@
     <div>
       <div class="section-label reveal">El primer paso</div>
       <h2 class="section-h2 reveal reveal-delay-1">Empieza con una<br><em>llamada de reconocimiento.</em></h2>
-      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0;">20 minutos. Sin costo. Sin presentación de ventas. Escuchamos tu situación y te decimos si podemos ayudarte — o no.</p>
+      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0;">20 minutos. Sin costo. Sin presentación de ventas. Escuchamos tu situación y te decimos si podemos ayudarte, o no.</p>
       <div class="cta-bullets reveal reveal-delay-3">
         <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Seleccionas el horario que mejor te quede</span></div>
         <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Nos cuentas el problema en tus palabras</span></div>
@@ -608,7 +608,7 @@
     <div class="reveal reveal-delay-2">
       <div class="cta-card" style="background:var(--card-bg);border:0.5px solid var(--border);border-radius:16px;padding:3rem;box-shadow:0 2px 16px rgba(0,0,0,0.09);">
         <div class="cta-card-title">La llamada es gratis.<br>Tu desorden, no.</div>
-        <div class="cta-card-sub">20 minutos para saber si tiene sentido trabajar juntos — o para que inviertas ese tiempo en otra cosa. Sin rodeos.</div>
+        <div class="cta-card-sub">20 minutos para saber si tiene sentido trabajar juntos, o para que inviertas ese tiempo en otra cosa. Sin rodeos.</div>
         <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary cta-card-btn" style="display:flex;text-decoration:none;justify-content:center;width:100%;">
           AGENDAR LLAMADA
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:10px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
@@ -638,7 +638,7 @@
   });
 
   // ── TYPING ───────────────────────────────────
-  const phrases=['procesos claros.','equipos autónomos.','consistencia diaria.','operación medible.','sistema efectivo.'];
+  const phrases=['procesos claros.','equipos autónomos.','consistencia diaria.','métricas útiles.','sistema efectivo.'];
   let pi=0,ci=0,del=false;
   const typed=document.getElementById('typed');
   function type(){
