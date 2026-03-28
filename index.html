@@ -158,12 +158,13 @@
 
     /* ── MÉTODO (dark) ────────────────────────── */
     .fases { display: flex; gap: 0; position: relative; margin-top: 1rem; }
-    .fases-line { position: absolute; top: 27px; left: 27px; right: calc(33.33% - 47px); height: 1px; background: linear-gradient(90deg, rgba(126,244,116,0.7), rgba(126,244,116,0.3), rgba(126,244,116,0.7)); pointer-events: none; z-index: 0; }
+    .fases-line { position: absolute; top: 33px; left: 33px; right: calc(33.33% - 53px); height: 1px; background: linear-gradient(90deg, rgba(126,244,116,0.7), rgba(126,244,116,0.3), rgba(126,244,116,0.7)); pointer-events: none; z-index: 0; }
     .fase { flex: 1; padding: 0 3rem 0 0; position: relative; }
     .fase:last-child { padding-right: 0; }
-    .fase-dot { width: 54px; height: 54px; background: #161616; border: 1px solid rgba(255,255,255,0.16); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; position: relative; z-index: 2; transition: border-color 0.3s; }
+    .fase-dot { width: 66px; height: 66px; background: #161616; border: 1px solid rgba(255,255,255,0.16); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; position: relative; z-index: 2; transition: border-color 0.3s; }
     .fase:hover .fase-dot { border-color: var(--g); }
-    .fase-num { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--g); }
+    .fase.scroll-active .fase-dot { border-color: var(--g); }
+    .fase-num { font-family: var(--mono); font-size: 18px; font-weight: 500; color: var(--g); }
     .fase-periodo { font-family: var(--mono); font-size: 12px; color: var(--g); letter-spacing: 0.1em; margin-bottom: 10px; text-transform: uppercase; }
     .fase-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; color: #f2f2ef; }
     .fase-desc { font-size: 17px; color: #b0b0ac; line-height: 1.8; font-weight: 300; }
@@ -269,6 +270,8 @@
       .nivel-title { font-size: 24px; }
       .nivel-sub { font-size: 20px; line-height: 1.6; }
       .fase-periodo { font-size: 16px; }
+      .fase-dot { width: 72px; height: 72px; }
+      .fase-num { font-size: 20px; }
       .fase-title { font-size: 24px; }
       .fase-desc { font-size: 20px; line-height: 1.6; }
       .diag-header p { font-size: 1.35rem; }
@@ -771,6 +774,29 @@
   spawnParticles('particles-problema', 12);
   spawnParticles('particles-metodo', 8);
   spawnParticles('particles-paraquien', 10);
+
+  // ── FASE SCROLL HIGHLIGHT (mobile) ──────────
+  function setupFaseScroll(){
+    const fases = document.querySelectorAll('.fase');
+    if(!fases.length) return;
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if(!isMobile) return;
+    const faseObs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('scroll-active');
+        } else {
+          e.target.classList.remove('scroll-active');
+        }
+      });
+    },{threshold:0.4, rootMargin:'-20% 0px -20% 0px'});
+    fases.forEach(f=>faseObs.observe(f));
+  }
+  setupFaseScroll();
+  window.addEventListener('resize', ()=>{
+    document.querySelectorAll('.fase').forEach(f=>f.classList.remove('scroll-active'));
+    setupFaseScroll();
+  });
 </script>
 </body>
 </html>
