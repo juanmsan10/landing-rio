@@ -162,7 +162,7 @@
     .fases-line { position: absolute; top: 33px; left: 33px; right: calc(33.33% - 53px); height: 1px; background: linear-gradient(90deg, rgba(126,244,116,0.7), rgba(126,244,116,0.3), rgba(126,244,116,0.7)); pointer-events: none; z-index: 0; }
     .fase { flex: 1; padding: 0 3rem 0 0; position: relative; }
     .fase:last-child { padding-right: 0; }
-    .fase-dot { width: 66px; height: 66px; background: #161616; border: 1px solid rgba(255,255,255,0.16); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; position: relative; z-index: 2; transition: border-color 0.3s; }
+    .fase-dot { width: 66px; height: 66px; background: #161616; border: 1px solid rgba(255,255,255,0.16); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; position: relative; z-index: 2; transition: border-color 0.5s, box-shadow 0.5s; }
     .fase:hover .fase-dot { border-color: var(--g); }
     .fase.scroll-active .fase-dot { border-color: var(--g); }
     .fase-num { font-family: var(--mono); font-size: 18px; font-weight: 500; color: var(--g); }
@@ -388,6 +388,7 @@
       border: 1px solid rgba(126,244,116,0);
       border-radius: 50%;
       transition: all 0.5s;
+      opacity: 0;
     }
     .fase.fase-active .fase-dot {
       border-color: var(--g);
@@ -395,6 +396,7 @@
     }
     .fase.fase-active .fase-dot-ring {
       border-color: rgba(126,244,116,0.3);
+      opacity: 1;
       animation: pulse-ring 2s ease-out infinite;
     }
     @keyframes pulse-ring {
@@ -941,23 +943,24 @@
     const fasesLine = document.querySelector('.fases-line');
     const faseEls = document.querySelectorAll('.fase');
     if(!faseEls.length) return;
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if(isMobile) return; // mobile uses scroll-based activation instead
 
     const fasesObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if(e.isIntersecting){
-          // Draw the line
-          if(fasesLine) setTimeout(()=> fasesLine.classList.add('drawn'), 200);
+          if(fasesLine) setTimeout(()=> fasesLine.classList.add('drawn'), 300);
 
-          // Sequentially enter each fase
           faseEls.forEach((fase, i) => {
+            // Entry: appear one by one with generous spacing
             setTimeout(() => {
               fase.classList.add('fase-entered');
-            }, 300 + i * 350);
+            }, 400 + i * 700);
 
-            // Activate (pulse) each dot with delay
+            // Activate pulse: fires AFTER entry settles
             setTimeout(() => {
               fase.classList.add('fase-active');
-            }, 600 + i * 350);
+            }, 900 + i * 700);
           });
 
           fasesObs.unobserve(e.target);
@@ -1043,12 +1046,18 @@
     if(!fases.length) return;
     const isMobile = window.matchMedia('(max-width: 900px)').matches;
     if(!isMobile) return;
+
+    // On mobile, make all fases visible immediately (desktop uses sequential entry)
+    fases.forEach(f => f.classList.add('fase-entered'));
+
     const faseObs = new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
           e.target.classList.add('scroll-active');
+          e.target.classList.add('fase-active');
         } else {
           e.target.classList.remove('scroll-active');
+          e.target.classList.remove('fase-active');
         }
       });
     },{threshold:0.4, rootMargin:'-20% 0px -20% 0px'});
@@ -1056,7 +1065,10 @@
   }
   setupFaseScroll();
   window.addEventListener('resize', ()=>{
-    document.querySelectorAll('.fase').forEach(f=>f.classList.remove('scroll-active'));
+    document.querySelectorAll('.fase').forEach(f=>{
+      f.classList.remove('scroll-active');
+      f.classList.remove('fase-active');
+    });
     setupFaseScroll();
   });
 </script>
