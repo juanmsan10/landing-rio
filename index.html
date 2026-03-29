@@ -949,42 +949,47 @@
       entries.forEach(e => {
         if(e.isIntersecting){
 
-          // t=300ms — Fase 1 appears
+          // Step 1: Fase 1 appears
           setTimeout(() => {
             faseEls[0].classList.add('fase-entered');
           }, 300);
-          // t=550ms — Fase 1 pulse activates
+
+          // Step 2: Fase 1 pulse → then launch line 1
           setTimeout(() => {
             faseEls[0].classList.add('fase-active');
+
+            // After pulse settles, draw line 1
+            setTimeout(() => {
+              if(line1) line1.classList.add('line-draw');
+
+              // Line 1 lands → Fase 2 born instantly
+              line1.addEventListener('transitionend', function handler(){
+                line1.removeEventListener('transitionend', handler);
+                faseEls[1].classList.add('fase-entered');
+
+                // Fase 2 pulse
+                setTimeout(() => {
+                  faseEls[1].classList.add('fase-active');
+
+                  // After pulse settles, draw line 2
+                  setTimeout(() => {
+                    if(line2) line2.classList.add('line-draw');
+
+                    // Line 2 lands → Fase 3 born instantly
+                    line2.addEventListener('transitionend', function handler2(){
+                      line2.removeEventListener('transitionend', handler2);
+                      faseEls[2].classList.add('fase-entered');
+
+                      // Fase 3 pulse
+                      setTimeout(() => {
+                        faseEls[2].classList.add('fase-active');
+                      }, 250);
+                    });
+                  }, 500);
+                }, 250);
+              });
+            }, 500);
           }, 550);
-
-          // t=1100ms — Line 1 starts drawing toward fase 2
-          setTimeout(() => {
-            if(line1) line1.classList.add('line-draw');
-          }, 1100);
-
-          // t=1900ms — Line 1 lands → Fase 2 appears
-          setTimeout(() => {
-            faseEls[1].classList.add('fase-entered');
-          }, 1900);
-          // t=2150ms — Fase 2 pulse activates
-          setTimeout(() => {
-            faseEls[1].classList.add('fase-active');
-          }, 2150);
-
-          // t=2700ms — Line 2 starts drawing toward fase 3
-          setTimeout(() => {
-            if(line2) line2.classList.add('line-draw');
-          }, 2700);
-
-          // t=3500ms — Line 2 lands → Fase 3 appears
-          setTimeout(() => {
-            faseEls[2].classList.add('fase-entered');
-          }, 3500);
-          // t=3750ms — Fase 3 pulse activates
-          setTimeout(() => {
-            faseEls[2].classList.add('fase-active');
-          }, 3750);
 
           fasesObs.unobserve(e.target);
         }
