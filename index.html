@@ -159,7 +159,10 @@
 
     /* ── MÉTODO (dark) ────────────────────────── */
     .fases { display: flex; gap: 0; position: relative; margin-top: 1rem; }
-    .fases-line { position: absolute; top: 33px; left: 33px; right: calc(33.33% - 53px); height: 1px; background: linear-gradient(90deg, rgba(126,244,116,0.7), rgba(126,244,116,0.3), rgba(126,244,116,0.7)); pointer-events: none; z-index: 0; }
+    .fases-line { position: absolute; top: 33px; height: 1px; background: linear-gradient(90deg, rgba(126,244,116,0.7), rgba(126,244,116,0.5), rgba(126,244,116,0.7)); pointer-events: none; z-index: 0; transform-origin: left center; transform: scaleX(0); }
+    .fases-line-1 { left: 33px; width: calc(33.33%); }
+    .fases-line-2 { left: calc(33.33% + 33px); width: calc(33.33%); }
+    .fases-line.line-draw { transform: scaleX(1); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
     .fase { flex: 1; padding: 0 3rem 0 0; position: relative; }
     .fase:last-child { padding-right: 0; }
     .fase-dot { width: 66px; height: 66px; background: #161616; border: 1px solid rgba(255,255,255,0.16); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; position: relative; z-index: 2; transition: border-color 0.5s, box-shadow 0.5s; }
@@ -347,14 +350,6 @@
       box-shadow: 0 0 0 1px rgba(126,244,116,0.4);
     }
 
-    /* ── FASES LINE DRAW ─────────────────────── */
-    .fases-line {
-      transform-origin: left center;
-      transform: scaleX(0);
-      transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
-    }
-    .fases-line.drawn { transform: scaleX(1); }
-
     /* ── SECTION TOP ACCENT ──────────────────── */
     .dark-s::before {
       content: '';
@@ -406,7 +401,9 @@
 
     /* ── FASES SEQUENTIAL ENTRY ──────────────── */
     .fase { opacity: 0; transform: translateY(30px); }
-    .fase.fase-entered { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.23,1,0.32,1); }
+    .fase .fase-dot { transform: scale(0.5); opacity: 0; transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease; }
+    .fase.fase-entered { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.23,1,0.32,1); }
+    .fase.fase-entered .fase-dot { transform: scale(1); opacity: 1; }
 
     /* ── MAGNETIC BUTTON ─────────────────────── */
     .mag-btn {
@@ -562,7 +559,8 @@
     <h2 class="section-h2 reveal reveal-delay-1"><em>3 fases. 4-6 semanas.</em><br>Un proceso que funciona.</h2>
     <p class="section-sub reveal reveal-delay-2">No reformamos toda tu empresa. Resolvemos un proceso crítico con la profundidad necesaria para que el cambio sea real y sostenible.</p>
     <div class="fases reveal reveal-delay-2">
-      <div class="fases-line"></div>
+      <div class="fases-line fases-line-1"></div>
+      <div class="fases-line fases-line-2"></div>
       <div class="fase">
         <div class="fase-dot"><div class="fase-dot-ring"></div><span class="fase-num">01</span></div>
         <div class="fase-periodo">Semana 1</div>
@@ -940,28 +938,53 @@
 
   // ── [5] FASES SEQUENTIAL ANIMATION ────────────
   (function(){
-    const fasesLine = document.querySelector('.fases-line');
+    const line1 = document.querySelector('.fases-line-1');
+    const line2 = document.querySelector('.fases-line-2');
     const faseEls = document.querySelectorAll('.fase');
     if(!faseEls.length) return;
     const isMobile = window.matchMedia('(max-width: 900px)').matches;
-    if(isMobile) return; // mobile uses scroll-based activation instead
+    if(isMobile) return;
 
     const fasesObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if(e.isIntersecting){
-          if(fasesLine) setTimeout(()=> fasesLine.classList.add('drawn'), 300);
 
-          faseEls.forEach((fase, i) => {
-            // Entry: appear one by one with generous spacing
-            setTimeout(() => {
-              fase.classList.add('fase-entered');
-            }, 400 + i * 700);
+          // t=300ms — Fase 1 appears
+          setTimeout(() => {
+            faseEls[0].classList.add('fase-entered');
+          }, 300);
+          // t=550ms — Fase 1 pulse activates
+          setTimeout(() => {
+            faseEls[0].classList.add('fase-active');
+          }, 550);
 
-            // Activate pulse: fires AFTER entry settles
-            setTimeout(() => {
-              fase.classList.add('fase-active');
-            }, 900 + i * 700);
-          });
+          // t=1100ms — Line 1 starts drawing toward fase 2
+          setTimeout(() => {
+            if(line1) line1.classList.add('line-draw');
+          }, 1100);
+
+          // t=1900ms — Line 1 lands → Fase 2 appears
+          setTimeout(() => {
+            faseEls[1].classList.add('fase-entered');
+          }, 1900);
+          // t=2150ms — Fase 2 pulse activates
+          setTimeout(() => {
+            faseEls[1].classList.add('fase-active');
+          }, 2150);
+
+          // t=2700ms — Line 2 starts drawing toward fase 3
+          setTimeout(() => {
+            if(line2) line2.classList.add('line-draw');
+          }, 2700);
+
+          // t=3500ms — Line 2 lands → Fase 3 appears
+          setTimeout(() => {
+            faseEls[2].classList.add('fase-entered');
+          }, 3500);
+          // t=3750ms — Fase 3 pulse activates
+          setTimeout(() => {
+            faseEls[2].classList.add('fase-active');
+          }, 3750);
 
           fasesObs.unobserve(e.target);
         }
