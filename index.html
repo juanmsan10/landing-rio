@@ -401,7 +401,7 @@
 
     /* ── FASES SEQUENTIAL ENTRY ──────────────── */
     .fase { opacity: 0; transform: translateY(30px); }
-    .fase .fase-dot { transform: scale(0.5); opacity: 0; transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease; }
+    .fase .fase-dot { transform: scale(0.5); opacity: 0; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease; }
     .fase.fase-entered { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.23,1,0.32,1); }
     .fase.fase-entered .fase-dot { transform: scale(1); opacity: 1; }
 
@@ -945,51 +945,56 @@
     const isMobile = window.matchMedia('(max-width: 900px)').matches;
     if(isMobile) return;
 
+    const LINE_DUR = 800;   // matches CSS transition duration
+    const DOT_DUR = 300;    // matches CSS dot scale duration
+
     const fasesObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if(e.isIntersecting){
 
-          // Step 1: Fase 1 appears
+          // ── ENTRY SEQUENCE ──
+
+          // Circle 1 appears
           setTimeout(() => {
             faseEls[0].classList.add('fase-entered');
           }, 300);
 
-          // Step 2: Fase 1 pulse → then launch line 1
+          // Line 1 starts drawing
+          const line1Start = 900;
+          setTimeout(() => {
+            if(line1) line1.classList.add('line-draw');
+          }, line1Start);
+
+          // Circle 2 appears BEFORE line lands (anticipate by dot duration)
+          setTimeout(() => {
+            faseEls[1].classList.add('fase-entered');
+          }, line1Start + LINE_DUR - DOT_DUR);
+
+          // Line 2 starts drawing (after circle 2 settles)
+          const line2Start = line1Start + LINE_DUR + 200;
+          setTimeout(() => {
+            if(line2) line2.classList.add('line-draw');
+          }, line2Start);
+
+          // Circle 3 appears BEFORE line 2 lands
+          setTimeout(() => {
+            faseEls[2].classList.add('fase-entered');
+          }, line2Start + LINE_DUR - DOT_DUR);
+
+          // ── PULSE SEQUENCE (after all 3 visible) ──
+          const pulseStart = line2Start + LINE_DUR + 400;
+
           setTimeout(() => {
             faseEls[0].classList.add('fase-active');
+          }, pulseStart);
 
-            // After pulse settles, draw line 1
-            setTimeout(() => {
-              if(line1) line1.classList.add('line-draw');
+          setTimeout(() => {
+            faseEls[1].classList.add('fase-active');
+          }, pulseStart + 700);
 
-              // Line 1 lands → Fase 2 born instantly
-              line1.addEventListener('transitionend', function handler(){
-                line1.removeEventListener('transitionend', handler);
-                faseEls[1].classList.add('fase-entered');
-
-                // Fase 2 pulse
-                setTimeout(() => {
-                  faseEls[1].classList.add('fase-active');
-
-                  // After pulse settles, draw line 2
-                  setTimeout(() => {
-                    if(line2) line2.classList.add('line-draw');
-
-                    // Line 2 lands → Fase 3 born instantly
-                    line2.addEventListener('transitionend', function handler2(){
-                      line2.removeEventListener('transitionend', handler2);
-                      faseEls[2].classList.add('fase-entered');
-
-                      // Fase 3 pulse
-                      setTimeout(() => {
-                        faseEls[2].classList.add('fase-active');
-                      }, 250);
-                    });
-                  }, 500);
-                }, 250);
-              });
-            }, 500);
-          }, 550);
+          setTimeout(() => {
+            faseEls[2].classList.add('fase-active');
+          }, pulseStart + 1400);
 
           fasesObs.unobserve(e.target);
         }
