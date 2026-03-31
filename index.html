@@ -778,7 +778,7 @@
         const dist = Math.sqrt(dx*dx + dy*dy);
         if(dist < MOUSE_RADIUS){
           const alpha = (1 - dist / MOUSE_RADIUS) * 0.3;
-          ctx.strokeStyle = `rgba(126,244,116,${alpha})`;
+          ctx.strokeStyle = `rgba(30,112,24,${alpha})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
@@ -794,7 +794,7 @@
         const dist = Math.sqrt(dx*dx + dy*dy);
         const nearMouse = dist < MOUSE_RADIUS;
         const alpha = nearMouse ? 0.5 + (1 - dist / MOUSE_RADIUS) * 0.5 : 0.25;
-        const color = nearMouse ? `rgba(126,244,116,${alpha})` : `rgba(30,112,24,${alpha})`;
+        const color = nearMouse ? `rgba(30,112,24,${alpha})` : `rgba(30,112,24,${alpha})`;
         ctx.fillStyle = color;
         ctx.beginPath();
         ctx.arc(n.x, n.y, nearMouse ? n.r * 1.5 : n.r, 0, Math.PI * 2);
