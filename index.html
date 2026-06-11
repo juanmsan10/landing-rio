@@ -104,7 +104,7 @@
     .nav-cta:hover { background: #2e2e2e; transform: translateY(-1px); }
 
     /* HERO — light */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 3rem 20px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding: 110px 3rem 50px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
     .hero-grid { display: none; }
     .hero-glow { display: none; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; color: #1e7018; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
@@ -392,7 +392,7 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       section { padding: 4rem 1.5rem; }
-      .hero { padding: 40px 1.5rem 0px; }
+      .hero { padding: 90px 1.5rem 30px; justify-content: flex-start; }
       .pain-grid { grid-template-columns: 1fr 1fr; }
       .niveles { grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
       .fases { flex-direction: column; gap: 2.5rem; }
@@ -419,7 +419,7 @@
     @media (max-width: 560px) {
       .pain-grid, .diag-grid { grid-template-columns: 1fr; }
       /* HERO */
-      .hero { padding: 60px 1.25rem 30px; }
+      .hero { padding: 90px 1.25rem 40px; justify-content: flex-start; }
       .hero-eyebrow { font-size: 16px; margin-bottom: 1.5rem; }
       .hero-h1 { font-size: calc(2.8rem - 4px); margin-bottom: 2.5rem; }
       .hero-sub { font-size: calc(1.35rem - 1px); line-height: 1.6; margin-bottom: calc(2rem + 5px); }
