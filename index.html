@@ -104,7 +104,7 @@
     .nav-cta:hover { background: #2e2e2e; transform: translateY(-1px); }
 
     /* HERO — light */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 3rem 80px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 90px 3rem 50px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
     .hero-grid { display: none; }
     .hero-glow { display: none; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; color: #1e7018; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
@@ -392,7 +392,7 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       section { padding: 4rem 1.5rem; }
-      .hero { padding: 100px 1.5rem 60px; }
+      .hero { padding: 70px 1.5rem 30px; }
       .pain-grid { grid-template-columns: 1fr 1fr; }
       .niveles { grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
       .fases { flex-direction: column; gap: 2.5rem; }
@@ -419,7 +419,7 @@
     @media (max-width: 560px) {
       .pain-grid, .diag-grid { grid-template-columns: 1fr; }
       /* HERO */
-      .hero { padding: 120px 1.25rem 90px; }
+      .hero { padding: 90px 1.25rem 60px; }
       .hero-eyebrow { font-size: 16px; margin-bottom: 1.5rem; }
       .hero-h1 { font-size: calc(2.8rem - 4px); margin-bottom: 2.5rem; }
       .hero-sub { font-size: calc(1.35rem - 1px); line-height: 1.6; margin-bottom: calc(2rem + 5px); }
@@ -750,7 +750,7 @@
     <div class="chaos-pain-item">
       <div class="chaos-pain-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="8" cy="6" r="2" fill="none"/><circle cx="16" cy="12" r="2" fill="none"/><circle cx="10" cy="18" r="2" fill="none"/></svg></div>
       <div class="chaos-pain-title">Falta de estándares</div>
-      <div class="chaos-pain-desc">Cada persona hace las cosas a su manera. El resultado es impredecible.</div>
+      <div class="chaos-pain-desc">Cada persona hace las cosas a su manera. El resultado es impredecible y nadie sabe qué esperar.</div>
     </div>
     <div class="chaos-pain-item">
       <div class="chaos-pain-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15"/></svg></div>
@@ -927,26 +927,23 @@
   <div class="sec-glow br"></div>
   <div class="container" id="metodo" style="padding-top:160px;">
     <div class="section-label reveal">El método</div>
-    <h2 class="section-h2 reveal reveal-delay-1"><em>3 fases. 4-6 semanas.</em><br>Procesos que funcionan.</h2>
-    <p class="section-sub reveal reveal-delay-2">Empezamos por el proceso que más te duele. Lo rediseñamos, lo automatizamos con IA y lo dejamos funcionando con tu equipo en 4-6 semanas. Ese es el primer sprint. Cuando funciona como reloj, vamos por el siguiente. Así construimos, proceso a proceso, una operación que escala.</p>
+    <h2 class="section-h2 reveal reveal-delay-1"><em>3 fases. 1 sprint.</em><br>Procesos que funcionan.</h2>
+    <p class="section-sub reveal reveal-delay-2">Construimos un sistema con el que es más fácil hacer las cosas bien. Tu equipo gana confianza, autonomía y capacidad. Los resultados se hacen evidentes en pocas semanas.</p>
     <div class="fases reveal reveal-delay-2">
       <div class="fases-line fases-line-1"></div>
       <div class="fases-line fases-line-2"></div>
       <div class="fase">
         <div class="fase-dot"><div class="fase-dot-ring"></div><span class="fase-num">01</span></div>
-        <div class="fase-periodo">Semana 1</div>
         <div class="fase-title">Análisis</div>
         <div class="fase-desc">Escuchamos, mapeamos y entendemos el problema real. Identificamos dónde se rompe el flujo, dónde se duplica trabajo y dónde se pierden las cosas. Entendemos lo que vamos a resolver.</div>
       </div>
       <div class="fase">
         <div class="fase-dot"><div class="fase-dot-ring"></div><span class="fase-num">02</span></div>
-        <div class="fase-periodo">Semanas 2–3</div>
         <div class="fase-title">Desarrollo</div>
         <div class="fase-desc">Rediseñamos el flujo para que sea más claro, repetible y menos dependiente de la improvisación. Creamos una estructura que facilite el trabajo, aumente la productividad y suba la moral de tu equipo.</div>
       </div>
       <div class="fase">
         <div class="fase-dot"><div class="fase-dot-ring"></div><span class="fase-num">03</span></div>
-        <div class="fase-periodo">Semanas 4–6</div>
         <div class="fase-title">Implementación</div>
         <div class="fase-desc">Acompañamos a tu equipo a ejecutar el nuevo proceso en la realidad. Reuniones semanales, ajustes sobre la marcha y desbloqueo de decisiones. Esto no es teoría, es apropiación.</div>
       </div>
@@ -999,7 +996,7 @@
         <div class="diag-step-num">PASO 03</div>
         <div class="diag-step-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div class="diag-step-title">Propuesta y kickoff</div>
-        <div class="diag-step-desc">Te entregamos una propuesta con alcance exacto, entregables, cronograma e inversión. Todo por escrito. Nada empieza sin acuerdo claro.</div>
+        <div class="diag-step-desc">Te entregamos una propuesta con alcance exacto, entregables, cronograma e inversión. Nada empieza sin un acuerdo claro entre ambas partes.</div>
       </div>
     </div>
     <div style="text-align:center;margin-top:2.5rem;" class="reveal reveal-delay-2">
