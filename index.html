@@ -154,31 +154,44 @@
       font-size: 21px; color: #b0b0ac; text-align: center;
       font-weight: 300; margin-bottom: 4rem;
     }
-    .prod-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-      position: relative; z-index: 1;
-    }
-    .prod-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px; overflow: hidden;
-      transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-      opacity: 0; transform: translateY(20px);
-    }
-    .prod-card.appeared { opacity: 1; transform: translateY(0); }
-    .prod-card:hover {
-      border-color: rgba(126,244,116,0.25);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 40px rgba(126,244,116,0.06);
-    }
-    .prod-card-visual {
-      padding: 1.5rem 1.5rem 0; display: flex; align-items: center; justify-content: center;
-    }
-    .prod-card-visual svg { width: 100%; height: auto; max-height: 160px; }
-    .prod-card-title {
-      padding: 1.25rem 1.5rem 1.5rem;
-      font-size: 18px; font-weight: 600; color: var(--t);
-    }
+    /* ── BENTO DASHBOARD ─────────────────────── */
+    .bento-dash { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
+    .bd-card { position: relative; background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 24px; overflow: hidden; transition: border-color 0.4s; display: flex; flex-direction: column; }
+    .bd-card:hover { border-color: rgba(126,244,116,0.15); }
+    .bd-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 0%,rgba(126,244,116,0.06),transparent 70%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .bd-card:hover::before { opacity: 1; }
+    .bd-c1 { grid-column: 1; grid-row: 1/3; }
+    .bd-c2 { grid-column: 2; grid-row: 1; }
+    .bd-c3 { grid-column: 2; grid-row: 2; }
+    .bd-title { font-size: 18px; font-weight: 600; color: #f2f2ef; margin-top: 16px; position: relative; z-index: 1; letter-spacing: -0.02em; }
+    .bd-desc { font-size: 13px; color: #787874; margin-top: 5px; position: relative; z-index: 1; line-height: 1.5; }
+    .bd-panel { position: relative; z-index: 1; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: radial-gradient(ellipse at 50% 30%,rgba(30,112,24,0.05),transparent 60%),#0c0e10; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); overflow: hidden; flex: 1; }
+    .bd-schema { padding: 0; display: flex; align-items: center; justify-content: center; }
+    .bd-schema svg { width: 94%; height: 94%; display: block; }
+    .bd-live { padding: 20px; display: flex; flex-direction: column; }
+    .bd-live-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .bd-live-label { font-size: 12px; color: #787874; }
+    .bd-live-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; color: #7ef474; background: rgba(126,244,116,0.08); border: 1px solid rgba(126,244,116,0.2); padding: 3px 10px; border-radius: 999px; letter-spacing: 0.06em; }
+    .bd-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #7ef474; animation: bd-pulse 1.4s infinite; }
+    @keyframes bd-pulse { 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(126,244,116,0.5); } 50%{ opacity:0.5; box-shadow:0 0 0 6px rgba(126,244,116,0); } }
+    .bd-net { flex: 1; border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; background: rgba(255,255,255,0.015); overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 120px; }
+    .bd-bottom { display: flex; align-items: center; gap: 16px; margin-top: 10px; }
+    .bd-pct { font-size: 32px; font-weight: 700; color: #f2f2ef; letter-spacing: -0.03em; flex-shrink: 0; }
+    .bd-spark { flex: 1; height: 36px; }
+    .bd-spark svg { width: 100%; height: 100%; }
+    .bd-src { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .bd-src-bar { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 10px 12px; }
+    .bd-src-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .bd-src-info { flex: 1; }
+    .bd-src-name { font-size: 12.5px; font-weight: 500; color: #f2f2ef; }
+    .bd-src-detail { font-size: 10.5px; color: #787874; margin-top: 1px; }
+    .bd-src-pill { font-size: 10px; color: #7ef474; background: rgba(126,244,116,0.08); padding: 3px 9px; border-radius: 999px; }
+    .bd-bars { display: flex; align-items: flex-end; gap: 6px; flex: 1; padding: 8px 4px 0; min-height: 60px; }
+    .bd-bars span { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg,rgba(126,244,116,0.35),rgba(126,244,116,0.08)); position: relative; overflow: hidden; transition: height 1s cubic-bezier(0.23,1,0.32,1); }
+    .bd-bars span::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,rgba(255,255,255,0.1),transparent); border-radius: inherit; }
+    .bd-schema-pulse { animation: bd-pulse 1.5s infinite; }
+    .bd-net-ping { animation: bd-net-ping 1.5s ease-in-out infinite; }
+    @keyframes bd-net-ping { 0%,100%{ opacity:0.7; r:5; } 50%{ opacity:0.2; r:10; } }
 
 
     /* ── IA SECTION (ring to network) ────────── */
@@ -363,7 +376,11 @@
       .diag-step-title { font-size: 20px; }
       .diag-step-desc { font-size: 17px; line-height: 1.7; }
       .pq-grid { grid-template-columns: 1fr; }
-      .prod-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .bento-dash { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .bd-c1 { grid-column: 1; grid-row: auto; }
+      .bd-c2 { grid-column: 1; grid-row: auto; }
+      .bd-c3 { grid-column: 1; grid-row: auto; }
+      .bd-schema { min-height: 400px; }
       .ia-section { padding: 4rem 1.5rem 0; }
       .ia-img-wrap { width: 95vw; max-width: 95vw; }
       .ia-label-el { font-size: 10px; }
@@ -398,7 +415,6 @@
       .desktop-br { display: none; }
       .prod-headline { font-size: 2rem; margin-bottom: calc(1.25rem + 20px); }
       .prod-sub { font-size: 20px; margin-bottom: calc(2.5rem + 20px); }
-      .prod-card-title { font-size: 20px; }
       /* MÉTODO */
       #metodo .section-sub { font-size: calc(1.4rem - 2px); }
       .fase { padding-top: 10px; }
@@ -679,149 +695,139 @@
     <h2 class="prod-headline reveal">Un sistema operativo <br class="mobile-br"><em>instalado y funcionando</em> en tu empresa</h2>
     <p class="prod-sub reveal reveal-delay-1">No dejamos un PDF en un drive. <br class="mobile-br">Implementamos la solución con tu equipo.</p>
 
-    <div class="prod-grid-wrap" style="position:relative;">
-      <!-- Grid 2×2 -->
-      <div class="prod-grid">
-        <div class="prod-card glow-card">
-          <div class="prod-card-visual">
-            <svg viewBox="2 0 276 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Swimlane divider -->
-              <line x1="30" y1="78" x2="270" y2="78" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
-              <!-- Lane labels -->
-              <text x="14" y="18" fill="rgba(126,244,116,0.4)" font-size="9" font-family="IBM Plex Mono" letter-spacing="0.08em">EQUIPO</text>
-              <text x="14" y="96" fill="rgba(255,255,255,0.3)" font-size="9" font-family="IBM Plex Mono" letter-spacing="0.08em">SISTEMA</text>
-              <!-- Top lane cards -->
-              <rect x="10" y="28" width="75" height="38" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-              <rect x="16" y="36" width="32" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-              <rect x="16" y="44" width="52" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <rect x="16" y="51" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <line x1="85" y1="47" x2="100" y2="47" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-              <rect x="100" y="28" width="75" height="38" rx="6" fill="rgba(126,244,116,0.04)" stroke="rgba(126,244,116,0.18)" stroke-width="0.8"/>
-              <rect x="106" y="36" width="38" height="4" rx="2" fill="rgba(126,244,116,0.35)"/>
-              <rect x="106" y="44" width="55" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <rect x="106" y="51" width="30" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <line x1="175" y1="47" x2="190" y2="47" stroke="rgba(126,244,116,0.25)" stroke-width="0.8"/>
-              <rect x="190" y="28" width="75" height="38" rx="6" fill="rgba(126,244,116,0.08)" stroke="rgba(126,244,116,0.3)" stroke-width="0.8"/>
-              <rect x="196" y="36" width="42" height="4" rx="2" fill="rgba(126,244,116,0.4)"/>
-              <rect x="196" y="44" width="48" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <rect x="196" y="51" width="24" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <!-- Vertical dashed connectors -->
-              <line x1="137" y1="66" x2="137" y2="106" stroke="rgba(126,244,116,0.2)" stroke-width="0.8" stroke-dasharray="3 3"/>
-              <line x1="227" y1="66" x2="227" y2="106" stroke="rgba(126,244,116,0.25)" stroke-width="0.8" stroke-dasharray="3 3"/>
-              <!-- Bottom lane cards -->
-              <rect x="100" y="106" width="75" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-              <rect x="106" y="114" width="40" height="4" rx="2" fill="rgba(255,255,255,0.18)"/>
-              <rect x="106" y="122" width="55" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <line x1="175" y1="122" x2="190" y2="122" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-              <rect x="190" y="106" width="75" height="32" rx="6" fill="rgba(126,244,116,0.06)" stroke="rgba(126,244,116,0.2)" stroke-width="0.8"/>
-              <rect x="196" y="114" width="44" height="4" rx="2" fill="rgba(126,244,116,0.35)"/>
-              <rect x="196" y="122" width="36" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <!-- Checkmark -->
-              <circle cx="256" cy="122" r="6" fill="rgba(126,244,116,0.15)"/>
-              <polyline points="253,122 255,124 259,120" stroke="#7ef474" stroke-width="1.2" fill="none" opacity="0.7"/>
-            </svg>
-          </div>
-          <div class="prod-card-title">Flujos claros para todos</div>
+    <div class="bento-dash reveal">
+      <div class="bd-card bd-c1">
+        <div class="bd-panel bd-schema">
+          <svg id="bd-schema-svg" viewBox="0 0 360 620" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="bd-ng" cx="50%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#161922"/>
+                <stop offset="100%" stop-color="#0d0f14"/>
+              </radialGradient>
+            </defs>
+            <g id="bd-flow-paths" fill="none">
+              <path class="bd-fb" d="M85,60 C85,120 180,130 180,180"/>
+              <path class="bd-fb" d="M275,60 C275,120 180,130 180,180"/>
+              <path class="bd-fb" d="M180,320 L180,400"/>
+              <path class="bd-fb" d="M180,450 C180,500 80,510 80,555"/>
+              <path class="bd-fb" d="M180,450 C180,500 280,510 280,555"/>
+            </g>
+            <g id="bd-flow-dashes"></g>
+            <g>
+              <rect x="10" y="10" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="32" cy="35" r="6" fill="#7ef474"/>
+              <text x="50" y="31" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Flujos</text>
+              <text x="50" y="46" fill="#787874" font-size="10" font-family="Inter,sans-serif">SOPs activos</text>
+            </g>
+            <g>
+              <rect x="210" y="10" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="232" cy="35" r="6" fill="#7ef474"/>
+              <text x="250" y="31" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Manuales</text>
+              <text x="250" y="46" fill="#787874" font-size="10" font-family="Inter,sans-serif">Documentación</text>
+            </g>
+            <g>
+              <rect x="55" y="180" width="250" height="140" rx="16" fill="url(#bd-ng)" stroke="rgba(126,244,116,0.40)" stroke-width="1.2"/>
+              <rect x="55" y="180" width="250" height="140" rx="16" fill="none" stroke="#7ef474" stroke-opacity="0" id="bd-core-glow"/>
+              <circle cx="282" cy="200" r="5.5" fill="#7ef474" class="bd-schema-pulse"/>
+              <text x="180" y="250" text-anchor="middle" fill="#f2f2ef" font-size="16" font-weight="600" font-family="Inter,sans-serif">Sistema Operativo</text>
+              <text x="180" y="275" text-anchor="middle" fill="#787874" font-size="11" font-family="Inter,sans-serif">Gestión centralizada</text>
+            </g>
+            <g>
+              <rect x="110" y="400" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(212,180,23,0.25)" stroke-width="1"/>
+              <circle cx="132" cy="425" r="6" fill="#d4b417"/>
+              <text x="150" y="421" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Tableros</text>
+              <text x="150" y="436" fill="#787874" font-size="10" font-family="Inter,sans-serif">Métricas en vivo</text>
+            </g>
+            <g>
+              <rect x="10" y="555" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="32" cy="580" r="6" fill="#e85040"/>
+              <text x="50" y="576" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Alertas</text>
+              <text x="50" y="591" fill="#787874" font-size="10" font-family="Inter,sans-serif">Reprocesos</text>
+            </g>
+            <g>
+              <rect x="210" y="555" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="232" cy="580" r="6" fill="#4fd1a0"/>
+              <text x="250" y="576" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Reportes</text>
+              <text x="250" y="591" fill="#787874" font-size="10" font-family="Inter,sans-serif">Automáticos</text>
+            </g>
+          </svg>
         </div>
+        <div class="bd-title">Flujos claros para todos</div>
+        <div class="bd-desc">Cada área conectada a un sistema central. Un solo estándar.</div>
+      </div>
 
-        <div class="prod-card glow-card">
-          <div class="prod-card-visual">
-            <svg viewBox="2 0 276 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="47" y="18" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono" letter-spacing="0.08em">PENDIENTE</text>
-              <text x="140" y="18" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono" letter-spacing="0.08em">EN CURSO</text>
-              <text x="232" y="18" text-anchor="middle" fill="#7ef474" font-size="9" font-family="IBM Plex Mono" letter-spacing="0.08em" opacity="0.7">LISTO</text>
-              <line x1="95" y1="6" x2="95" y2="155" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="185" y1="6" x2="185" y2="155" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <!-- Col 1 -->
-              <rect x="10" y="28" width="75" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-              <rect x="16" y="36" width="30" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-              <rect x="16" y="44" width="50" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <rect x="10" y="66" width="75" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-              <rect x="16" y="74" width="40" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-              <rect x="16" y="82" width="55" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <rect x="10" y="104" width="75" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-              <rect x="16" y="112" width="35" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-              <!-- Col 2 -->
-              <rect x="105" y="28" width="70" height="38" rx="6" fill="rgba(126,244,116,0.06)" stroke="rgba(126,244,116,0.2)" stroke-width="0.8"/>
-              <rect x="111" y="36" width="35" height="4" rx="2" fill="rgba(126,244,116,0.4)"/>
-              <rect x="111" y="44" width="48" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <rect x="111" y="51" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <rect x="105" y="72" width="70" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-              <rect x="111" y="80" width="42" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-              <!-- Col 3 -->
-              <rect x="195" y="28" width="75" height="28" rx="6" fill="rgba(126,244,116,0.04)" stroke="rgba(126,244,116,0.15)" stroke-width="0.8"/>
-              <rect x="201" y="36" width="38" height="4" rx="2" fill="rgba(126,244,116,0.3)"/>
-              <rect x="201" y="44" width="20" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <rect x="195" y="62" width="75" height="28" rx="6" fill="rgba(126,244,116,0.04)" stroke="rgba(126,244,116,0.15)" stroke-width="0.8"/>
-              <rect x="201" y="70" width="44" height="4" rx="2" fill="rgba(126,244,116,0.3)"/>
-              <!-- Checkmarks col 3 -->
-              <circle cx="258" cy="42" r="6" fill="rgba(126,244,116,0.15)"/>
-              <polyline points="255,42 257,44 261,40" stroke="#7ef474" stroke-width="1.2" fill="none" opacity="0.7"/>
-              <circle cx="258" cy="76" r="6" fill="rgba(126,244,116,0.15)"/>
-              <polyline points="255,76 257,78 261,74" stroke="#7ef474" stroke-width="1.2" fill="none" opacity="0.7"/>
+      <div class="bd-card bd-c2">
+        <div class="bd-panel bd-live">
+          <div class="bd-live-head">
+            <span class="bd-live-label">Cumplimiento operativo</span>
+            <span class="bd-live-badge"><span class="bd-live-dot"></span>EN VIVO</span>
+          </div>
+          <div class="bd-net">
+            <svg viewBox="0 0 300 160" style="width:94%;height:94%">
+              <defs>
+                <linearGradient id="bd-sg" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#1e7018"/>
+                  <stop offset="1" stop-color="#4fd1a0"/>
+                </linearGradient>
+              </defs>
+              <path d="M50,110 L115,80" stroke="rgba(126,244,116,0.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M50,50 L115,80" stroke="rgba(126,244,116,0.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M165,80 L250,40" stroke="rgba(79,209,160,0.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M165,80 L250,80" stroke="rgba(79,209,160,0.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <path d="M165,80 L250,120" stroke="rgba(79,209,160,0.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <circle r="3.5" fill="#7ef474" style="filter:drop-shadow(0 0 4px #7ef474)"><animateMotion dur="1.5s" repeatCount="indefinite" path="M50,110 L115,80"/></circle>
+              <circle r="3.5" fill="#7ef474" style="filter:drop-shadow(0 0 4px #7ef474)"><animateMotion dur="2s" repeatCount="indefinite" path="M50,50 L115,80"/></circle>
+              <circle r="3.5" fill="#4fd1a0" style="filter:drop-shadow(0 0 4px #4fd1a0)"><animateMotion dur="1.8s" repeatCount="indefinite" path="M165,80 L250,40"/></circle>
+              <circle r="3.5" fill="#4fd1a0" style="filter:drop-shadow(0 0 4px #4fd1a0)"><animateMotion dur="1.4s" repeatCount="indefinite" path="M165,80 L250,80"/></circle>
+              <circle r="3.5" fill="#4fd1a0" style="filter:drop-shadow(0 0 4px #4fd1a0)"><animateMotion dur="2.2s" repeatCount="indefinite" path="M165,80 L250,120"/></circle>
+              <circle cx="50" cy="110" r="8" fill="#0c0e10" stroke="#7ef474" stroke-width="2.5"/>
+              <circle cx="50" cy="50" r="8" fill="#0c0e10" stroke="#7ef474" stroke-width="2.5"/>
+              <rect x="115" y="55" width="50" height="50" rx="11" fill="#0c0e10" stroke="url(#bd-sg)" stroke-width="2"/>
+              <circle cx="140" cy="80" r="5" fill="#7ef474" opacity="0.7"/>
+              <circle cx="140" cy="80" r="5" fill="#7ef474" class="bd-net-ping"/>
+              <circle cx="250" cy="40" r="8" fill="#0c0e10" stroke="#4fd1a0" stroke-width="2.5"/>
+              <circle cx="250" cy="80" r="8" fill="#0c0e10" stroke="#4fd1a0" stroke-width="2.5"/>
+              <circle cx="250" cy="120" r="8" fill="#0c0e10" stroke="#4fd1a0" stroke-width="2.5"/>
             </svg>
           </div>
-          <div class="prod-card-title">Visibilidad en tiempo real</div>
+          <div class="bd-bottom">
+            <div class="bd-pct">94%</div>
+            <div class="bd-spark">
+              <svg viewBox="0 0 200 36" preserveAspectRatio="none">
+                <defs><linearGradient id="bd-cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7ef474" stop-opacity="0.25"/><stop offset="100%" stop-color="#7ef474" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,28 L24,22 48,25 72,14 96,20 120,10 144,17 168,7 188,12 200,9 L200,36 L0,36Z" fill="url(#bd-cg)"/>
+                <polyline points="0,28 24,22 48,25 72,14 96,20 120,10 144,17 168,7 188,12 200,9" fill="none" stroke="#7ef474" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
         </div>
+        <div class="bd-title">Visibilidad en tiempo real</div>
+        <div class="bd-desc">Números que el equipo consulta a diario.</div>
+      </div>
 
-        <div class="prod-card glow-card">
-          <div class="prod-card-visual">
-            <svg viewBox="55 0 170 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="70" y="8" width="140" height="145" rx="8" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-              <rect x="82" y="20" width="70" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
-              <rect x="82" y="32" width="100" height="3" rx="1.5" fill="rgba(255,255,255,0.07)"/>
-              <line x1="82" y1="44" x2="198" y2="44" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
-              <!-- Checklist items -->
-              <rect x="82" y="54" width="12" height="12" rx="3" stroke="#7ef474" stroke-width="1" fill="rgba(126,244,116,0.08)"/>
-              <polyline points="85,60 88,63 93,57" stroke="#7ef474" stroke-width="1.3" fill="none"/>
-              <rect x="100" y="56" width="80" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-              <rect x="100" y="64" width="55" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <rect x="82" y="78" width="12" height="12" rx="3" stroke="#7ef474" stroke-width="1" fill="rgba(126,244,116,0.08)"/>
-              <polyline points="85,84 88,87 93,81" stroke="#7ef474" stroke-width="1.3" fill="none"/>
-              <rect x="100" y="80" width="90" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-              <rect x="100" y="88" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
-              <rect x="82" y="102" width="12" height="12" rx="3" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-              <rect x="100" y="104" width="70" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-              <rect x="100" y="112" width="45" height="3" rx="1.5" fill="rgba(255,255,255,0.05)"/>
-              <rect x="82" y="126" width="12" height="12" rx="3" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-              <rect x="100" y="128" width="85" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-              <rect x="100" y="136" width="50" height="3" rx="1.5" fill="rgba(255,255,255,0.05)"/>
-            </svg>
+      <div class="bd-card bd-c3">
+        <div class="bd-panel bd-src">
+          <div class="bd-src-bar">
+            <div class="bd-src-dot" style="background:#7ef474"></div>
+            <div class="bd-src-info"><div class="bd-src-name">Proceso de ventas</div><div class="bd-src-detail">12 pasos · 3 responsables</div></div>
+            <span class="bd-src-pill">activo</span>
           </div>
-          <div class="prod-card-title">Manuales que se siguen</div>
-        </div>
-
-        <div class="prod-card glow-card">
-          <div class="prod-card-visual">
-            <svg viewBox="18 8 250 152" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="30" y1="140" x2="260" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-              <line x1="30" y1="140" x2="30" y2="15" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-              <!-- Grid lines -->
-              <line x1="30" y1="110" x2="260" y2="110" stroke="rgba(255,255,255,0.04)" stroke-width="0.8" stroke-dasharray="4 4"/>
-              <line x1="30" y1="80" x2="260" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="0.8" stroke-dasharray="4 4"/>
-              <line x1="30" y1="50" x2="260" y2="50" stroke="rgba(255,255,255,0.04)" stroke-width="0.8" stroke-dasharray="4 4"/>
-              <!-- Bars -->
-              <rect x="50" y="95" width="24" height="45" rx="4" fill="rgba(255,255,255,0.08)"/>
-              <rect x="90" y="75" width="24" height="65" rx="4" fill="rgba(255,255,255,0.08)"/>
-              <rect x="130" y="60" width="24" height="80" rx="4" fill="rgba(126,244,116,0.15)"/>
-              <rect x="170" y="45" width="24" height="95" rx="4" fill="rgba(126,244,116,0.25)"/>
-              <rect x="210" y="30" width="24" height="110" rx="4" fill="rgba(126,244,116,0.4)"/>
-              <!-- Trend line -->
-              <polyline points="62,90 102,70 142,55 182,40 222,25" stroke="#7ef474" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- Dots on trend -->
-              <circle cx="142" cy="55" r="3" fill="#7ef474" opacity="0.5"/>
-              <circle cx="182" cy="40" r="3" fill="#7ef474" opacity="0.7"/>
-              <circle cx="222" cy="25" r="3.5" fill="#7ef474" opacity="0.9"/>
-              <!-- Labels -->
-              <text x="62" y="152" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="IBM Plex Mono">S1</text>
-              <text x="102" y="152" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="IBM Plex Mono">S2</text>
-              <text x="142" y="152" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="IBM Plex Mono">S3</text>
-              <text x="182" y="152" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="IBM Plex Mono">S4</text>
-              <text x="222" y="152" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="IBM Plex Mono">S5</text>
-            </svg>
+          <div class="bd-src-bar">
+            <div class="bd-src-dot" style="background:#a07ef4"></div>
+            <div class="bd-src-info"><div class="bd-src-name">Onboarding clientes</div><div class="bd-src-detail">8 pasos · 2 responsables</div></div>
+            <span class="bd-src-pill">activo</span>
           </div>
-          <div class="prod-card-title">Métricas que mueven decisiones</div>
+          <div class="bd-src-bar">
+            <div class="bd-src-dot" style="background:#4fd1a0"></div>
+            <div class="bd-src-info"><div class="bd-src-name">Control de calidad</div><div class="bd-src-detail">6 pasos · QA lead</div></div>
+            <span class="bd-src-pill">activo</span>
+          </div>
+          <div class="bd-bars" id="bd-src-bars">
+            <span style="height:0"></span><span style="height:0"></span><span style="height:0"></span><span style="height:0"></span><span style="height:0"></span><span style="height:0"></span><span style="height:0"></span>
+          </div>
         </div>
+        <div class="bd-title">Manuales que se siguen</div>
+        <div class="bd-desc">Resultados consistentes para tus clientes y tu equipo.</div>
       </div>
     </div>
 
@@ -1040,7 +1046,6 @@
     parents.forEach(p=>gridObs.observe(p));
   }
   setupCardGrid('.diag-grid .diag-step-card');
-  setupCardGrid('.prod-grid .prod-card');
 
   // ── [5] FASES SEQUENTIAL ANIMATION ────────────
   (function(){
@@ -1628,6 +1633,68 @@
     initMorph();
     window.addEventListener('resize',initMorph);
     requestAnimationFrame(drawMorph);
+  })();
+
+  // ── BENTO DASHBOARD ANIMATIONS ──────────────
+  (function(){
+    var svg=document.getElementById('bd-schema-svg');
+    if(!svg) return;
+    var dashG=document.getElementById('bd-flow-dashes');
+    var basePaths=svg.querySelectorAll('#bd-flow-paths .bd-fb');
+    var ns='http://www.w3.org/2000/svg';
+    basePaths.forEach(function(bp){
+      bp.setAttribute('stroke','rgba(255,255,255,0.10)');
+      bp.setAttribute('stroke-width','1.6');
+      bp.setAttribute('fill','none');
+      bp.setAttribute('stroke-linecap','round');
+    });
+    var delays=[0,0.95,1.9,0.45,1.4];
+    basePaths.forEach(function(bp,idx){
+      var L=bp.getTotalLength();
+      var seg=L*0.30;
+      var gap=L-seg;
+      var dash=document.createElementNS(ns,'path');
+      dash.setAttribute('d',bp.getAttribute('d'));
+      dash.setAttribute('stroke','#7ef474');
+      dash.setAttribute('stroke-width','2');
+      dash.setAttribute('fill','none');
+      dash.setAttribute('stroke-linecap','round');
+      dash.setAttribute('stroke-dasharray',seg+' '+gap);
+      dash.setAttribute('stroke-dashoffset',String(L));
+      var anim=document.createElementNS(ns,'animate');
+      anim.setAttribute('attributeName','stroke-dashoffset');
+      anim.setAttribute('from',String(L));
+      anim.setAttribute('to',String(-L));
+      anim.setAttribute('dur','2.6s');
+      anim.setAttribute('repeatCount','indefinite');
+      anim.setAttribute('calcMode','linear');
+      anim.setAttribute('begin',delays[idx]+'s');
+      dash.appendChild(anim);
+      dashG.appendChild(dash);
+    });
+    var coreGlow=document.getElementById('bd-core-glow');
+    if(coreGlow){
+      var t=0;
+      (function pulse(){
+        t+=0.02;
+        var v=(Math.sin(t*1.8)+1)/2;
+        coreGlow.setAttribute('stroke-opacity',String(v*0.5));
+        requestAnimationFrame(pulse);
+      })();
+    }
+    var bars=document.querySelectorAll('#bd-src-bars span');
+    if(bars.length){
+      var heights=[35,55,42,72,58,85,65];
+      var barsObs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            bars.forEach(function(b,i){b.style.height=heights[i]+'%';});
+            barsObs.unobserve(e.target);
+          }
+        });
+      },{threshold:0.3});
+      barsObs.observe(document.getElementById('bd-src-bars'));
+    }
   })();
 </script>
 </body>
