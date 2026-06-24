@@ -104,7 +104,9 @@
     .nav-cta:hover { background: #2e2e2e; transform: translateY(-1px); }
 
     /* HERO — light */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 3rem 80px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 120px 3rem 80px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
+    .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 50%; pointer-events: none; }
     .hero-grid { display: none; }
     .hero-glow { display: none; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; color: #1e7018; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
@@ -114,8 +116,8 @@
     .hero-typed-wrap { display: block; min-height: 1.15em; }
     .hero-typed { color: #1e7018; border-right: 3px solid #1e7018; padding-right: 4px; animation: blink 0.8s infinite; }
     @keyframes blink { 0%,100%{border-color:#1e7018;} 50%{border-color:transparent;} }
-    .hero-sub { font-size: 1.15rem; color: #4e4e4a; line-height: 1.8; max-width: 700px; margin-bottom: 3rem; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
-    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+    .hero-sub { font-size: 1.15rem; color: #4e4e4a; line-height: 1.8; max-width: 500px; margin-bottom: 3rem; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+    .hero-actions { display: flex; align-items: center; justify-content: flex-start; gap: 1.25rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; pointer-events: auto; }
     .btn-primary { height: 56px; padding: 0 36px; background: #1a1a18; color: #f8f7f4; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--sans); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; }
     .btn-primary:hover { background: #2e2e2e; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.18); }
     .btn-ghost-light { height: 56px; padding: 0 28px; background: transparent; color: #4e4e4a; border: 0.5px solid rgba(0,0,0,0.18); border-radius: 8px; font-size: 15px; font-family: var(--sans); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
@@ -392,7 +394,10 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       section { padding: 4rem 1.5rem; }
-      .hero { padding: 100px 1.5rem 60px; }
+      .hero { padding: 100px 1.5rem 60px; align-items: center; text-align: center; }
+      .hero-canvas { display: none; }
+      .hero-content { max-width: 100%; }
+      .hero-actions { justify-content: center; }
       .pain-grid { grid-template-columns: 1fr 1fr; }
       .niveles { grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
       .fases { flex-direction: column; gap: 2.5rem; }
@@ -692,15 +697,18 @@
 </nav>
 
 <!-- ░░ HERO — light ░░ -->
-<section class="hero">
-  <h1 class="hero-h1">
-    <span class="hero-h1-static">Convertimos el caos de tu equipo en</span>
-    <span class="hero-typed-wrap"><span class="hero-typed" id="typed"></span></span>
-  </h1>
-  <p class="hero-sub">Ordenamos procesos críticos, los hacemos predecibles y dejamos a tu equipo operando con claridad. Diseñamos sistemas efectivos para que tu equipo sea consistente y mucho más productivo.</p>
-  <div class="hero-actions">
-    <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary">AGENDAR LLAMADA <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
-    <a href="#metodo" class="btn-ghost-light">Cómo trabajamos</a>
+<section class="hero" id="hero-section">
+  <canvas class="hero-canvas" id="hero-morph-canvas"></canvas>
+  <div class="hero-content">
+    <h1 class="hero-h1">
+      <span class="hero-h1-static">Convertimos el caos de tu equipo en</span>
+      <span class="hero-typed-wrap"><span class="hero-typed" id="typed"></span></span>
+    </h1>
+    <p class="hero-sub">Ordenamos procesos críticos, los hacemos predecibles y dejamos a tu equipo operando con claridad. Diseñamos sistemas efectivos para que tu equipo sea consistente y mucho más productivo.</p>
+    <div class="hero-actions">
+      <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary">AGENDAR LLAMADA <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <a href="#metodo" class="btn-ghost-light">Cómo trabajamos</a>
+    </div>
   </div>
 </section>
 
@@ -1506,6 +1514,235 @@
 
     window.addEventListener('scroll', onScroll, {passive: true});
     onScroll();
+  })();
+
+  // ── DOT MORPHING 3D ─────────────────────────
+  (function(){
+    var box=document.getElementById('hero-section');
+    var cvs=document.getElementById('hero-morph-canvas');
+    if(!box||!cvs)return;
+    var ctx=cvs.getContext('2d');
+    var W=0,H=0,NUM=600;
+
+    var figX=new Float32Array(NUM);
+    var figY=new Float32Array(NUM);
+    var figZ=new Float32Array(NUM);
+    var prevX=new Float32Array(NUM);
+    var prevY=new Float32Array(NUM);
+    var prevZ=new Float32Array(NUM);
+    var tgtX=new Float32Array(NUM);
+    var tgtY=new Float32Array(NUM);
+    var tgtZ=new Float32Array(NUM);
+    var ptCorner=new Uint8Array(NUM);
+
+    var figures=[];
+    var figCorners=[];
+    var figIdx=0;
+    var phase='wait';
+    var phaseTime=0;
+    var FORM=2000,HOLD=3500,SCATTER=1600,WAIT=800;
+    var figCX,figCY,SC;
+    var CE=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+    var PE=[[0,1],[1,2],[2,3],[3,0],[0,4],[1,4],[2,4],[3,4]];
+    var ROT_SPEED=0.0004;
+    var TILT=0.25;
+
+    function initMorph(){
+      var d=window.devicePixelRatio||1;
+      W=box.clientWidth;H=box.clientHeight;
+      if(W<1||H<1)return;
+      cvs.width=W*d;cvs.height=H*d;
+      cvs.style.width=W+'px';cvs.style.height=H+'px';
+      ctx.setTransform(d,0,0,d,0,0);
+      figCX=W*0.5+(W*0.5)/2;
+      figCY=H/2;
+      SC=Math.min(W*0.4,H)*0.48;
+      buildMorphFigures();
+      morphScatter();
+      for(var i=0;i<NUM;i++){
+        figX[i]=tgtX[i];figY[i]=tgtY[i];figZ[i]=tgtZ[i];
+        prevX[i]=figX[i];prevY[i]=figY[i];prevZ[i]=figZ[i];
+        ptCorner[i]=0;
+      }
+      figIdx=0;phase='wait';phaseTime=performance.now();
+    }
+
+    function morphScatter(){
+      var r=SC*2.2;
+      for(var i=0;i<NUM;i++){
+        var a=Math.random()*Math.PI*2;
+        var d=r*(0.35+Math.random()*0.65);
+        tgtX[i]=Math.cos(a)*d;
+        tgtY[i]=Math.sin(a)*d;
+        tgtZ[i]=(Math.random()-0.5)*r*0.5;
+      }
+    }
+
+    function snapPrev(){for(var i=0;i<NUM;i++){prevX[i]=figX[i];prevY[i]=figY[i];prevZ[i]=figZ[i];}}
+    function loadFig(idx){
+      snapPrev();var f=figures[idx];var c=figCorners[idx];
+      for(var i=0;i<NUM;i++){tgtX[i]=f[i].x;tgtY[i]=f[i].y;tgtZ[i]=f[i].z;ptCorner[i]=c[i]?1:0;}
+    }
+    function loadMorphScatter(){snapPrev();morphScatter();for(var i=0;i<NUM;i++)ptCorner[i]=0;}
+
+    function buildFigWithCorners(verts,edges){
+      var cornerPts=[];var used={};
+      for(var v=0;v<verts.length;v++){
+        var key=verts[v][0].toFixed(5)+','+verts[v][1].toFixed(5)+','+verts[v][2].toFixed(5);
+        if(!used[key]){used[key]=true;cornerPts.push({x:verts[v][0]*SC,y:verts[v][1]*SC,z:verts[v][2]*SC,corner:true});}
+      }
+      var remaining=NUM-cornerPts.length;
+      var lens=[];var tot=0;
+      for(var e=0;e<edges.length;e++){
+        var a=verts[edges[e][0]],b=verts[edges[e][1]];
+        var l=Math.sqrt(Math.pow(b[0]-a[0],2)+Math.pow(b[1]-a[1],2)+Math.pow(b[2]-a[2],2));
+        tot+=l;lens.push(l);
+      }
+      var edgePts=[];
+      for(var i=0;i<remaining;i++){
+        var d=((i+0.5)/remaining)*tot;var acc=0;
+        for(var e=0;e<edges.length;e++){
+          if(acc+lens[e]>=d){
+            var t=(d-acc)/lens[e];
+            if(t<0.02)t=0.02;if(t>0.98)t=0.98;
+            var a=verts[edges[e][0]],b=verts[edges[e][1]];
+            edgePts.push({x:(a[0]+(b[0]-a[0])*t)*SC,y:(a[1]+(b[1]-a[1])*t)*SC,z:(a[2]+(b[2]-a[2])*t)*SC,corner:false});
+            break;
+          }
+          acc+=lens[e];
+        }
+      }
+      var all=cornerPts.concat(edgePts);
+      while(all.length<NUM){var s=all[all.length-1];all.push({x:s.x,y:s.y,z:s.z,corner:false});}
+      all.length=NUM;
+      var pts=[],cors=[];
+      for(var i=0;i<NUM;i++){pts.push({x:all[i].x,y:all[i].y,z:all[i].z});cors.push(all[i].corner);}
+      return{pts:pts,corners:cors};
+    }
+
+    function buildMorphFigures(){
+      figures=[];figCorners=[];
+      var MH=1.15;
+
+      // 1: Grid 3x3 cubes
+      var aV=[],aE=[];
+      var cs=0.38,gp=0.28,st=cs+gp;
+      var rawH=st*2+cs;
+      var gS=MH/rawH;
+      var off=-st*gS,csS=cs*gS,stS=st*gS,hsS=csS/2;
+      for(var gx=0;gx<3;gx++){for(var gy=0;gy<3;gy++){
+        var cx=off+gx*stS,cy=off+gy*stS,b=aV.length;
+        aV.push([cx-hsS,cy-hsS,-hsS],[cx+hsS,cy-hsS,-hsS],[cx+hsS,cy+hsS,-hsS],[cx-hsS,cy+hsS,-hsS],
+                [cx-hsS,cy-hsS,hsS],[cx+hsS,cy-hsS,hsS],[cx+hsS,cy+hsS,hsS],[cx-hsS,cy+hsS,hsS]);
+        for(var e=0;e<CE.length;e++)aE.push([b+CE[e][0],b+CE[e][1]]);
+      }}
+      var r1=buildFigWithCorners(aV,aE);
+      figures.push(r1.pts);figCorners.push(r1.corners);
+
+      // 2: Pyramid — 2 frustums + pyramid cap
+      var pV=[],pE=[];
+      var gap=0.08;
+      var layerH=MH*0.28;
+      var startY=MH/2;
+      var by1=startY,ty1=startY-layerH;
+      pV.push([-0.6,by1,-0.6],[0.6,by1,-0.6],[0.6,by1,0.6],[-0.6,by1,0.6],
+              [-0.42,ty1,-0.42],[0.42,ty1,-0.42],[0.42,ty1,0.42],[-0.42,ty1,0.42]);
+      for(var e=0;e<CE.length;e++)pE.push([CE[e][0],CE[e][1]]);
+      var by2=ty1-gap,ty2=by2-layerH;
+      var b2=pV.length;
+      pV.push([-0.38,by2,-0.38],[0.38,by2,-0.38],[0.38,by2,0.38],[-0.38,by2,0.38],
+              [-0.22,ty2,-0.22],[0.22,ty2,-0.22],[0.22,ty2,0.22],[-0.22,ty2,0.22]);
+      for(var e=0;e<CE.length;e++)pE.push([b2+CE[e][0],b2+CE[e][1]]);
+      var by3=ty2-gap,ty3=by3-layerH;
+      var b3=pV.length;
+      pV.push([-0.2,by3,-0.2],[0.2,by3,-0.2],[0.2,by3,0.2],[-0.2,by3,0.2],
+              [0,ty3,0]);
+      for(var e=0;e<PE.length;e++)pE.push([b3+PE[e][0],b3+PE[e][1]]);
+      var r2=buildFigWithCorners(pV,pE);
+      figures.push(r2.pts);figCorners.push(r2.corners);
+
+      // 3: Bar chart — 4 ascending bars
+      var heights=[0.28,0.52,0.78,1.15];
+      var bw=0.18,bd=0.22,bg=0.12;
+      var tw2=heights.length*bw+(heights.length-1)*bg;
+      var sx=-tw2/2,byy=MH/2*0.9;
+      var cV=[],cE=[];
+      for(var b=0;b<heights.length;b++){
+        var bx=sx+b*(bw+bg),bh=heights[b],bi=cV.length,hd=bd/2;
+        cV.push([bx,byy,-hd],[bx+bw,byy,-hd],[bx+bw,byy-bh,-hd],[bx,byy-bh,-hd],
+                [bx,byy,hd],[bx+bw,byy,hd],[bx+bw,byy-bh,hd],[bx,byy-bh,hd]);
+        for(var e=0;e<CE.length;e++)cE.push([bi+CE[e][0],bi+CE[e][1]]);
+      }
+      var r3=buildFigWithCorners(cV,cE);
+      figures.push(r3.pts);figCorners.push(r3.corners);
+    }
+
+    function ease(t){return t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+
+    function drawMorph(){
+      var now=performance.now();
+      var el=now-phaseTime;
+      ctx.clearRect(0,0,W,H);
+
+      switch(phase){
+        case 'wait':
+          if(el>=WAIT){loadFig(figIdx);phase='forming';phaseTime=now;}
+          break;
+        case 'forming':
+          var t=Math.min(el/FORM,1);var e=ease(t);
+          for(var i=0;i<NUM;i++){
+            figX[i]=prevX[i]+(tgtX[i]-prevX[i])*e;
+            figY[i]=prevY[i]+(tgtY[i]-prevY[i])*e;
+            figZ[i]=prevZ[i]+(tgtZ[i]-prevZ[i])*e;
+          }
+          if(t>=1){phase='holding';phaseTime=now;}
+          break;
+        case 'holding':
+          for(var i=0;i<NUM;i++){figX[i]=tgtX[i];figY[i]=tgtY[i];figZ[i]=tgtZ[i];}
+          if(el>=HOLD){loadMorphScatter();phase='scattering';phaseTime=now;}
+          break;
+        case 'scattering':
+          var t2=Math.min(el/SCATTER,1);var e2=ease(t2);
+          for(var i=0;i<NUM;i++){
+            figX[i]=prevX[i]+(tgtX[i]-prevX[i])*e2;
+            figY[i]=prevY[i]+(tgtY[i]-prevY[i])*e2;
+            figZ[i]=prevZ[i]+(tgtZ[i]-prevZ[i])*e2;
+          }
+          if(t2>=1){figIdx=(figIdx+1)%figures.length;phase='wait';phaseTime=now;}
+          break;
+      }
+
+      var rY=now*ROT_SPEED;
+      var cosY=Math.cos(rY),sinY=Math.sin(rY);
+      var cosX=Math.cos(TILT),sinX=Math.sin(TILT);
+
+      var proj=[];
+      for(var i=0;i<NUM;i++){
+        var x1=figX[i]*cosY-figZ[i]*sinY;
+        var z1=figX[i]*sinY+figZ[i]*cosY;
+        var y1=figY[i]*cosX-z1*sinX;
+        var z2=figY[i]*sinX+z1*cosX;
+        var p=600/(600+z2);
+        proj.push({px:figCX+x1*p,py:figCY+y1*p,z:z2,s:p,c:ptCorner[i]});
+      }
+      proj.sort(function(a,b){return a.z-b.z;});
+
+      for(var i=0;i<proj.length;i++){
+        var d=proj[i];
+        var sz=d.c?1.8:1.3;
+        var al=d.c?0.45:0.25;
+        ctx.beginPath();
+        ctx.arc(d.px,d.py,sz,0,Math.PI*2);
+        ctx.fillStyle='rgba(30,112,24,'+al+')';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(drawMorph);
+    }
+
+    initMorph();
+    window.addEventListener('resize',initMorph);
+    requestAnimationFrame(drawMorph);
   })();
 </script>
 </body>
