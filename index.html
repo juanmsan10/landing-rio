@@ -104,7 +104,7 @@
     .nav-cta:hover { background: #2e2e2e; transform: translateY(-1px); }
 
     /* HERO — light */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 120px 3rem 80px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 120px calc(3rem + 20px) 80px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
     .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
     .hero-content { position: relative; z-index: 2; max-width: 50%; pointer-events: none; }
     .hero-grid { display: none; }
@@ -1639,23 +1639,24 @@
       var r1=buildFigWithCorners(aV,aE);
       figures.push(r1.pts);figCorners.push(r1.corners);
 
-      // 2: Pyramid — 2 frustums + pyramid cap
+      // 2: Pyramid — 2 frustums + pyramid cap (scaled 0.75 to match grid size)
       var pV=[],pE=[];
-      var gap=0.08;
-      var layerH=MH*0.28;
-      var startY=MH/2;
+      var ps=0.75;
+      var gap=0.08*ps;
+      var layerH=MH*0.28*ps;
+      var startY=MH/2*ps;
       var by1=startY,ty1=startY-layerH;
-      pV.push([-0.6,by1,-0.6],[0.6,by1,-0.6],[0.6,by1,0.6],[-0.6,by1,0.6],
-              [-0.42,ty1,-0.42],[0.42,ty1,-0.42],[0.42,ty1,0.42],[-0.42,ty1,0.42]);
+      pV.push([-0.6*ps,by1,-0.6*ps],[0.6*ps,by1,-0.6*ps],[0.6*ps,by1,0.6*ps],[-0.6*ps,by1,0.6*ps],
+              [-0.42*ps,ty1,-0.42*ps],[0.42*ps,ty1,-0.42*ps],[0.42*ps,ty1,0.42*ps],[-0.42*ps,ty1,0.42*ps]);
       for(var e=0;e<CE.length;e++)pE.push([CE[e][0],CE[e][1]]);
       var by2=ty1-gap,ty2=by2-layerH;
       var b2=pV.length;
-      pV.push([-0.38,by2,-0.38],[0.38,by2,-0.38],[0.38,by2,0.38],[-0.38,by2,0.38],
-              [-0.22,ty2,-0.22],[0.22,ty2,-0.22],[0.22,ty2,0.22],[-0.22,ty2,0.22]);
+      pV.push([-0.38*ps,by2,-0.38*ps],[0.38*ps,by2,-0.38*ps],[0.38*ps,by2,0.38*ps],[-0.38*ps,by2,0.38*ps],
+              [-0.22*ps,ty2,-0.22*ps],[0.22*ps,ty2,-0.22*ps],[0.22*ps,ty2,0.22*ps],[-0.22*ps,ty2,0.22*ps]);
       for(var e=0;e<CE.length;e++)pE.push([b2+CE[e][0],b2+CE[e][1]]);
       var by3=ty2-gap,ty3=by3-layerH;
       var b3=pV.length;
-      pV.push([-0.2,by3,-0.2],[0.2,by3,-0.2],[0.2,by3,0.2],[-0.2,by3,0.2],
+      pV.push([-0.2*ps,by3,-0.2*ps],[0.2*ps,by3,-0.2*ps],[0.2*ps,by3,0.2*ps],[-0.2*ps,by3,0.2*ps],
               [0,ty3,0]);
       for(var e=0;e<PE.length;e++)pE.push([b3+PE[e][0],b3+PE[e][1]]);
       var r2=buildFigWithCorners(pV,pE);
