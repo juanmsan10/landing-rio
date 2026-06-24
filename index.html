@@ -107,8 +107,6 @@
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 120px calc(3rem + 20px) 80px; position: relative; overflow: hidden; background: #f8f7f4; color: #1a1a18; }
     .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
     .hero-content { position: relative; z-index: 2; max-width: 50%; pointer-events: none; }
-    .hero-grid { display: none; }
-    .hero-glow { display: none; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; color: #1e7018; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
     .hero-eyebrow span { width: 24px; height: 1px; background: #1e7018; }
     .hero-h1 { font-size: clamp(2.2rem, 4.8vw, 4.2rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; max-width: 960px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
@@ -144,22 +142,6 @@
     .mobile-br { display: none; }
     .section-sub { font-size: 1.15rem; color: var(--t2); line-height: 1.8; font-weight: 300; max-width: 560px; margin-bottom: 4rem; }
 
-    /* ── PROBLEMA (dark) ───────────────────────── */
-    .problema-intro { background: var(--intro-bg); border: 0.5px solid var(--border); border-left: 2px solid var(--g); border-radius: 12px; padding: 2rem 2.5rem; margin-top: 4rem; margin-bottom: 3rem; max-width: 720px; }
-    .problema-intro p { font-size: 1.1rem; line-height: 1.8; color: var(--t2); font-weight: 300; }
-    .problema-intro p strong { color: var(--t); font-weight: 500; }
-    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; }
-    .pain-item { background: var(--card-bg); padding: 2rem; transition: background 0.25s; }
-    .pain-item:hover { background: var(--card-bg2); }
-    .pain-icon { width: 36px; height: 36px; background: var(--icon-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.875rem; }
-    .pain-icon svg { width: 16px; height: 16px; stroke: var(--icon-stroke); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .pain-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; color: var(--t); }
-    .pain-desc { font-size: 15px; color: var(--t2); line-height: 1.75; font-weight: 300; }
-
-    /* ── SOLUCIÓN (light) ─────────────────────── */
-    .solucion-intro { font-size: 1.05rem; color: var(--t2); line-height: 1.8; font-weight: 300; max-width: none; margin-bottom: 1rem; white-space: nowrap; }
-    .solucion-intro strong { font-weight: 600; color: var(--t); }
-    .solucion-tag { display: inline-block; font-family: var(--mono); font-size: 15px; color: var(--lbl); background: var(--icon-bg); padding: 10px 20px; border-radius: 20px; margin-top: 1rem; margin-bottom: 1.5rem; }
 
     /* ── PRODUCT GRID ─────────────────────────── */
     .prod-headline {
@@ -184,7 +166,6 @@
       opacity: 0; transform: translateY(20px);
     }
     .prod-card.appeared { opacity: 1; transform: translateY(0); }
-    .prod-card.flash { }
     .prod-card:hover {
       border-color: rgba(126,244,116,0.25);
       transform: translateY(-4px);
@@ -199,18 +180,6 @@
       font-size: 18px; font-weight: 600; color: var(--t);
     }
 
-    /* Pills */
-    .prod-pill { display: none; }
-    @keyframes pill-float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .pp1 { top: 5%;  left: -60px; animation-delay: 0s; }
-    .pp2 { top: 35%; right: -70px; animation-delay: 0.7s; }
-    .pp3 { bottom: 20%; left: -50px; animation-delay: 1.4s; }
-    .pp4 { top: 10%; right: -55px; animation-delay: 2.1s; }
-    .pp5 { top: 60%; left: -55px; animation-delay: 0.35s; }
-    .pp6 { bottom: 5%; right: -65px; animation-delay: 1.75s; }
 
     /* ── IA SECTION (ring to network) ────────── */
     /* IA SECTION */
@@ -298,19 +267,6 @@
       white-space: pre-line;
     }
 
-    .niveles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 10px; }
-    .nivel-card { background: var(--card-bg); border: 0.5px solid var(--border); border-radius: 14px; padding: calc(2rem + 20px) 2rem; position: relative; overflow: hidden; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-    .nivel-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
-    .nivel-card.n1::before { background: #8c8c88; }
-    .nivel-card.n2::before { background: var(--g-dark); }
-    .nivel-card.n3::before { background: var(--g); }
-    .nivel-card:hover { border-color: var(--bmd); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-    .nivel-num { display: inline-flex; align-items: center; min-height: 0; padding: 5px 0.7rem; border-radius: 999px; border: 1px solid currentColor; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; line-height: 1; margin-bottom: 1.25rem; }
-    .nivel-card.n1 .nivel-num { color: #8c8c88; background: rgba(140,140,136,0.06); border-color: rgba(140,140,136,0.38); box-shadow: inset 0 0 12px rgba(140,140,136,0.03), 0 0 16px rgba(140,140,136,0.03); }
-    .nivel-card.n2 .nivel-num { color: var(--g-dark); background: rgba(30,112,24,0.06); border-color: rgba(30,112,24,0.34); box-shadow: inset 0 0 12px rgba(30,112,24,0.03), 0 0 16px rgba(30,112,24,0.03); }
-    .nivel-card.n3 .nivel-num { color: var(--g); background: rgba(126,244,116,0.08); border-color: rgba(126,244,116,0.42); box-shadow: inset 0 0 12px rgba(126,244,116,0.04), 0 0 16px rgba(126,244,116,0.04); }
-    .nivel-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: var(--t); }
-    .nivel-sub { font-size: 16px; color: var(--t2); line-height: 1.75; margin-bottom: 0; }
 
     /* ── MÉTODO (dark) ────────────────────────── */
     .fases { display: flex; gap: 0; position: relative; margin-top: 1rem; }
@@ -324,7 +280,6 @@
     .fase:hover .fase-dot { border-color: var(--g); }
     .fase.scroll-active .fase-dot { border-color: var(--g); }
     .fase-num { font-family: var(--mono); font-size: 18px; font-weight: 500; color: var(--g); }
-    .fase-periodo { font-family: var(--mono); font-size: 12px; color: var(--g); letter-spacing: 0.1em; margin-bottom: 10px; text-transform: uppercase; }
     .fase-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; color: #f2f2ef; }
     .fase-desc { font-size: 17px; color: #b0b0ac; line-height: 1.8; font-weight: 300; }
 
@@ -398,8 +353,6 @@
       .hero-canvas { display: none; }
       .hero-content { max-width: 100%; }
       .hero-actions { justify-content: center; }
-      .pain-grid { grid-template-columns: 1fr 1fr; }
-      .niveles { grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
       .fases { flex-direction: column; gap: 2.5rem; }
       .fases-line { display: none; }
       .fase { padding-right: 0; }
@@ -411,7 +364,6 @@
       .diag-step-desc { font-size: 17px; line-height: 1.7; }
       .pq-grid { grid-template-columns: 1fr; }
       .prod-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .prod-pill { display: none; }
       .ia-section { padding: 4rem 1.5rem 0; }
       .ia-img-wrap { width: 95vw; max-width: 95vw; }
       .ia-label-el { font-size: 10px; }
@@ -422,7 +374,7 @@
       footer { flex-direction: column; text-align: center; }
     }
     @media (max-width: 560px) {
-      .pain-grid, .diag-grid { grid-template-columns: 1fr; }
+      .diag-grid { grid-template-columns: 1fr; }
       /* HERO */
       .hero { padding: 130px 1.25rem 95px; min-height: auto; }
       .hero-eyebrow { font-size: 16px; margin-bottom: 1.5rem; }
@@ -444,25 +396,11 @@
       .ticker-item { font-size: 17px; padding: 0 1.75rem; }
       .mobile-br { display: block; }
       .desktop-br { display: none; }
-      /* PROBLEMA (chaos) — overrides in later 560px block */
-      .problema-intro p { font-size: 1.35rem; line-height: 1.6; }
-      .problema-intro { margin-top: 4rem; }
-      .pain-title { font-size: 22px; }
-      .pain-desc { font-size: 20px; line-height: 1.6; }
-      .pain-item { padding: 1.75rem; }
-      /* SOLUCIÓN */
-      .solucion-intro { font-size: 1.35rem; line-height: 1.35; white-space: normal; }
-      .solucion-tag { font-size: 19px; padding: 18px 24px; line-height: 1.5; margin-bottom: calc(1.5rem + 10px); }
       .prod-headline { font-size: 2rem; margin-bottom: calc(1.25rem + 20px); }
       .prod-sub { font-size: 20px; margin-bottom: calc(2.5rem + 20px); }
       .prod-card-title { font-size: 20px; }
       /* MÉTODO */
       #metodo .section-sub { font-size: calc(1.4rem - 2px); }
-      .nivel-card { padding: calc(1.75rem + 20px) 1.75rem; }
-      .nivel-num { min-height: 0; padding: 0.42rem 0.72rem; font-size: 15px; }
-      .nivel-title { font-size: 24px; }
-      .nivel-sub { font-size: 20px; line-height: 1.6; }
-      .fase-periodo { font-size: 16px; }
       .fase { padding-top: 10px; }
       .fase-dot { width: 72px; height: 72px; }
       .fase-num { font-size: 20px; }
@@ -504,8 +442,6 @@
       .cta-card-note { font-size: 16px !important; margin-top: 1.25rem !important; }
     }
 
-    /* ── SCROLL PROGRESS ─────────────────────── */
-    #scroll-progress { display: none; }
 
     /* ── SECTION GRIDS (dark sections) ──────── */
     .dark-s { position: relative; overflow: hidden; }
@@ -521,36 +457,20 @@
       border-radius: 50%; pointer-events: none;
       background: radial-gradient(circle, rgba(126,244,116,0.07) 0%, transparent 65%);
     }
-    .sec-glow.tl { top: -120px; left: -80px; }
     .sec-glow.br { bottom: -120px; right: -80px; }
-    .sec-glow.tr { top: -80px; right: -80px; }
-    .sec-glow.bl { bottom: -80px; left: -80px; }
     .sec-glow.c  { top: 50%; left: 50%; transform: translate(-50%,-50%); }
 
-    /* ── PARTICLES ───────────────────────────── */
-    .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-    .particle {
-      position: absolute; width: 3px; height: 3px;
-      border-radius: 50%; background: var(--g);
-      opacity: 0; animation: float-up linear infinite;
-    }
-    @keyframes float-up {
-      0%   { opacity: 0; transform: translateY(0) scale(1); }
-      10%  { opacity: 0.5; }
-      90%  { opacity: 0.2; }
-      100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
-    }
 
     /* ── STAGGERED CARD ENTRANCE ─────────────── */
-    .pain-item, .nivel-card, .diag-step-card {
+    .diag-step-card {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.5s ease, transform 0.5s ease, background 0.25s, border-color 0.3s, box-shadow 0.3s;
     }
-    .pain-item.appeared, .nivel-card.appeared, .diag-step-card.appeared {
+    .diag-step-card.appeared {
       opacity: 1; transform: translateY(0);
     }
-    .pain-item.flash, .nivel-card.flash, .diag-step-card.flash { }
+    .diag-step-card.flash { }
 
     /* ── SECTION TOP ACCENT ──────────────────── */
     .dark-s::before {
@@ -563,7 +483,6 @@
 
     /* ── GLOW BORDER CARDS ───────────────────── */
     .glow-card { position: relative; overflow: hidden; }
-    .glow-card::before { z-index: 1; }
 
     /* ── ENHANCED FASE DOTS ──────────────────── */
     #metodo::before { display: none; }
@@ -637,16 +556,6 @@
     }
     .chaos-illustration { width: 100%; height: auto; display: block; }
     .chaos-img-mobile { display: none; }
-    .chaos-play-cursor {
-      position: fixed; pointer-events: none; z-index: 9999; display: none;
-      background: #1a1a18; color: #f8f7f4; border-radius: 40px;
-      padding: 12px 24px 12px 18px; font-size: 14px; font-weight: 600;
-      font-family: var(--sans); letter-spacing: 0.04em;
-      align-items: center; gap: 10px;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    .chaos-play-cursor svg { width: 18px; height: 18px; fill: #f8f7f4; }
     /* Pain cards — light bg */
     .chaos-pain-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
@@ -742,12 +651,6 @@
     <img src="nudos_movil.png" alt="" class="chaos-illustration chaos-img-mobile">
   </div>
 
-  <!-- Play Video cursor -->
-  <div class="chaos-play-cursor" id="chaos-play-cursor">
-    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-    Ver Video
-  </div>
-
   <!-- 3 pain cards -->
   <div class="chaos-pain-grid reveal reveal-delay-3">
     <div class="chaos-pain-item">
@@ -777,14 +680,6 @@
     <p class="prod-sub reveal reveal-delay-1">No dejamos un PDF en un drive. <br class="mobile-br">Implementamos la solución con tu equipo.</p>
 
     <div class="prod-grid-wrap" style="position:relative;">
-      <!-- Pills flotantes -->
-      <div class="prod-pill pp1 reveal">Estándar único</div>
-      <div class="prod-pill pp2 reveal">Cero improvisación</div>
-      <div class="prod-pill pp3 reveal">Ejecución consistente</div>
-      <div class="prod-pill pp4 reveal">IA trabajando 24/7</div>
-      <div class="prod-pill pp5 reveal">Decisiones con datos</div>
-      <div class="prod-pill pp6 reveal">Equipo autónomo</div>
-
       <!-- Grid 2×2 -->
       <div class="prod-grid">
         <div class="prod-card glow-card">
@@ -1144,8 +1039,6 @@
     const parents = new Set([...cards].map(c=>c.parentElement));
     parents.forEach(p=>gridObs.observe(p));
   }
-  setupCardGrid('.pain-grid .pain-item');
-  setupCardGrid('.niveles .nivel-card');
   setupCardGrid('.diag-grid .diag-step-card');
   setupCardGrid('.prod-grid .prod-card');
 
@@ -1204,25 +1097,6 @@
     }, {threshold: 0.2});
     fasesObs.observe(document.querySelector('.fases'));
   })();
-
-  // ── PARTICLES ────────────────────────────────
-  function spawnParticles(containerId, count){
-    const container = document.getElementById(containerId);
-    if(!container) return;
-    for(let i=0; i<count; i++){
-      const p = document.createElement('div');
-      p.className = 'particle';
-      p.style.left = Math.random()*100 + '%';
-      p.style.bottom = Math.random()*30 + '%';
-      p.style.animationDuration = (8 + Math.random()*12) + 's';
-      p.style.animationDelay = (Math.random()*10) + 's';
-      p.style.opacity = (0.2 + Math.random()*0.4).toString();
-      const size = 2 + Math.random()*3;
-      p.style.width = p.style.height = size + 'px';
-      container.appendChild(p);
-    }
-  }
-  spawnParticles('particles-paraquien', 10);
 
   // ── FASE SCROLL HIGHLIGHT (mobile) ──────────
   function setupFaseScroll(){
