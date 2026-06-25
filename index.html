@@ -380,8 +380,8 @@
       .bd-c1 { grid-column: 1; grid-row: auto; }
       .bd-c2 { grid-column: 1; grid-row: auto; }
       .bd-c3 { grid-column: 1; grid-row: auto; }
-      .bd-schema { min-height: 420px; }
-      .bd-schema svg { width: 100%; height: 100%; transform: scale(1.25); transform-origin: center center; }
+      .bd-schema { min-height: 380px; }
+      .bd-schema svg { width: 100%; height: 100%; }
       .bd-title { font-size: 20px; }
       .bd-desc { font-size: 15px; }
       .bd-live-label { font-size: 14px; }
@@ -1647,6 +1647,12 @@
   (function(){
     var svg=document.getElementById('bd-schema-svg');
     if(!svg) return;
+    function adjustSchemaVB(){
+      if(window.innerWidth<=900) svg.setAttribute('viewBox','20 -10 320 640');
+      else svg.setAttribute('viewBox','0 0 360 620');
+    }
+    adjustSchemaVB();
+    window.addEventListener('resize',adjustSchemaVB);
     var dashG=document.getElementById('bd-flow-dashes');
     var basePaths=svg.querySelectorAll('#bd-flow-paths .bd-fb');
     var ns='http://www.w3.org/2000/svg';
