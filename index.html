@@ -149,7 +149,7 @@
     }
     .prod-headline em { font-style: normal; color: var(--g); }
     .prod-sub {
-      font-size: 21px; color: #b0b0ac; text-align: center;
+      font-size: 19px; color: #b0b0ac; text-align: center;
       font-weight: 300; margin-bottom: 4rem;
     }
     /* ── SOLUTION CARDS ────────────────────────── */
@@ -160,14 +160,7 @@
     .sol-card:hover::before { opacity: 1; }
     .sol-card-label { font-size: 11px; font-weight: 600; color: #7ef474; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
     .sol-card-hook { font-size: 17px; font-weight: 600; color: #f2f2ef; line-height: 1.3; margin-bottom: 8px; }
-    .sol-card-desc { font-size: 14px; color: #787874; line-height: 1.6; margin-bottom: 16px; }
-    .sol-card-visual { border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: #0c0e10; padding: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
-    .sol-chip { font-size: 11px; color: #b0b0ac; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 5px 10px; white-space: nowrap; }
-    .sol-chip.g { color: #7ef474; border-color: rgba(126,244,116,0.2); background: rgba(126,244,116,0.06); }
-    .sol-chip.y { color: #d4b417; border-color: rgba(212,180,23,0.2); background: rgba(212,180,23,0.06); }
-    .sol-chip.r { color: #e85040; border-color: rgba(232,80,64,0.2); background: rgba(232,80,64,0.06); }
-    .sol-chip.t { color: #4fd1a0; border-color: rgba(79,209,160,0.2); background: rgba(79,209,160,0.06); }
-    .sol-chip.p { color: #a07ef4; border-color: rgba(160,126,244,0.2); background: rgba(160,126,244,0.06); }
+    .sol-card-desc { font-size: 16px; color: #787874; line-height: 1.6; }
     /* ── CONVICTION BLOCK ────────────────────── */
     .sol-conviction { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 3.5rem; padding: 32px 36px; border-left: 3px solid #7ef474; background: linear-gradient(90deg,rgba(126,244,116,0.04),transparent 60%); border-radius: 0 16px 16px 0; }
     .sol-conviction p { font-size: 17px; color: #b0b0ac; line-height: 1.8; font-weight: 300; }
@@ -716,73 +709,39 @@
     <div class="sol-grid reveal">
       <div class="sol-card">
         <div class="sol-card-label">Sistema comercial</div>
-        <div class="sol-card-hook">Ningún lead sin seguimiento.</div>
+        <div class="sol-card-hook">Ningún lead sin seguimiento</div>
         <div class="sol-card-desc">Cada oportunidad tiene responsable, etapa, próxima acción y alerta. Los vendedores saben qué hacer hoy y la gerencia ve dónde se están perdiendo las ventas.</div>
-        <div class="sol-card-visual">
-          <span class="sol-chip g">Pipeline</span>
-          <span class="sol-chip r">Requiere acción hoy</span>
-          <span class="sol-chip">Conversión por etapa</span>
-        </div>
       </div>
       <div class="sol-card">
         <div class="sol-card-label">Control de inventario</div>
-        <div class="sol-card-hook">Compra con datos, no con intuición.</div>
+        <div class="sol-card-hook">Compra con datos, no con intuición</div>
         <div class="sol-card-desc">Entradas, salidas, mínimos y compras quedan conectados. El sistema alerta faltantes, excesos y movimientos que requieren revisión.</div>
-        <div class="sol-card-visual">
-          <span class="sol-chip r">Stock crítico</span>
-          <span class="sol-chip y">Exceso</span>
-          <span class="sol-chip">Rotación</span>
-          <span class="sol-chip y">Mov. anómalo</span>
-        </div>
       </div>
       <div class="sol-card">
         <div class="sol-card-label">Gestión de proyectos</div>
-        <div class="sol-card-hook">Deja de perseguir actualizaciones.</div>
+        <div class="sol-card-hook">Deja de perseguir actualizaciones</div>
         <div class="sol-card-desc">Cada proyecto tiene hitos, responsables, fechas y bloqueos visibles. El equipo ve su trabajo y la dirección controla el portafolio completo.</div>
-        <div class="sol-card-visual">
-          <span class="sol-chip">Portafolio</span>
-          <span class="sol-chip r">En riesgo</span>
-          <span class="sol-chip y">Bloqueos</span>
-          <span class="sol-chip">Responsable</span>
-        </div>
       </div>
       <div class="sol-card">
         <div class="sol-card-label">Finanzas conectadas</div>
-        <div class="sol-card-hook">Reportes que nacen actualizados.</div>
+        <div class="sol-card-hook">Reportes que nacen actualizados</div>
         <div class="sol-card-desc">Conectamos ventas, facturación, bancos y contabilidad para reducir cruces manuales, detectar diferencias y actualizar indicadores automáticamente.</div>
-        <div class="sol-card-visual">
-          <span class="sol-chip y">Conciliaciones</span>
-          <span class="sol-chip">CxC</span>
-          <span class="sol-chip g">Flujo</span>
-          <span class="sol-chip r">Alerta</span>
-        </div>
       </div>
       <div class="sol-card">
         <div class="sol-card-label">Servicio al cliente</div>
-        <div class="sol-card-hook">Cada solicitud tiene dueño y reloj.</div>
+        <div class="sol-card-hook">Cada solicitud tiene dueño y reloj</div>
         <div class="sol-card-desc">Los casos quedan registrados, clasificados y asignados. Puedes ver tiempos de respuesta, reincidencias, carga y compromisos pendientes.</div>
-        <div class="sol-card-visual">
-          <span class="sol-chip">Bandeja unificada</span>
-          <span class="sol-chip t">SLA</span>
-          <span class="sol-chip r">Casos vencidos</span>
-          <span class="sol-chip">Carga</span>
-        </div>
       </div>
       <div class="sol-card">
         <div class="sol-card-label">Centro de control</div>
-        <div class="sol-card-hook">Todo el negocio en una sola vista.</div>
+        <div class="sol-card-hook">Todo el negocio en una sola vista</div>
         <div class="sol-card-desc">Cada área opera desde su vista. Tú recibes un tablero general con indicadores, alertas y decisiones pendientes en tiempo real.</div>
-        <div class="sol-card-visual">
-          <span class="sol-chip g">Estado por área</span>
-          <span class="sol-chip r">Alertas críticas</span>
-          <span class="sol-chip p">Decisiones del dueño</span>
-        </div>
       </div>
     </div>
 
     <div class="sol-conviction reveal">
-      <p>Muchas empresas tienen dos malas opciones: contratar consultores que entregan recomendaciones o desarrolladores que construyen exactamente lo que les piden, aunque esté mal planteado.</p>
-      <p style="margin-top:12px"><strong>En Río Abierto combinamos ambos mundos.</strong> Entendemos dónde se está rompiendo la operación, diseñamos la solución correcta y construimos el sistema que la hace funcionar.</p>
+      <p><strong>Muchas empresas tienen dos malas opciones:</strong> contratar consultores que entregan recomendaciones o desarrolladores que construyen exactamente lo que les piden, aunque esté mal planteado.</p>
+      <p style="margin-top:12px"><span style="color:#7ef474">En Río Abierto combinamos ambos mundos.</span> Entendemos dónde se está rompiendo la operación, diseñamos la solución correcta y construimos el sistema que la hace funcionar.</p>
     </div>
 
     <div class="bento-pair reveal">
