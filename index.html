@@ -111,9 +111,7 @@
     .hero-eyebrow span { width: 24px; height: 1px; background: #1e7018; }
     .hero-h1 { font-size: clamp(2.2rem, 4.8vw, 4.2rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; max-width: 960px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
     .hero-h1-static { display: block; color: #1a1a18; }
-    .hero-typed-wrap { display: block; min-height: 1.15em; }
-    .hero-typed { color: #1e7018; border-right: 3px solid #1e7018; padding-right: 4px; animation: blink 0.8s infinite; }
-    @keyframes blink { 0%,100%{border-color:#1e7018;} 50%{border-color:transparent;} }
+    .hero-h1-green { color: #1e7018; }
     .hero-sub { font-size: 1.15rem; color: #4e4e4a; line-height: 1.8; max-width: 500px; margin-bottom: 3rem; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
     .hero-actions { display: flex; align-items: center; justify-content: flex-start; gap: 1.25rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; pointer-events: auto; }
     .btn-primary { height: 56px; padding: 0 36px; background: #1a1a18; color: #f8f7f4; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--sans); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; }
@@ -635,10 +633,10 @@
   <canvas class="hero-canvas" id="hero-morph-canvas"></canvas>
   <div class="hero-content">
     <h1 class="hero-h1">
-      <span class="hero-h1-static">Convertimos el caos de tu equipo en</span>
-      <span class="hero-typed-wrap"><span class="hero-typed" id="typed"></span></span>
+      <span class="hero-h1-green">Toda tu operación conectada,</span>
+      <span class="hero-h1-static">visible y bajo control.</span>
     </h1>
-    <p class="hero-sub">Ordenamos procesos críticos, los hacemos predecibles y dejamos a tu equipo operando con claridad. Diseñamos sistemas efectivos para que tu equipo sea consistente y mucho más productivo.</p>
+    <p class="hero-sub">Construimos sistemas a la medida que conectan tus herramientas, automatizan el trabajo repetitivo y te muestran en tiempo real qué está pasando en tu empresa.</p>
     <div class="hero-actions">
       <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary">AGENDAR LLAMADA <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       <a href="#metodo" class="btn-ghost-light">Cómo trabajamos</a>
@@ -907,7 +905,7 @@
         <div class="diag-step-num">PASO 02</div>
         <div class="diag-step-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
         <div class="diag-step-title">Sesión de diagnóstico</div>
-        <div class="diag-step-desc">90 minutos. Virtual. Con el líder y las piezas clave del equipo. Entendemos cómo opera el negocio, mapeamos los procesos críticos y planteamos el norte.<br><span style="color:var(--lbl);font-weight:500;">USD $500 (descontable del proyecto).</span></div>
+        <div class="diag-step-desc">90 minutos. Virtual. Con el líder y las piezas clave del equipo. Entendemos cómo opera el negocio, mapeamos los procesos críticos y planteamos el norte.</div>
       </div>
       <div class="diag-step-card glow-card">
         <div class="diag-step-num">PASO 03</div>
@@ -978,18 +976,6 @@
 </section>
 
 <script>
-
-  // ── TYPING ───────────────────────────────────
-  const phrases=['procesos claros','consistencia diaria','trabajo productivo','métricas útiles'];
-  let pi=0,ci=0,del=false;
-  const typed=document.getElementById('typed');
-  function type(){
-    const p=phrases[pi];
-    if(!del){typed.textContent=p.slice(0,ci+1);ci++;if(ci===p.length){del=true;setTimeout(type,2200);return;}}
-    else{typed.textContent=p.slice(0,ci-1);ci--;if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
-    setTimeout(type,del?55:85);
-  }
-  setTimeout(type, 600);
 
   // ── NAV ──────────────────────────────────────
   const darkSections = document.querySelectorAll('.dark-s');
