@@ -152,20 +152,35 @@
       font-size: 21px; color: #b0b0ac; text-align: center;
       font-weight: 300; margin-bottom: 4rem;
     }
-    /* ── BENTO DASHBOARD ─────────────────────── */
-    .bento-dash { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
+    /* ── SOLUTION CARDS ────────────────────────── */
+    .sol-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; position: relative; z-index: 1; margin-bottom: 3.5rem; }
+    .sol-card { position: relative; background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 28px 24px; overflow: hidden; transition: border-color 0.4s; }
+    .sol-card:hover { border-color: rgba(126,244,116,0.15); }
+    .sol-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 0%,rgba(126,244,116,0.06),transparent 70%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .sol-card:hover::before { opacity: 1; }
+    .sol-card-label { font-size: 11px; font-weight: 600; color: #7ef474; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .sol-card-hook { font-size: 17px; font-weight: 600; color: #f2f2ef; line-height: 1.3; margin-bottom: 8px; }
+    .sol-card-desc { font-size: 14px; color: #787874; line-height: 1.6; margin-bottom: 16px; }
+    .sol-card-visual { border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); background: #0c0e10; padding: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .sol-chip { font-size: 11px; color: #b0b0ac; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 5px 10px; white-space: nowrap; }
+    .sol-chip.g { color: #7ef474; border-color: rgba(126,244,116,0.2); background: rgba(126,244,116,0.06); }
+    .sol-chip.y { color: #d4b417; border-color: rgba(212,180,23,0.2); background: rgba(212,180,23,0.06); }
+    .sol-chip.r { color: #e85040; border-color: rgba(232,80,64,0.2); background: rgba(232,80,64,0.06); }
+    .sol-chip.t { color: #4fd1a0; border-color: rgba(79,209,160,0.2); background: rgba(79,209,160,0.06); }
+    .sol-chip.p { color: #a07ef4; border-color: rgba(160,126,244,0.2); background: rgba(160,126,244,0.06); }
+    /* ── CONVICTION BLOCK ────────────────────── */
+    .sol-conviction { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 3.5rem; padding: 32px 36px; border-left: 3px solid #7ef474; background: linear-gradient(90deg,rgba(126,244,116,0.04),transparent 60%); border-radius: 0 16px 16px 0; }
+    .sol-conviction p { font-size: 17px; color: #b0b0ac; line-height: 1.8; font-weight: 300; }
+    .sol-conviction strong { color: #f2f2ef; font-weight: 500; }
+    /* ── BENTO PAIR (2 animated cards) ────────── */
+    .bento-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
     .bd-card { position: relative; background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 24px; overflow: hidden; transition: border-color 0.4s; display: flex; flex-direction: column; }
     .bd-card:hover { border-color: rgba(126,244,116,0.15); }
     .bd-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 0%,rgba(126,244,116,0.06),transparent 70%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
     .bd-card:hover::before { opacity: 1; }
-    .bd-c1 { grid-column: 1; grid-row: 1/3; }
-    .bd-c2 { grid-column: 2; grid-row: 1; }
-    .bd-c3 { grid-column: 2; grid-row: 2; }
     .bd-title { font-size: 18px; font-weight: 600; color: #f2f2ef; margin-top: 16px; position: relative; z-index: 1; letter-spacing: -0.02em; }
     .bd-desc { font-size: 15px; color: #787874; margin-top: 5px; position: relative; z-index: 1; line-height: 1.5; }
     .bd-panel { position: relative; z-index: 1; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: radial-gradient(ellipse at 50% 30%,rgba(30,112,24,0.05),transparent 60%),#0c0e10; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); overflow: hidden; flex: 1; }
-    .bd-schema { padding: 0; display: flex; align-items: center; justify-content: center; }
-    .bd-schema svg { width: 94%; height: 94%; display: block; }
     .bd-live { padding: 20px; display: flex; flex-direction: column; }
     .bd-live-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .bd-live-label { font-size: 12px; color: #787874; }
@@ -187,7 +202,6 @@
     .bd-bars { display: flex; align-items: flex-end; gap: 6px; flex: 1; padding: 8px 4px 0; min-height: 60px; }
     .bd-bars span { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg,rgba(126,244,116,0.35),rgba(126,244,116,0.08)); position: relative; overflow: hidden; transition: height 1s cubic-bezier(0.23,1,0.32,1); }
     .bd-bars span::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,rgba(255,255,255,0.1),transparent); border-radius: inherit; }
-    .bd-schema-pulse { animation: bd-pulse 1.5s infinite; }
     .bd-net-ping { animation: bd-net-ping 1.5s ease-in-out infinite; }
     @keyframes bd-net-ping { 0%,100%{ opacity:0.7; r:5; } 50%{ opacity:0.2; r:10; } }
 
@@ -374,12 +388,9 @@
       .diag-step-title { font-size: 20px; }
       .diag-step-desc { font-size: 17px; line-height: 1.7; }
       .pq-grid { grid-template-columns: 1fr; }
-      .bento-dash { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .bd-c1 { grid-column: 1; grid-row: auto; }
-      .bd-c2 { grid-column: 1; grid-row: auto; }
-      .bd-c3 { grid-column: 1; grid-row: auto; }
-      .bd-schema { min-height: 380px; }
-      .bd-schema svg { width: 100%; height: 100%; }
+      .sol-grid { grid-template-columns: 1fr; }
+      .sol-conviction { padding: 24px 20px; }
+      .bento-pair { grid-template-columns: 1fr; }
       .bd-title { font-size: 20px; }
       .bd-desc { font-size: 15px; }
       .bd-live-label { font-size: 14px; }
@@ -699,70 +710,83 @@
   <div class="sec-grid"></div>
   <div class="sec-glow c"></div>
   <div class="container" style="position:relative;z-index:1;">
-    <h2 class="prod-headline reveal">Así se ve <em>una operación <br class="mobile-br">que no improvisa.</em></h2>
+    <h2 class="prod-headline reveal">Un sistema para <em>el problema que más duele.</em></h2>
+    <p class="prod-sub reveal">No vendemos una plataforma genérica. Construimos lo que tu operación necesita.</p>
 
-    <div class="bento-dash reveal">
-      <div class="bd-card bd-c1">
-        <div class="bd-panel bd-schema">
-          <svg id="bd-schema-svg" viewBox="0 0 360 620" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="bd-ng" cx="50%" cy="30%" r="75%">
-                <stop offset="0%" stop-color="#161922"/>
-                <stop offset="100%" stop-color="#0d0f14"/>
-              </radialGradient>
-            </defs>
-            <g id="bd-flow-paths" fill="none">
-              <path class="bd-fb" d="M85,60 C85,120 180,130 180,180"/>
-              <path class="bd-fb" d="M275,60 C275,120 180,130 180,180"/>
-              <path class="bd-fb" d="M180,320 L180,400"/>
-              <path class="bd-fb" d="M180,450 C180,500 80,510 80,555"/>
-              <path class="bd-fb" d="M180,450 C180,500 280,510 280,555"/>
-            </g>
-            <g id="bd-flow-dashes"></g>
-            <g>
-              <rect x="10" y="10" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <circle cx="32" cy="35" r="6" fill="#7ef474"/>
-              <text x="50" y="31" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Flujos</text>
-              <text x="50" y="46" fill="#787874" font-size="10" font-family="Inter,sans-serif">SOPs activos</text>
-            </g>
-            <g>
-              <rect x="210" y="10" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <circle cx="232" cy="35" r="6" fill="#7ef474"/>
-              <text x="250" y="31" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Manuales</text>
-              <text x="250" y="46" fill="#787874" font-size="10" font-family="Inter,sans-serif">Documentación</text>
-            </g>
-            <g>
-              <rect x="55" y="180" width="250" height="140" rx="16" fill="url(#bd-ng)" stroke="rgba(126,244,116,0.40)" stroke-width="1.2"/>
-              <rect x="55" y="180" width="250" height="140" rx="16" fill="none" stroke="#7ef474" stroke-opacity="0" id="bd-core-glow"/>
-              <circle cx="282" cy="200" r="5.5" fill="#7ef474" class="bd-schema-pulse"/>
-              <text x="180" y="250" text-anchor="middle" fill="#f2f2ef" font-size="16" font-weight="600" font-family="Inter,sans-serif">Sistema Operativo</text>
-              <text x="180" y="275" text-anchor="middle" fill="#787874" font-size="11" font-family="Inter,sans-serif">Gestión centralizada</text>
-            </g>
-            <g>
-              <rect x="110" y="400" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(212,180,23,0.25)" stroke-width="1"/>
-              <circle cx="132" cy="425" r="6" fill="#d4b417"/>
-              <text x="150" y="421" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Tableros</text>
-              <text x="150" y="436" fill="#787874" font-size="10" font-family="Inter,sans-serif">Métricas en vivo</text>
-            </g>
-            <g>
-              <rect x="10" y="555" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <circle cx="32" cy="580" r="6" fill="#e85040"/>
-              <text x="50" y="576" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Alertas</text>
-              <text x="50" y="591" fill="#787874" font-size="10" font-family="Inter,sans-serif">Reprocesos</text>
-            </g>
-            <g>
-              <rect x="210" y="555" width="140" height="50" rx="13" fill="url(#bd-ng)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <circle cx="232" cy="580" r="6" fill="#4fd1a0"/>
-              <text x="250" y="576" fill="#f2f2ef" font-size="13" font-weight="600" font-family="Inter,sans-serif">Reportes</text>
-              <text x="250" y="591" fill="#787874" font-size="10" font-family="Inter,sans-serif">Automáticos</text>
-            </g>
-          </svg>
+    <div class="sol-grid reveal">
+      <div class="sol-card">
+        <div class="sol-card-label">Sistema comercial</div>
+        <div class="sol-card-hook">Ningún lead sin seguimiento.</div>
+        <div class="sol-card-desc">Cada oportunidad tiene responsable, etapa, próxima acción y alerta. Los vendedores saben qué hacer hoy y la gerencia ve dónde se están perdiendo las ventas.</div>
+        <div class="sol-card-visual">
+          <span class="sol-chip g">Pipeline</span>
+          <span class="sol-chip r">Requiere acción hoy</span>
+          <span class="sol-chip">Conversión por etapa</span>
         </div>
-        <div class="bd-title">Flujos claros para todos</div>
-        <div class="bd-desc">Cada área conectada a un sistema central. Un solo estándar.</div>
       </div>
+      <div class="sol-card">
+        <div class="sol-card-label">Control de inventario</div>
+        <div class="sol-card-hook">Compra con datos, no con intuición.</div>
+        <div class="sol-card-desc">Entradas, salidas, mínimos y compras quedan conectados. El sistema alerta faltantes, excesos y movimientos que requieren revisión.</div>
+        <div class="sol-card-visual">
+          <span class="sol-chip r">Stock crítico</span>
+          <span class="sol-chip y">Exceso</span>
+          <span class="sol-chip">Rotación</span>
+          <span class="sol-chip y">Mov. anómalo</span>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-label">Gestión de proyectos</div>
+        <div class="sol-card-hook">Deja de perseguir actualizaciones.</div>
+        <div class="sol-card-desc">Cada proyecto tiene hitos, responsables, fechas y bloqueos visibles. El equipo ve su trabajo y la dirección controla el portafolio completo.</div>
+        <div class="sol-card-visual">
+          <span class="sol-chip">Portafolio</span>
+          <span class="sol-chip r">En riesgo</span>
+          <span class="sol-chip y">Bloqueos</span>
+          <span class="sol-chip">Responsable</span>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-label">Finanzas conectadas</div>
+        <div class="sol-card-hook">Reportes que nacen actualizados.</div>
+        <div class="sol-card-desc">Conectamos ventas, facturación, bancos y contabilidad para reducir cruces manuales, detectar diferencias y actualizar indicadores automáticamente.</div>
+        <div class="sol-card-visual">
+          <span class="sol-chip y">Conciliaciones</span>
+          <span class="sol-chip">CxC</span>
+          <span class="sol-chip g">Flujo</span>
+          <span class="sol-chip r">Alerta</span>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-label">Servicio al cliente</div>
+        <div class="sol-card-hook">Cada solicitud tiene dueño y reloj.</div>
+        <div class="sol-card-desc">Los casos quedan registrados, clasificados y asignados. Puedes ver tiempos de respuesta, reincidencias, carga y compromisos pendientes.</div>
+        <div class="sol-card-visual">
+          <span class="sol-chip">Bandeja unificada</span>
+          <span class="sol-chip t">SLA</span>
+          <span class="sol-chip r">Casos vencidos</span>
+          <span class="sol-chip">Carga</span>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-card-label">Centro de control</div>
+        <div class="sol-card-hook">Todo el negocio en una sola vista.</div>
+        <div class="sol-card-desc">Cada área opera desde su vista. Tú recibes un tablero general con indicadores, alertas y decisiones pendientes en tiempo real.</div>
+        <div class="sol-card-visual">
+          <span class="sol-chip g">Estado por área</span>
+          <span class="sol-chip r">Alertas críticas</span>
+          <span class="sol-chip p">Decisiones del dueño</span>
+        </div>
+      </div>
+    </div>
 
-      <div class="bd-card bd-c2">
+    <div class="sol-conviction reveal">
+      <p>Muchas empresas tienen dos malas opciones: contratar consultores que entregan recomendaciones o desarrolladores que construyen exactamente lo que les piden, aunque esté mal planteado.</p>
+      <p style="margin-top:12px"><strong>En Río Abierto combinamos ambos mundos.</strong> Entendemos dónde se está rompiendo la operación, diseñamos la solución correcta y construimos el sistema que la hace funcionar.</p>
+    </div>
+
+    <div class="bento-pair reveal">
+      <div class="bd-card">
         <div class="bd-panel bd-live">
           <div class="bd-live-head">
             <span class="bd-live-label">Cumplimiento operativo</span>
@@ -811,7 +835,7 @@
         <div class="bd-desc">Números que el equipo consulta a diario.</div>
       </div>
 
-      <div class="bd-card bd-c3">
+      <div class="bd-card">
         <div class="bd-panel bd-src">
           <div class="bd-src-bar">
             <div class="bd-src-dot" style="background:#7ef474"></div>
@@ -1629,59 +1653,8 @@
     requestAnimationFrame(drawMorph);
   })();
 
-  // ── BENTO DASHBOARD ANIMATIONS ──────────────
+  // ── BAR CHART ANIMATION ────────────────────
   (function(){
-    var svg=document.getElementById('bd-schema-svg');
-    if(!svg) return;
-    function adjustSchemaVB(){
-      if(window.innerWidth<=900) svg.setAttribute('viewBox','-10 -10 380 640');
-      else svg.setAttribute('viewBox','0 0 360 620');
-    }
-    adjustSchemaVB();
-    window.addEventListener('resize',adjustSchemaVB);
-    var dashG=document.getElementById('bd-flow-dashes');
-    var basePaths=svg.querySelectorAll('#bd-flow-paths .bd-fb');
-    var ns='http://www.w3.org/2000/svg';
-    basePaths.forEach(function(bp){
-      bp.setAttribute('stroke','rgba(255,255,255,0.10)');
-      bp.setAttribute('stroke-width','1.6');
-      bp.setAttribute('fill','none');
-      bp.setAttribute('stroke-linecap','round');
-    });
-    var delays=[0,0.95,1.9,0.45,1.4];
-    basePaths.forEach(function(bp,idx){
-      var L=bp.getTotalLength();
-      var seg=L*0.30;
-      var gap=L-seg;
-      var dash=document.createElementNS(ns,'path');
-      dash.setAttribute('d',bp.getAttribute('d'));
-      dash.setAttribute('stroke','#7ef474');
-      dash.setAttribute('stroke-width','2');
-      dash.setAttribute('fill','none');
-      dash.setAttribute('stroke-linecap','round');
-      dash.setAttribute('stroke-dasharray',seg+' '+gap);
-      dash.setAttribute('stroke-dashoffset',String(L));
-      var anim=document.createElementNS(ns,'animate');
-      anim.setAttribute('attributeName','stroke-dashoffset');
-      anim.setAttribute('from',String(L));
-      anim.setAttribute('to',String(-L));
-      anim.setAttribute('dur','2.6s');
-      anim.setAttribute('repeatCount','indefinite');
-      anim.setAttribute('calcMode','linear');
-      anim.setAttribute('begin',delays[idx]+'s');
-      dash.appendChild(anim);
-      dashG.appendChild(dash);
-    });
-    var coreGlow=document.getElementById('bd-core-glow');
-    if(coreGlow){
-      var t=0;
-      (function pulse(){
-        t+=0.02;
-        var v=(Math.sin(t*1.8)+1)/2;
-        coreGlow.setAttribute('stroke-opacity',String(v*0.5));
-        requestAnimationFrame(pulse);
-      })();
-    }
     var bars=document.querySelectorAll('#bd-src-bars span');
     if(bars.length){
       var heights=[35,55,42,72,58,85,65];
