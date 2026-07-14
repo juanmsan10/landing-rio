@@ -207,13 +207,6 @@
       background: #f8f7f4;
       display: flex; flex-direction: column; align-items: center;
     }
-    .ia-gradient-box {
-      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 80px); max-width: none; height: 75%;
-      border-radius: 24px;
-      background: linear-gradient(180deg, #f8f7f4 0%, rgba(30,112,24,0.12) 100%);
-      z-index: 0;
-    }
     .ia-headline {
       position: relative; z-index: 3;
       font-size: clamp(2.6rem, 5.5vw, 4.6rem);
@@ -232,58 +225,11 @@
     .ia-sub strong { font-weight: 600; color: #1a1a18; }
     .ia-visual-area {
       position: relative; z-index: 1;
-      width: 100%; max-width: 1100px;
-      margin-top: 0;
+      width: 100%;
+      margin-top: 2rem;
     }
-    .ia-img-wrap {
-      position: relative; z-index: 2;
-      width: 910px; max-width: 75vw;
-      margin: 0 auto;
-      display: flex; align-items: flex-end;
-      will-change: opacity, filter;
-    }
-    .ia-img-wrap img {
-      width: 100%; height: auto; display: block;
-      object-fit: contain;
-    }
-    /* Labels */
-    .ia-label-el {
-      position: absolute; z-index: 4; pointer-events: none;
-      font-family: var(--mono); font-size: 14px; letter-spacing: 0.14em;
-      color: rgba(30,112,24,0.75); white-space: nowrap;
-      opacity: 0;
-    }
-    .ia-label-el.lbl-in { opacity: 1; }
-    /* Connector canvas */
-    .ia-conn-canvas {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      z-index: 3; pointer-events: none;
-    }
-    /* Label positions — tight to image */
-    .ia-lbl-left { top: calc(22% - 40px); left: 12%; }
-    .ia-lbl-right { top: calc(58% + 60px); right: 12%; }
-
-    /* Blur background texts */
-    .ia-blur-el {
-      position: absolute; z-index: 4; pointer-events: none;
-      font-family: var(--mono); font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; white-space: nowrap;
-      opacity: 0;
-    }
-    .ia-blur-el.lbl-in { opacity: 1; }
-    .ia-blur-left2 {
-      font-size: clamp(calc(1.8rem - 11px), calc(3.5vw - 11px), calc(3rem - 11px));
-      color: rgba(0,0,0,0.35);
-      filter: blur(2.5px);
-      bottom: calc(22% + 25px); left: calc(14% - 20px);
-    }
-    .ia-blur-right2 {
-      font-size: clamp(calc(1.4rem - 5px), calc(2.5vw - 5px), calc(2.2rem - 5px));
-      color: rgba(0,0,0,0.45);
-      filter: blur(2.5px);
-      top: 12%; right: calc(10% + 110px);
-      white-space: pre-line;
-    }
+    .ia-img-desktop { display: block; width: 90%; max-width: 90%; height: auto; margin: 0 auto; }
+    .ia-img-mobile { display: none; }
 
 
     /* ── MÉTODO (dark) ────────────────────────── */
@@ -397,11 +343,8 @@
       .bd-src-detail { font-size: 12.5px; }
       .bd-src-pill { font-size: 12px; padding: 4px 12px; }
       .ia-section { padding: 4rem 1.5rem 0; }
-      .ia-img-wrap { width: 95vw; max-width: 95vw; }
-      .ia-label-el { font-size: 10px; }
-      .ia-lbl-left { top: 28%; left: 3%; }
-      .ia-lbl-right { top: 52%; right: 3%; }
-      .ia-blur-el { display: none; }
+      .ia-img-desktop { display: none; }
+      .ia-img-mobile { display: block; width: 100%; max-width: 100%; height: auto; margin: 0 auto; }
       .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
       footer { flex-direction: column; text-align: center; }
     }
@@ -441,11 +384,6 @@
       .ia-section { padding-top: calc(4rem + 20px); }
       .ia-headline { font-size: calc(2.2rem + 10px); }
       .ia-sub { font-size: 21px; margin-bottom: 50px; }
-      .ia-gradient-box { width: calc(100% - 30px); }
-      .ia-img-wrap { width: 145vw; max-width: 145vw; position: relative; left: 50%; transform: translateX(-50%); margin: 0; }
-      .ia-label-el { font-size: 15px; letter-spacing: 0.08em; white-space: normal; text-align: left; }
-      .ia-lbl-left { top: calc(28% - 40px); max-width: 85px; left: calc(3% + 10px); }
-      .ia-lbl-right { top: calc(52% + 45px); max-width: 90px; right: calc(3% + 5px); }
       .ia-conn-canvas { display: none; }
       /* CÓMO EMPEZAR */
       #diagnostico { padding-top: calc(5rem + 40px); }
@@ -851,21 +789,11 @@
 
 <!-- ░░ HUMANOS CON IA ░░ -->
 <section class="light-s ia-section" id="ia">
-  <div class="ia-gradient-box"></div>
   <h2 class="ia-headline">Humanos con IA, <br class="mobile-br"><em>una nueva era</em></h2>
-  <p class="ia-sub">Tu equipo se multiplica, sin contratar <br class="mobile-br">una sola persona más.</p>
-  <div class="ia-visual-area" id="ia-visual">
-    <div class="ia-img-wrap" id="ia-img-wrap">
-      <img src="11.png" alt="Operador aumentado con IA">
-    </div>
-    <!-- SVG connectors drawn via JS -->
-    <canvas class="ia-conn-canvas" id="ia-conn-canvas"></canvas>
-    <!-- Labels -->
-    <span class="ia-label-el ia-lbl-left" id="ia-lbl0" data-text="TRABAJA 24/7"></span>
-    <span class="ia-label-el ia-lbl-right" id="ia-lbl1" data-text="MEMORIA INFINITA"></span>
-    <!-- Blur texts -->
-    <span class="ia-blur-el ia-blur-left2" id="ia-blur0" data-text="VELOCIDAD 10X"></span>
-    <span class="ia-blur-el ia-blur-right2" id="ia-blur1" data-text="DELEGA Y AUTOMATIZA"></span>
+  <p class="ia-sub">Construimos sistemas que leen, cruzan, clasifican, resumen, alertan y ejecutan trabajo repetitivo. Tu equipo deja de perseguir información y empieza a usarla para decidir.</p>
+  <div class="ia-visual-area">
+    <img class="ia-img-desktop" src="IA_bot.png" alt="Sistema de IA para operaciones">
+    <img class="ia-img-mobile" src="IA_bot_vertical.png" alt="Sistema de IA para operaciones">
   </div>
 </section>
 
@@ -1112,265 +1040,6 @@
     setupFaseScroll();
   });
 
-  // ── IA SECTION — HOLOGRAM + CANVAS CONNECTORS ───────
-  (function(){
-    const section = document.querySelector('.ia-section');
-    if(!section) return;
-
-    const visual = document.getElementById('ia-visual');
-    const imgWrap = document.getElementById('ia-img-wrap');
-    const canvas = document.getElementById('ia-conn-canvas');
-    const ctx = canvas.getContext('2d');
-    const lbl0 = document.getElementById('ia-lbl0');
-    const lbl1 = document.getElementById('ia-lbl1');
-    const blur0 = document.getElementById('ia-blur0');
-    const blur1 = document.getElementById('ia-blur1');
-    const gbox = section.querySelector('.ia-gradient-box');
-
-    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
-    let triggered = false;
-    let connectorsDrawn = false;
-
-    imgWrap.style.opacity = '0';
-
-    function scramble(el, target, dur, cb){
-      const len = target.length, steps = Math.ceil(dur / 30);
-      let step = 0;
-      const iv = setInterval(()=>{
-        let out = '';
-        for(let i = 0; i < len; i++){
-          if(target[i] === ' ' || target[i] === '\n'){ out += target[i]; continue; }
-          out += i < (step/steps)*len ? target[i] : CHARS[Math.floor(Math.random()*CHARS.length)];
-        }
-        el.textContent = out; step++;
-        if(step > steps){ clearInterval(iv); el.textContent = target; if(cb) cb(); }
-      }, 30);
-    }
-
-    function hologramReveal(){
-      const start = performance.now(), totalDur = 1200;
-      let labelsTriggered = false;
-      (function frame(now){
-        const elapsed = now - start;
-        const t = Math.min(elapsed / totalDur, 1);
-        if(t < 0.5){
-          const sub = t / 0.5;
-          const flicker = 0.15 + sub * 0.6 + Math.sin(elapsed * 0.05) * 0.1 * (1 - sub);
-          imgWrap.style.opacity = Math.max(0, Math.min(flicker, 1));
-          imgWrap.style.filter = 'blur('+(3*(1-sub))+'px) brightness('+(1.2-0.2*sub)+') saturate('+(0.4+0.4*sub)+')';
-        } else {
-          const sub = (t - 0.5) / 0.5;
-          const e = 1 - Math.pow(1-sub, 3);
-          imgWrap.style.opacity = 0.75 + 0.25 * e;
-          imgWrap.style.filter = e > 0.95 ? 'none' : 'blur('+(0.5*(1-e))+'px) saturate('+(0.8+0.2*e)+')';
-        }
-        // Trigger labels at 500ms (0.7s earlier than end)
-        if(elapsed >= 500 && !labelsTriggered){
-          labelsTriggered = true;
-          triggerLabels();
-        }
-        if(t < 1) requestAnimationFrame(frame);
-        else {
-          imgWrap.style.opacity = '1'; imgWrap.style.filter = 'none';
-        }
-      })(performance.now());
-    }
-
-    // Store active line states for proper canvas redraw
-    const activeLines = [];
-
-    function renderCanvas(){
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.save();
-      const dpr = window.devicePixelRatio || 1;
-      ctx.scale(dpr, dpr);
-      ctx.strokeStyle = 'rgba(30,112,24,0.35)';
-      ctx.lineWidth = 1;
-      activeLines.forEach(line => {
-        if(line.drawLen <= 0) return;
-        ctx.beginPath();
-        ctx.moveTo(line.points[0].x, line.points[0].y);
-        let remaining = line.drawLen;
-        for(let i = 1; i < line.points.length && remaining > 0; i++){
-          const dx = line.points[i].x - line.points[i-1].x;
-          const dy = line.points[i].y - line.points[i-1].y;
-          const segLen = Math.sqrt(dx*dx + dy*dy);
-          if(remaining >= segLen){
-            ctx.lineTo(line.points[i].x, line.points[i].y);
-            remaining -= segLen;
-          } else {
-            const ratio = remaining / segLen;
-            ctx.lineTo(line.points[i-1].x + dx * ratio, line.points[i-1].y + dy * ratio);
-            remaining = 0;
-          }
-        }
-        ctx.stroke();
-      });
-      ctx.restore();
-    }
-
-    function animateLine(points, dur){
-      let totalLen = 0;
-      for(let i = 1; i < points.length; i++){
-        const dx = points[i].x - points[i-1].x, dy = points[i].y - points[i-1].y;
-        totalLen += Math.sqrt(dx*dx + dy*dy);
-      }
-      const lineState = { points: points, drawLen: 0, totalLen: totalLen };
-      activeLines.push(lineState);
-      const start = performance.now();
-      (function frame(now){
-        const t = Math.min((now - start)/dur, 1);
-        const e = 1 - Math.pow(1-t, 2);
-        lineState.drawLen = totalLen * e;
-        renderCanvas();
-        if(t < 1) requestAnimationFrame(frame);
-      })(performance.now());
-    }
-
-    function triggerLabels(){
-      // Wait for layout to settle before measuring positions
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          drawConnectors();
-          // Safety redraw after layout fully settles
-          setTimeout(drawConnectors, 150);
-        });
-      });
-    }
-
-    function drawConnectors(){
-      const vRect = visual.getBoundingClientRect();
-      const imgRect = imgWrap.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = vRect.width * dpr;
-      canvas.height = vRect.height * dpr;
-      canvas.style.width = vRect.width + 'px';
-      canvas.style.height = vRect.height + 'px';
-
-      // Pre-populate label text so getBoundingClientRect returns correct widths
-      if(!lbl0.textContent) lbl0.textContent = lbl0.dataset.text;
-      if(!lbl1.textContent) lbl1.textContent = lbl1.dataset.text;
-
-      // Reset active lines and redraw
-      activeLines.length = 0;
-
-      // LEFT: "TRABAJA 24/7"
-      const l0 = lbl0.getBoundingClientRect();
-      const l0_left = l0.left - vRect.left;
-      const l0_right = l0.right - vRect.left;
-      const l0_y = l0.bottom - vRect.top + 5;
-      const l0_hEnd = l0_right + 80;
-      const l0_imgX = imgRect.left - vRect.left + imgRect.width * 0.35;
-      const l0_imgY = imgRect.top - vRect.top + imgRect.height * 0.45;
-      // Shorten diagonal to 50%
-      const l0_diagX = l0_hEnd + (l0_imgX - l0_hEnd) * 0.5;
-      const l0_diagY = l0_y + (l0_imgY - l0_y) * 0.5;
-
-      const p0 = [
-        {x: l0_left, y: l0_y},
-        {x: l0_hEnd, y: l0_y},
-        {x: l0_diagX, y: l0_diagY}
-      ];
-
-      // RIGHT: "MEMORIA INFINITA"
-      const l1 = lbl1.getBoundingClientRect();
-      const r1_left = l1.left - vRect.left;
-      const r1_right = l1.right - vRect.left;
-      const r1_y = l1.bottom - vRect.top + 5;
-      const r1_hEnd = r1_left - 80;
-      const r1_imgX = imgRect.left - vRect.left + imgRect.width * 0.65;
-      const r1_imgY = imgRect.top - vRect.top + imgRect.height * 0.7;
-      // Steep diagonal: 65° from horizontal, length = 35% of image height
-      const r1_diagLen = Math.max(0, imgRect.height * 0.35 - 130);
-      const r1_angle = 65 * Math.PI / 180;
-      const r1_diagX = r1_hEnd - r1_diagLen * Math.cos(r1_angle);
-      const r1_diagY = r1_y + r1_diagLen * Math.sin(r1_angle);
-
-      const p1 = [
-        {x: r1_right, y: r1_y},
-        {x: r1_hEnd, y: r1_y},
-        {x: r1_diagX, y: r1_diagY}
-      ];
-
-      if(!connectorsDrawn){
-        connectorsDrawn = true;
-        // Animate label 0 + connector
-        lbl0.classList.add('lbl-in');
-        lbl0.textContent = lbl0.dataset.text.replace(/[^ ]/g, ()=> CHARS[Math.floor(Math.random()*CHARS.length)]);
-        scramble(lbl0, lbl0.dataset.text, 1800);
-        animateLine(p0, 1400);
-
-        // Blur texts — decode simultaneously
-        blur0.classList.add('lbl-in');
-        blur0.textContent = blur0.dataset.text.replace(/./g, ()=> CHARS[Math.floor(Math.random()*CHARS.length)]);
-        scramble(blur0, blur0.dataset.text, 2200);
-
-        blur1.classList.add('lbl-in');
-        const blur1Target = "DELEGA Y\nAUTOMATIZA";
-        blur1.textContent = blur1Target.replace(/[^\n]/g, ()=> CHARS[Math.floor(Math.random()*CHARS.length)]);
-        // Scramble preserving newlines
-        (function(){
-          const len = blur1Target.length, steps = Math.ceil(2200 / 30);
-          let step = 0;
-          const iv = setInterval(()=>{
-            let out = '';
-            for(let i = 0; i < len; i++){
-              if(blur1Target[i] === '\n'){ out += '\n'; continue; }
-              out += i < (step/steps)*len ? blur1Target[i] : CHARS[Math.floor(Math.random()*CHARS.length)];
-            }
-            blur1.textContent = out; step++;
-            if(step > steps){ clearInterval(iv); blur1.textContent = blur1Target; }
-          }, 30);
-        })();
-
-        // Animate label 1 + connector (delayed)
-        setTimeout(()=>{
-          lbl1.classList.add('lbl-in');
-          lbl1.textContent = lbl1.dataset.text.replace(/[^ ]/g, ()=> CHARS[Math.floor(Math.random()*CHARS.length)]);
-          scramble(lbl1, lbl1.dataset.text, 1800);
-          animateLine(p1, 1400);
-        }, 500);
-      } else {
-        // Instant redraw on resize
-        [p0, p1].forEach(pts => {
-          let totalLen = 0;
-          for(let i = 1; i < pts.length; i++){
-            const dx = pts[i].x - pts[i-1].x, dy = pts[i].y - pts[i-1].y;
-            totalLen += Math.sqrt(dx*dx + dy*dy);
-          }
-          activeLines.push({ points: pts, drawLen: totalLen, totalLen: totalLen });
-        });
-        renderCanvas();
-      }
-    }
-
-    function onScroll(){
-      if(triggered) return;
-      const boxRect = gbox.getBoundingClientRect();
-      if(boxRect.bottom <= window.innerHeight){
-        triggered = true;
-        const img = imgWrap.querySelector('img');
-        if(img && img.complete) {
-          hologramReveal();
-        } else if(img) {
-          img.addEventListener('load', hologramReveal, {once: true});
-        } else {
-          hologramReveal();
-        }
-      }
-    }
-
-    // Resize handler — recalculate and redraw connectors
-    let resizeTimer;
-    window.addEventListener('resize', ()=>{
-      if(!connectorsDrawn) return;
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(drawConnectors, 100);
-    });
-
-    window.addEventListener('scroll', onScroll, {passive: true});
-    onScroll();
-  })();
 
   // ── DOT MORPHING 3D ─────────────────────────
   (function(){
