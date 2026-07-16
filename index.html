@@ -162,9 +162,12 @@
     .sol-card-hook { font-size: 17px; font-weight: 600; color: #f2f2ef; line-height: 1.3; margin-bottom: 8px; }
     .sol-card-desc { font-size: 16px; color: #787874; line-height: 1.6; font-weight: 300; }
     /* ── CONVICTION BLOCK ────────────────────── */
-    .sol-conviction { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 3.5rem; padding: 32px 36px; border-left: 3px solid #7ef474; background: linear-gradient(90deg,rgba(126,244,116,0.04),transparent 60%); border-radius: 0 16px 16px 0; }
-    .sol-conviction p { font-size: 17px; color: #b0b0ac; line-height: 1.8; font-weight: 300; }
-    .sol-conviction strong { color: #f2f2ef; font-weight: 500; }
+    .sol-statement { position: relative; z-index: 1; max-width: 780px; margin: 0 auto 5rem; padding: 4rem 20px; text-align: center; }
+    .sol-statement-h { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 500; line-height: 1.3; letter-spacing: -0.03em; color: var(--t); margin-bottom: 1.75rem; }
+    .sol-statement-h em { font-style: italic; font-weight: 300; color: var(--t2); }
+    .sol-statement-h .g { font-style: normal; color: var(--g); }
+    .sol-statement-sub { font-size: 17px; color: var(--t2); line-height: 1.8; font-weight: 300; max-width: 540px; margin: 0 auto; }
+    .sol-statement-sub .g { color: var(--g); }
     /* ── BENTO PAIR (2 animated cards) ────────── */
     .bento-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
     .bd-card { position: relative; background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 24px; overflow: hidden; transition: border-color 0.4s; display: flex; flex-direction: column; }
@@ -331,8 +334,9 @@
       .sol-card-label { font-size: 12px; }
       .sol-card-hook { font-size: 19px; }
       .sol-card-desc { font-size: 18px; }
-      .sol-conviction { padding: 24px 20px; }
-      .sol-conviction p { font-size: 19px; }
+      .sol-statement { padding: 3rem 1.25rem; margin-bottom: 3.5rem; }
+      .sol-statement-h { font-size: 1.9rem; }
+      .sol-statement-sub { font-size: 19px; }
       .bento-pair { grid-template-columns: 1fr; }
       .bd-title { font-size: 20px; }
       .bd-desc { font-size: 15px; }
@@ -678,9 +682,9 @@
       </div>
     </div>
 
-    <div class="sol-conviction reveal">
-      <p><strong>Muchas empresas tienen dos malas opciones:</strong> contratar consultores que entregan recomendaciones o desarrolladores que construyen exactamente lo que les piden, aunque esté mal planteado.</p>
-      <p style="margin-top:12px"><span style="color:#7ef474">En Río Abierto combinamos ambos mundos.</span> Entendemos dónde se está rompiendo la operación, diseñamos la solución correcta y construimos el sistema que la hace funcionar.</p>
+    <div class="sol-statement reveal">
+      <h2 class="sol-statement-h">Los consultores <em>recomiendan.</em><br class="desktop-br">Los desarrolladores <em>obedecen.</em><br class="desktop-br"><span class="g">Nosotros resolvemos.</span></h2>
+      <p class="sol-statement-sub"><span class="g">Combinamos el criterio del consultor con la ejecución del desarrollador:</span> entendemos dónde se está rompiendo la operación, diseñamos la solución correcta y construimos el sistema que la hace funcionar.</p>
     </div>
 
     <div class="bento-pair reveal">
