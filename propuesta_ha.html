@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Río Abierto × Hidroamerica — Las 90 unidades</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f8f7f4; --white:#ffffff; --ink:#1a1a18; --ink2:#4e4e4a; --ink3:#888882;
+    --dark:#161616; --dark2:#1e1e1e; --dark3:#262626; --t:#f2f2ef; --t2:#b0b0ac; --t3:#787874;
+    --g:#7ef474; --gd:#1e7018; --red:#e84040; --amber:#e8a840;
+    --blue:#5b9bf5; --blued:#1B3A6B;
+    --sans:'IBM Plex Sans',sans-serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--dark)}
+
+  .deck{position:relative;width:100%;height:100%}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:7vh 8vw;opacity:0;visibility:hidden;transform:translateY(14px);
+    transition:opacity .55s cubic-bezier(.23,1,.32,1),transform .55s cubic-bezier(.23,1,.32,1),visibility .55s;
+    overflow-y:auto}
+  .slide.active{opacity:1;visibility:visible;transform:translateY(0)}
+  .slide.light{background:var(--cream);color:var(--ink)}
+  .slide.dark{background:var(--dark);color:var(--t)}
+  .slide.dark::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(126,244,116,.35),transparent)}
+
+  .brand{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+    justify-content:space-between;padding:22px 8vw;pointer-events:none}
+  .brand-name{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:color .5s}
+  .brand-client{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;transition:color .5s}
+  body[data-mode="light"] .brand-name{color:var(--ink)}
+  body[data-mode="light"] .brand-client{color:var(--ink3)}
+  body[data-mode="dark"] .brand-name{color:var(--t)}
+  body[data-mode="dark"] .brand-client{color:var(--t3)}
+
+  .progress{position:fixed;bottom:0;left:0;height:3px;background:var(--g);z-index:60;
+    transition:width .55s cubic-bezier(.23,1,.32,1);box-shadow:0 0 12px rgba(126,244,116,.5)}
+  .counter{position:fixed;bottom:20px;right:8vw;z-index:60;font-family:var(--mono);font-size:12px;transition:color .5s}
+  body[data-mode="light"] .counter{color:var(--ink3)}
+  body[data-mode="dark"] .counter{color:var(--t3)}
+  .navhint{position:fixed;bottom:20px;left:8vw;z-index:60;font-family:var(--mono);font-size:11px;
+    letter-spacing:.06em;opacity:.55;transition:color .5s,opacity 1s}
+  body[data-mode="light"] .navhint{color:var(--ink3)}
+  body[data-mode="dark"] .navhint{color:var(--t3)}
+  .navhint.fade{opacity:0}
+  .arrows{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:60;display:flex;gap:10px}
+  .arrow{width:40px;height:40px;border-radius:50%;border:1px solid;background:transparent;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--sans)}
+  body[data-mode="light"] .arrow{border-color:rgba(0,0,0,.18);color:var(--ink2)}
+  body[data-mode="dark"] .arrow{border-color:rgba(255,255,255,.2);color:var(--t2)}
+  .arrow:hover{border-color:var(--g);color:var(--g)}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;margin-bottom:2.2rem}
+  .eyebrow::before{content:'';width:26px;height:1px;background:currentColor}
+  .slide.light .eyebrow{color:var(--gd)}
+  .slide.dark .eyebrow{color:var(--g)}
+  .h-giant{font-size:clamp(2.6rem,7vw,5.6rem);font-weight:600;line-height:1.02;letter-spacing:-.035em}
+  .h-big{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:600;line-height:1.08;letter-spacing:-.03em}
+  .h-quote{font-size:clamp(1.7rem,3.8vw,3rem);font-weight:400;line-height:1.25;letter-spacing:-.02em}
+  .sub{font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:300;line-height:1.7;max-width:640px}
+  .slide.light .sub{color:var(--ink2)}
+  .slide.dark .sub{color:var(--t2)}
+  .green{color:var(--gd)} .slide.dark .green{color:var(--g)}
+  .mono-label{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+  .slide.active .reveal{opacity:1;transform:translateY(0)}
+  .slide.active .d1{transition-delay:.15s}.slide.active .d2{transition-delay:.3s}
+  .slide.active .d3{transition-delay:.45s}.slide.active .d4{transition-delay:.6s}.slide.active .d5{transition-delay:.75s}
+
+  /* Cover */
+  .cover-date{font-family:var(--mono);font-size:14px;color:var(--ink3);margin-top:3.5rem}
+  .cover-glow{position:absolute;right:-12vw;top:50%;transform:translateY(-50%);width:56vw;height:56vw;
+    border-radius:50%;background:radial-gradient(circle,rgba(126,244,116,.5) 0%,rgba(126,244,116,.12) 42%,transparent 68%);
+    filter:blur(10px);pointer-events:none}
+
+  /* Chain */
+  .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:3rem}
+  .chain-card{background:var(--white);border:.5px solid rgba(0,0,0,.09);border-radius:16px;padding:26px 22px;position:relative}
+  .chain-num{font-family:var(--mono);font-size:12px;color:var(--gd);margin-bottom:12px}
+  .chain-t{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:8px}
+  .chain-d{font-size:14.5px;color:var(--ink2);font-weight:300;line-height:1.55}
+  .chain-card:not(:last-child)::after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);
+    color:var(--gd);font-size:18px;z-index:2}
+  .chain-card.last{background:var(--ink);color:var(--t)}
+  .chain-card.last .chain-t{color:var(--g)}
+  .chain-card.last .chain-d{color:var(--t2)}
+
+  /* Big number */
+  .money{font-family:var(--mono);font-size:clamp(3rem,9vw,7rem);font-weight:500;color:var(--g);
+    letter-spacing:-.04em;line-height:1;text-shadow:0 0 60px rgba(126,244,116,.25)}
+  .money-unit{font-size:clamp(1.2rem,2.6vw,2rem);color:var(--t2);font-weight:300}
+  .math{display:flex;gap:3.5rem;margin-top:3rem;flex-wrap:wrap}
+  .math-item .mono-label{color:var(--t3);margin-bottom:6px;display:block}
+  .math-item .val{font-family:var(--mono);font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--t)}
+
+  /* Clock */
+  .date-giant{font-family:var(--mono);font-size:clamp(3rem,8vw,6.4rem);font-weight:500;color:var(--ink);letter-spacing:-.04em;line-height:1}
+  .leak{margin-top:2.6rem;padding:26px 30px;border-left:3px solid var(--red);background:rgba(232,64,64,.05);border-radius:0 14px 14px 0;max-width:640px}
+  .leak b{color:var(--red);font-weight:600}
+
+  /* Anhelos */
+  .anhelos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:2.6rem;max-width:860px}
+  .anhelo{display:flex;gap:16px;align-items:flex-start;background:var(--dark2);border:.5px solid rgba(255,255,255,.08);
+    border-radius:16px;padding:26px 24px}
+  .anhelo-num{font-family:var(--mono);font-size:13px;color:var(--g);flex-shrink:0;margin-top:3px}
+  .anhelo-t{font-size:17px;font-weight:500;line-height:1.4;margin-bottom:6px}
+  .anhelo-d{font-size:14px;color:var(--t3);font-weight:300;line-height:1.55}
+
+  /* Units grid */
+  .units-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:5vw;align-items:center;margin-top:1rem}
+  .units{display:grid;grid-template-columns:repeat(15,1fr);gap:7px;max-width:520px}
+  .unit{aspect-ratio:1;border-radius:4px;background:rgba(255,255,255,.07);transition:background .4s,box-shadow .4s}
+  .unit.on{background:var(--g);box-shadow:0 0 8px rgba(126,244,116,.55)}
+  .unit.warn{background:var(--amber)}
+  .unit.risk{background:var(--red)}
+  .legend{display:flex;gap:22px;margin-top:18px;font-family:var(--mono);font-size:11.5px;color:var(--t3)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .legend i{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .feat{display:flex;flex-direction:column;gap:20px}
+  .feat-item{display:flex;gap:16px;align-items:flex-start}
+  .feat-dot{width:8px;height:8px;border-radius:50%;background:var(--g);margin-top:9px;flex-shrink:0}
+  .feat-t{font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:500;line-height:1.4}
+  .feat-s{font-size:14.5px;color:var(--t3);font-weight:300;margin-top:3px}
+
+  /* Cards generic */
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:3rem}
+  .cards2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:3rem}
+  .card{border-radius:18px;padding:30px 26px}
+  .slide.dark .card{background:var(--dark2);border:.5px solid rgba(255,255,255,.08)}
+  .slide.light .card{background:var(--white);border:.5px solid rgba(0,0,0,.09)}
+  .card-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+  .slide.light .card-label{color:var(--gd)}
+  .card-t{font-size:18px;font-weight:600;line-height:1.35;margin-bottom:10px}
+  .card-d{font-size:15px;font-weight:300;line-height:1.65}
+  .slide.dark .card-d{color:var(--t2)} .slide.light .card-d{color:var(--ink2)}
+
+  /* Roadmap phases */
+  .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:2.8rem}
+  .rm-card{border-radius:16px;padding:20px 18px;position:relative;display:flex;flex-direction:column}
+  .rm-card.now{background:var(--dark2);border:1.5px solid var(--g)}
+  .rm-card.next{background:var(--dark2);border:.5px solid rgba(255,255,255,.1)}
+  .rm-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    padding:3px 10px;border-radius:4px;display:inline-flex;align-self:flex-start;margin-bottom:12px}
+  .rm-card.now .rm-tag{background:rgba(126,244,116,.12);color:var(--g);border:1px solid rgba(126,244,116,.3)}
+  .rm-card.next .rm-tag{background:rgba(255,255,255,.05);color:var(--t3);border:1px solid rgba(255,255,255,.1)}
+  .rm-t{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:8px}
+  .rm-card.now .rm-t{color:var(--g)}
+  .rm-card.next .rm-t{color:var(--t2)}
+  .rm-d{font-size:15.5px;color:var(--t3);font-weight:300;line-height:1.55;flex:1}
+  .rm-connector{display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:14px;padding:0 2px}
+
+  /* Alcance */
+  .alcance-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;margin-top:2.6rem}
+  .alc-col h3{font-size:19px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .alc-col h3 .dot{width:8px;height:8px;border-radius:50%}
+  .alc-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:15.5px;line-height:1.55}
+  .alc-item .bullet{width:6px;height:6px;border-radius:50%;margin-top:7px;flex-shrink:0}
+  .alc-yes .bullet{background:var(--gd)}
+  .alc-no .bullet{background:var(--ink3);border:1px solid var(--ink3);background:transparent}
+  .alc-no{color:var(--ink3)}
+  .alc-note{font-size:13px;color:var(--gd);font-weight:500;margin-top:6px;font-style:italic}
+
+  /* Entregables */
+  .ent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.4rem}
+  .ent-card{background:var(--dark2);border:.5px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 20px}
+  .ent-num{font-family:var(--mono);font-size:13px;color:var(--g);margin-bottom:10px;letter-spacing:.08em}
+  .ent-t{font-size:17px;font-weight:600;line-height:1.35;margin-bottom:8px;color:var(--t)}
+  .ent-d{font-size:15px;color:var(--t3);font-weight:300;line-height:1.55}
+
+  /* Timeline */
+  .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.4rem;position:relative}
+  .tl::before{content:'';position:absolute;top:31px;left:31px;right:calc(33.33% - 31px);height:1px;
+    background:linear-gradient(90deg,var(--gd),rgba(30,112,24,.35))}
+  .tl-item{padding-right:2.5rem;position:relative}
+  .tl-dot{width:62px;height:62px;border-radius:50%;background:var(--white);border:1px solid rgba(0,0,0,.14);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;position:relative;z-index:2}
+  .tl-item.hot .tl-dot{border-color:var(--gd);box-shadow:0 0 0 5px rgba(30,112,24,.08)}
+  .tl-num{font-family:var(--mono);font-size:16px;color:var(--gd);font-weight:500}
+  .tl-week{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase}
+  .tl-t{font-size:20px;font-weight:600;margin-bottom:8px}
+  .tl-d{font-size:15px;color:var(--ink2);font-weight:300;line-height:1.6}
+  .milestone{margin-top:3rem;display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--t);
+    border-radius:14px;padding:18px 26px}
+  .milestone b{color:var(--g);font-weight:600}
+  .pulse{width:9px;height:9px;border-radius:50%;background:var(--g);flex-shrink:0;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(126,244,116,.5)}50%{box-shadow:0 0 0 8px rgba(126,244,116,0)}}
+
+  /* Inversion */
+  .inv-num{font-family:var(--mono);font-size:clamp(3rem,8vw,6.2rem);font-weight:500;color:var(--g);letter-spacing:-.03em;line-height:1}
+  .inv-iva{font-size:clamp(1rem,1.8vw,1.4rem);color:var(--t3);font-weight:300;margin-left:8px}
+  .inv-split{display:flex;gap:12px;margin-top:2.4rem;max-width:560px}
+  .inv-chip{flex:1;background:var(--dark2);border:.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px;text-align:center}
+  .inv-chip .pct{font-family:var(--mono);font-size:22px;color:var(--t)}
+  .inv-chip .lbl{font-size:12px;color:var(--t3);margin-top:4px;line-height:1.4}
+  .anchor-line{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.1);max-width:640px;
+    font-size:clamp(1rem,1.6vw,1.25rem);font-weight:300;color:var(--t2);line-height:1.7}
+  .anchor-line b{color:var(--g);font-weight:600}
+
+  .attrib{margin-top:2.2rem;font-family:var(--mono);font-size:14px;color:var(--t3)}
+
+  /* Vision list */
+  .vision{display:flex;flex-direction:column;gap:18px;margin-top:2.8rem;max-width:680px}
+  .v-item{display:flex;gap:16px;align-items:flex-start;font-size:clamp(1.1rem,1.8vw,1.45rem);font-weight:300;line-height:1.55}
+  .v-check{color:var(--gd);font-weight:600;flex-shrink:0}
+
+  @media (max-width:900px){
+    .slide{padding:10vh 6vw 12vh}
+    .chain{grid-template-columns:1fr;gap:10px}
+    .chain-card:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-16px;transform:translateX(-50%)}
+    .cards3,.ent-grid{grid-template-columns:1fr;gap:12px;margin-top:2rem}
+    .cards2{grid-template-columns:1fr;gap:12px;margin-top:2rem}
+    .units-wrap{grid-template-columns:1fr;gap:2.5rem}
+    .tl{grid-template-columns:1fr} .tl::before{display:none} .tl-item{padding:0 0 2rem}
+    .inv-split{flex-direction:column}
+    .brand{padding:16px 6vw}
+    .h-giant{font-size:clamp(2.4rem,10vw,3.4rem)}
+    .anhelos{grid-template-columns:1fr;gap:12px}
+    .roadmap{grid-template-columns:1fr 1fr;gap:10px}
+    .alcance-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body data-mode="light">
+
+<div class="brand">
+  <span class="brand-name">Río Abierto</span>
+  <span class="brand-client">Hidroamerica · Julio 2026</span>
+</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide light" data-mode="light">
+    <div class="cover-glow"></div>
+    <div style="position:relative;z-index:2">
+      <div class="eyebrow reveal">Propuesta de trabajo · Fase 1</div>
+      <h1 class="h-giant reveal d1">Las 90 unidades.</h1>
+      <p class="sub reveal d2" style="margin-top:1.6rem;font-size:clamp(1.2rem,2vw,1.55rem)">Planeación y trazabilidad de producción <span class="green" style="font-weight:500">en 6 semanas.</span></p>
+      <div class="cover-date reveal d3">Julio 2026 · Preparada para Felipe</div>
+    </div>
+  </section>
+
+  <!-- 2 · LA FRASE DE FELIPE -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">El punto de partida</div>
+    <p class="h-quote reveal d1" style="max-width:900px">"Nuestro mayor problema hoy en día <span class="green">empieza en la planta de procesamiento</span>. No sé si es de procedimiento o de herramientas."</p>
+    <div class="attrib reveal d2">— Felipe, sesión de diagnóstico</div>
+    <p class="sub reveal d3" style="margin-top:2.6rem">Es de las dos, y no se resuelve con otro diagnóstico. Se resuelve construyendo el sistema sobre la operación, mientras seguimos produciendo.</p>
+  </section>
+
+  <!-- 3 · LA CADENA -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Cómo se rompe</div>
+    <h2 class="h-big reveal d1">Un problema de información,<br>no de capacidad.</h2>
+    <div class="chain">
+      <div class="chain-card reveal d2">
+        <div class="chain-num">01</div>
+        <div class="chain-t">La información llega rota</div>
+        <div class="chain-d">Planos, listas de materiales y orden de piezas: incompletos, tarde, o en el orden que no es.</div>
+      </div>
+      <div class="chain-card reveal d3">
+        <div class="chain-num">02</div>
+        <div class="chain-t">El lego no se puede armar</div>
+        <div class="chain-d">"Mandaron 2.000 piezas — pero de las últimas." El ensamble descubre los faltantes a las malas.</div>
+      </div>
+      <div class="chain-card reveal d4">
+        <div class="chain-num">03</div>
+        <div class="chain-t">El cuello se mueve</div>
+        <div class="chain-d">Procesamiento, ensamble, pintura. La empresa se entera cuando ya se colgó.</div>
+      </div>
+      <div class="chain-card last reveal d5">
+        <div class="chain-num" style="color:var(--g)">04</div>
+        <div class="chain-t">"No queremos ni cotizar"</div>
+        <div class="chain-d">Entregas comprometidas hasta marzo de 2027. El área comercial, frenada por la planta.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · EL COSTO -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">El costo de seguir así · con sus números</div>
+    <div class="reveal d1"><span class="money">$325–450M</span> <span class="money-unit">/ mes</span></div>
+    <p class="sub reveal d2" style="margin-top:1.8rem">Margen que la maquinaria ya permite capturar — y la operación no está capturando.</p>
+    <div class="math">
+      <div class="math-item reveal d3"><span class="mono-label">Margen por unidad</span><span class="val">$13–15M</span></div>
+      <div class="math-item reveal d3"><span class="mono-label">Unidades que no salen</span><span class="val">25–30 / mes</span></div>
+      <div class="math-item reveal d4"><span class="mono-label">Al año</span><span class="val" style="color:var(--g)">$4.000–5.400M</span></div>
+    </div>
+  </section>
+
+  <!-- 5 · EL RELOJ -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">La fecha no la pusimos nosotros</div>
+    <div class="date-giant reveal d1">15 · AGO</div>
+    <p class="sub reveal d2" style="margin-top:1.6rem;font-size:clamp(1.1rem,1.8vw,1.4rem)">Primera entrega: <b>20 unidades.</b> Luego 20 el 15 de septiembre y 20 el 15 de octubre.<br>Hoy nadie puede decir con certeza cuáles van a estar listas.</p>
+    <div class="leak reveal d3">Cada semana que la producción siga corriendo a ciegas: <b>$80–110M de margen que no vuelve.</b></div>
+  </section>
+
+  <!-- 6 · SUS ANHELOS (NUEVA) -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Lo que usted quiere lograr</div>
+    <h2 class="h-big reveal d1">Sus anhelos.</h2>
+    <div class="anhelos">
+      <div class="anhelo reveal d2">
+        <div class="anhelo-num">01</div>
+        <div><div class="anhelo-t">Poder desconectarse una semana sin que nada explote</div>
+        <div class="anhelo-d">Que la operación responda preguntas sin pasar por su teléfono.</div></div>
+      </div>
+      <div class="anhelo reveal d3">
+        <div class="anhelo-num">02</div>
+        <div><div class="anhelo-t">Volver a cumplir entregas</div>
+        <div class="anhelo-d">Recuperar el diferencial que hizo crecer a Hidroamerica y que se ha perdido en los últimos dos años.</div></div>
+      </div>
+      <div class="anhelo reveal d4">
+        <div class="anhelo-num">03</div>
+        <div><div class="anhelo-t">Producir lo que la maquinaria ya permite</div>
+        <div class="anhelo-d">Que la inversión en capacidad se vea en unidades entregadas.</div></div>
+      </div>
+      <div class="anhelo reveal d5">
+        <div class="anhelo-num">04</div>
+        <div><div class="anhelo-t">Liberar cabeza para lo que mueve la aguja</div>
+        <div class="anhelo-d">GLP, Terpel, los negocios grandes — en vez de apagar incendios planta por planta.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · LO QUE CONSTRUIMOS -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Lo que construimos</div>
+    <h2 class="h-big reveal d1">Las 90 unidades,<br>en una sola pantalla.</h2>
+    <div class="units-wrap">
+      <div class="reveal d2">
+        <div class="units" id="units-grid"></div>
+        <div class="legend">
+          <span><i style="background:var(--g)"></i>En tiempo</span>
+          <span><i style="background:var(--amber)"></i>Faltantes</span>
+          <span><i style="background:var(--red)"></i>En riesgo</span>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-item reveal d2"><div class="feat-dot"></div><div><div class="feat-t">Cada unidad con estado y fecha de salida</div><div class="feat-s">La pregunta "¿cuándo sale?" deja de necesitar una llamada.</div></div></div>
+        <div class="feat-item reveal d3"><div class="feat-dot"></div><div><div class="feat-t">Piezas completas y faltantes, con responsable</div><div class="feat-s">El ensamble deja de descubrir el lego incompleto a las malas.</div></div></div>
+        <div class="feat-item reveal d4"><div class="feat-dot"></div><div><div class="feat-t">El orden de piezas vive en el sistema</div><div class="feat-s">No en WhatsApp. No en la memoria de nadie.</div></div></div>
+        <div class="feat-item reveal d5"><div class="feat-dot"></div><div><div class="feat-t">Cada corrección queda documentada</div><div class="feat-s">Se deja de inventar la rueda 60 veces.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · POR QUÉ ESTA VEZ SÍ -->
+  <section class="slide light" data-mode="light">
+    <h2 class="h-big reveal d1" style="margin-top:20px">Combinamos criterio<br><span class="green">con ejecución.</span></h2>
+    <p class="sub reveal d2" style="margin-top:1.6rem;font-size:clamp(.95rem,1.4vw,1.15rem)">Los consultores dejan un PDF y desaparecen. Los desarrolladores construyen lo que les pidan, aunque esté mal planteado. Nosotros entendemos dónde se rompe la operación y construimos el sistema que la arregla.</p>
+    <div class="cards3" style="grid-template-columns:1fr 1fr;margin-bottom:4rem">
+      <div class="card reveal d3">
+        <div class="card-label">A la medida, no al revés</div>
+        <div class="card-t">El sistema se adapta a ustedes</div>
+        <div class="card-d">Un ERP obliga a la empresa a cambiar su forma de operar para que el software funcione. Aquí es al revés: entendemos cómo trabaja Hidroamerica y construimos el sistema sobre esa realidad. En semanas, no en meses.</div>
+      </div>
+      <div class="card reveal d4">
+        <div class="card-label">Adopción real</div>
+        <div class="card-t">No cerramos hasta que lo usen</div>
+        <div class="card-d">El cronograma, el Gantt, el comité — murieron porque nadie los sostuvo. Aquí el proyecto no termina hasta que el equipo opere dentro del sistema.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · HOJA DE RUTA COMPLETA -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">La visión completa</div>
+    <h2 class="h-big reveal d1" style="margin-bottom:20px"><span class="green">4 fases.</span> Empezamos por la que más duele.</h2>
+    <p class="sub reveal d2" style="font-size:clamp(.95rem,1.4vw,1.15rem)">Cada fase se construye sobre la anterior. Hoy presentamos la primera, las siguientes nacen de los resultados visibles.</p>
+    <div class="roadmap">
+      <div class="rm-card now reveal d2">
+        <div class="rm-tag">Fase 1</div>
+        <div class="rm-t">Planeación y trazabilidad</div>
+        <div class="rm-d">Visibilidad del batch de 90 unidades. Lista de materiales unificada. Alertas y orden de producción.</div>
+      </div>
+      <div class="rm-card next reveal d3">
+        <div class="rm-tag">Fase 2</div>
+        <div class="rm-t">Gestión de inventarios</div>
+        <div class="rm-d">Control real del material en 3 plantas. Códigos, trazabilidad, alertas de reposición, control de fugas.</div>
+      </div>
+      <div class="rm-card next reveal d4">
+        <div class="rm-tag">Fase 3</div>
+        <div class="rm-t">Torre de control integrada</div>
+        <div class="rm-d">Producción + inventario + comercial en una sola vista. Felipe ve todo el negocio sin preguntar a nadie.</div>
+      </div>
+      <div class="rm-card next reveal d5">
+        <div class="rm-tag">Fase 4</div>
+        <div class="rm-t">Integración financiera</div>
+        <div class="rm-d">Costeo real por unidad, flujo de caja atado a producción, rentabilidad por línea de producto.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · ALCANCE FASE 1 (CLAVE) -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Alcance de la Fase 1</div>
+    <h2 class="h-big reveal d1">Qué incluye. <span class="green">Qué no.</span></h2>
+    <div class="alcance-grid">
+      <div class="alc-col reveal d2">
+        <h3><span class="dot" style="background:var(--gd)"></span>Qué sí incluye</h3>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Lista de materiales validada para las 90 (estándar futuro)</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Mapeo de etapas por unidad: insumos, productos, tiempos y responsable</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Cronograma maestro con vista por planta (Vallarta, Cerrito, Montana)</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Alertas tempranas: riesgos, bloqueos, decisiones urgentes</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Requisitos de compras derivados de la lista de materiales y la secuencia</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Sistema con vista para Felipe, vista por planta y vista por unidad</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Responsable interno capacitado para mantener el sistema</div>
+      </div>
+      <div class="alc-col reveal d3">
+        <h3><span class="dot" style="background:var(--ink3)"></span>Qué no incluye</h3>
+        <div class="alc-item alc-no"><div class="bullet"></div>Gestión de inventarios (Fase 2)</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Control de calidad ni trazabilidad post-entrega</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Sistema comercial ni cotizaciones</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Implementación de software externo</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Visibilidad financiera ni costeo por unidad</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Gestión de compras más allá de los requisitos ordenados</div>
+        <div class="alc-note">Todo lo demás se evalúa como fase adicional, con acuerdo escrito.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · ENTREGABLES -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Entregables de la Fase 1</div>
+    <h2 class="h-big reveal d1">Lo que recibe Hidroamerica.</h2>
+    <div class="ent-grid">
+      <div class="ent-card reveal d2">
+        <div class="ent-num">01</div>
+        <div class="ent-t">Lista de materiales única</div>
+        <div class="ent-d">Una sola versión validada entre ingeniería y ensamble. Estándar para todo lo que viene después.</div>
+      </div>
+      <div class="ent-card reveal d2">
+        <div class="ent-num">02</div>
+        <div class="ent-t">Mapa del flujo de producción</div>
+        <div class="ent-d">Cómo viaja la información y el material, con los puntos de ruptura documentados.</div>
+      </div>
+      <div class="ent-card reveal d3">
+        <div class="ent-num">03</div>
+        <div class="ent-t">Cronograma dinámico por planta</div>
+        <div class="ent-d">Vista Cerrito, Vallarta, Montana. El equipo mantiene actualizado el sistema con fechas, avances y responsables.</div>
+      </div>
+      <div class="ent-card reveal d3">
+        <div class="ent-num">04</div>
+        <div class="ent-t">Sistema de trazabilidad</div>
+        <div class="ent-d">Vista para Felipe, vista por planta, vista por unidad. Alertas de riesgos y bloqueos.</div>
+      </div>
+      <div class="ent-card reveal d4">
+        <div class="ent-num">05</div>
+        <div class="ent-t">Requisitos de compras ordenados</div>
+        <div class="ent-d">Derivados de la lista de materiales y la secuencia de producción. Compras deja de improvisar.</div>
+      </div>
+      <div class="ent-card reveal d4">
+        <div class="ent-num">06</div>
+        <div class="ent-t">Responsable interno capacitado</div>
+        <div class="ent-d">Su persona clave, entrenada para mantener y operar el sistema sin depender de nosotros.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · CÓMO TRABAJAMOS -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Cómo trabajamos</div>
+    <h2 class="h-big reveal d1">6 semanas. Sin detener la producción.</h2>
+    <div class="tl">
+      <div class="tl-item hot reveal d2">
+        <div class="tl-dot"><span class="tl-num">01</span></div>
+        <div class="tl-week">Semana 1</div>
+        <div class="tl-t">Análisis</div>
+        <div class="tl-d">En planta: el flujo real de las 90 unidades, línea base y los puntos exactos donde la información se rompe.</div>
+      </div>
+      <div class="tl-item reveal d3">
+        <div class="tl-dot"><span class="tl-num">02</span></div>
+        <div class="tl-week">Semanas 2–4</div>
+        <div class="tl-t">Desarrollo</div>
+        <div class="tl-d">Construcción del sistema sobre lo que ya existe. Lista de materiales unificada, cronograma y alertas.</div>
+      </div>
+      <div class="tl-item reveal d4">
+        <div class="tl-dot"><span class="tl-num">03</span></div>
+        <div class="tl-week">Semanas 4–6</div>
+        <div class="tl-t">Implementación</div>
+        <div class="tl-d">Su equipo operando dentro del sistema. No cerramos cuando exista — cerramos cuando lo usen.</div>
+      </div>
+    </div>
+    <div class="milestone reveal d5"><span class="pulse"></span><span><b>Semana 4:</b> usted abre una vista y ve las 90 unidades — y cuáles están en riesgo de incumplir.</span></div>
+  </section>
+
+  <!-- 13 · RIESGO -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Nuestro compromiso con el riesgo</div>
+    <h2 class="h-big reveal d1">El negocio es simple.<br><span class="green">Nosotros ganamos cuando usted gana.</span></h2>
+    <div class="cards3">
+      <div class="card reveal d2">
+        <div class="card-label">Valor completo</div>
+        <div class="card-t">La Fase 1 se sostiene sola</div>
+        <div class="card-d">Aunque no continúe con las fases siguientes, Hidroamerica se queda con activos reales: la lista de materiales para las 90, el mapa de producción, el cronograma y un sistema escalable funcionando. Cada entregable tiene valor propio.</div>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-label">Cuota final</div>
+        <div class="card-t">Se paga con el sistema en uso</div>
+        <div class="card-d">El 30% final solo se factura cuando su equipo esté operando el sistema. No cuando exista — cuando lo usen.</div>
+      </div>
+      <div class="card reveal d4">
+        <div class="card-label">Siempre</div>
+        <div class="card-t">Todo se queda con usted</div>
+        <div class="card-d">Cada entregable es suyo en cualquier escenario: se puede ver, usar y retener. Nadie deja un PDF y desaparece.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · INVERSION -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Inversión · Fase 1</div>
+    <div class="reveal d1"><span class="inv-num" style="color:var(--gd)">$70M</span><span class="inv-iva" style="color:var(--ink3)">+ IVA</span></div>
+    <div class="inv-split">
+      <div class="inv-chip reveal d2" style="background:var(--white);border-color:rgba(0,0,0,.1)"><div class="pct" style="color:var(--ink)">40%</div><div class="lbl" style="color:var(--ink3)">Anticipo<br>al arrancar</div></div>
+      <div class="inv-chip reveal d3" style="background:var(--white);border-color:rgba(0,0,0,.1)"><div class="pct" style="color:var(--ink)">30%</div><div class="lbl" style="color:var(--ink3)">Al terminar<br>desarrollo</div></div>
+      <div class="inv-chip reveal d4" style="background:var(--white);border-color:rgba(0,0,0,.1)"><div class="pct" style="color:var(--ink)">30%</div><div class="lbl" style="color:var(--ink3)">Con el sistema<br>en uso</div></div>
+    </div>
+    <p class="anchor-line reveal d5" style="color:var(--ink2);border-top-color:rgba(0,0,0,.1)">Equivale al margen de <b style="color:var(--gd)">5 unidades</b> — de las 25–30 mensuales que hoy no están saliendo. El problema que esta fase ataca deja sobre la mesa entre <b style="color:var(--gd)">$4.000M y $5.400M al año.</b></p>
+  </section>
+
+  <!-- 15 · VISION -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">15 de octubre</div>
+    <h2 class="h-big reveal d1">Imagínese ese día.</h2>
+    <div class="vision">
+      <div class="v-item reveal d2"><span class="v-check">✓</span><span>Las tres entregas de 20, cumplidas. Como cuando cumplir era el diferencial de Hidroamerica.</span></div>
+      <div class="v-item reveal d3"><span class="v-check">✓</span><span>María cotizando sin miedo — porque la planta responde.</span></div>
+      <div class="v-item reveal d4"><span class="v-check">✓</span><span>Usted, tomándose la semana que hace años no se toma. Viendo desde el teléfono, sin llamar a nadie, en qué va cada unidad.</span></div>
+    </div>
+  </section>
+
+  <!-- 16 · CIERRE -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Comencemos</div>
+    <h2 class="h-giant reveal d1">Que la información fluya<br><span class="green">igual de bien que el acero.</span></h2>
+    <p class="sub reveal d2" style="margin-top:2.2rem;max-width:none">Confirmación y anticipo esta semana → arranque la semana siguiente.<br>A tiempo para que el sistema esté vivo antes del 15 de agosto.</p>
+    <p class="reveal d3" style="margin-top:2.4rem;font-family:var(--mono);font-size:13px;color:var(--g)">Vigencia de la propuesta y su cronograma: 15 días. Después del 15 de agosto, esta propuesta ya no puede prometer lo mismo.</p>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter"></div>
+<div class="navhint" id="navhint">← → para navegar</div>
+<div class="arrows">
+  <button class="arrow" id="prev" aria-label="Anterior">←</button>
+  <button class="arrow" id="next" aria-label="Siguiente">→</button>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var progress=document.getElementById('progress');
+  var counter=document.getElementById('counter');
+  var navhint=document.getElementById('navhint');
+  var i=0,n=slides.length;
+
+  function pad(x){return (x<10?'0':'')+x}
+  function go(k){
+    if(k<0||k>=n)return;
+    slides[i].classList.remove('active');
+    i=k;
+    slides[i].classList.add('active');
+    document.body.setAttribute('data-mode',slides[i].getAttribute('data-mode'));
+    progress.style.width=((i+1)/n*100)+'%';
+    counter.textContent=pad(i+1)+' / '+pad(n);
+    if(i>0)navhint.classList.add('fade');
+    if(slides[i].querySelector('#units-grid'))animateUnits();
+  }
+
+  document.getElementById('next').addEventListener('click',function(){go(i+1)});
+  document.getElementById('prev').addEventListener('click',function(){go(i-1)});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    if(e.key==='Home')go(0);if(e.key==='End')go(n-1);
+  });
+  var startX=null;
+  document.addEventListener('touchstart',function(e){startX=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(startX===null)return;
+    var dx=e.changedTouches[0].clientX-startX;
+    if(dx<-50)go(i+1);else if(dx>50)go(i-1);
+    startX=null;
+  },{passive:true});
+
+  var grid=document.getElementById('units-grid');
+  var states=[];
+  for(var u=0;u<90;u++){
+    var d=document.createElement('div');
+    d.className='unit';
+    grid.appendChild(d);
+    var r=Math.random();
+    states.push(r<0.62?'on':(r<0.86?'warn':'risk'));
+  }
+  var animated=false;
+  function animateUnits(){
+    if(animated)return;animated=true;
+    var cells=grid.children;
+    for(var u=0;u<90;u++){
+      (function(u){setTimeout(function(){cells[u].classList.add(states[u])},350+u*14)})(u);
+    }
+  }
+  go(0);
+})();
+</script>
+</body>
+</html>
