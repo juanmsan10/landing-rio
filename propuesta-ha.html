@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Río Abierto × Hidroamerica · Trazabilidad total</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f8f7f4; --white:#ffffff; --ink:#1a1a18; --ink2:#4e4e4a; --ink3:#888882;
+    --dark:#161616; --dark2:#1e1e1e; --dark3:#262626; --t:#f2f2ef; --t2:#b0b0ac; --t3:#787874;
+    --g:#7ef474; --gd:#1e7018; --red:#e84040; --amber:#e8a840;
+    --sans:'IBM Plex Sans',sans-serif; --mono:'IBM Plex Mono',monospace;
+    --mark:url(data:image/png;base64,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);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--dark)}
+
+  .deck{position:relative;width:100%;height:100%}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:7vh 8vw;opacity:0;visibility:hidden;transform:translateY(14px);
+    transition:opacity .55s cubic-bezier(.23,1,.32,1),transform .55s cubic-bezier(.23,1,.32,1),visibility .55s;
+    overflow-y:auto}
+  .slide.active{opacity:1;visibility:visible;transform:translateY(0)}
+  .slide.light{background:var(--cream);color:var(--ink)}
+  .slide.dark{background:var(--dark);color:var(--t)}
+  .slide.dark::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(126,244,116,.35),transparent)}
+
+  .brand{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+    justify-content:space-between;padding:22px 8vw;pointer-events:none}
+  .brand-logo{display:flex;align-items:center;gap:11px}
+  .brand-mark{width:28px;height:28px;flex-shrink:0;transition:background-color .5s;
+    -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat}
+  body[data-mode="dark"] .brand-mark{background-color:var(--g)}
+  body[data-mode="light"] .brand-mark{background-color:var(--gd)}
+  .brand-name{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:color .5s}
+  .brand-client{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;transition:color .5s}
+  body[data-mode="light"] .brand-name{color:var(--ink)}
+  body[data-mode="light"] .brand-client{color:var(--ink3)}
+  body[data-mode="dark"] .brand-name{color:var(--t)}
+  body[data-mode="dark"] .brand-client{color:var(--t3)}
+
+  .progress{position:fixed;bottom:0;left:0;height:3px;background:var(--g);z-index:60;
+    transition:width .55s cubic-bezier(.23,1,.32,1);box-shadow:0 0 12px rgba(126,244,116,.5)}
+  .counter{position:fixed;bottom:20px;right:8vw;z-index:60;font-family:var(--mono);font-size:12px;transition:color .5s}
+  body[data-mode="light"] .counter{color:var(--ink3)}
+  body[data-mode="dark"] .counter{color:var(--t3)}
+  .navhint{position:fixed;bottom:20px;left:8vw;z-index:60;font-family:var(--mono);font-size:11px;
+    letter-spacing:.06em;opacity:.55;transition:color .5s,opacity 1s}
+  body[data-mode="light"] .navhint{color:var(--ink3)}
+  body[data-mode="dark"] .navhint{color:var(--t3)}
+  .navhint.fade{opacity:0}
+  .arrows{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:60;display:flex;gap:10px}
+  .arrow{width:40px;height:40px;border-radius:50%;border:1px solid;background:transparent;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--sans)}
+  body[data-mode="light"] .arrow{border-color:rgba(0,0,0,.18);color:var(--ink2)}
+  body[data-mode="dark"] .arrow{border-color:rgba(255,255,255,.2);color:var(--t2)}
+  .arrow:hover{border-color:var(--g);color:var(--g)}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;margin-bottom:2.2rem}
+  .eyebrow-pill{background:rgba(126,244,116,.08);border:1px solid rgba(126,244,116,.35);
+    border-radius:8px;padding:7px 18px;align-self:flex-start;width:fit-content}
+  .slide.light .eyebrow-pill{background:rgba(30,112,24,.06);border-color:rgba(30,112,24,.25)}
+  .slide.light .eyebrow{color:var(--gd)}
+  .slide.dark .eyebrow{color:var(--g)}
+  .h-giant{font-size:clamp(2.6rem,7vw,5.6rem);font-weight:600;line-height:1.02;letter-spacing:-.035em}
+  .h-big{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:600;line-height:1.08;letter-spacing:-.03em}
+  .h-quote{font-size:clamp(1.7rem,3.8vw,3rem);font-weight:400;line-height:1.25;letter-spacing:-.02em}
+  .sub{font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:300;line-height:1.7;max-width:640px}
+  .slide.light .sub{color:var(--ink2)}
+  .slide.dark .sub{color:var(--t2)}
+  .green{color:var(--gd)} .slide.dark .green{color:var(--g)}
+  .mono-label{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+  .slide.active .reveal{opacity:1;transform:translateY(0)}
+  .slide.active .d1{transition-delay:.15s}.slide.active .d2{transition-delay:.3s}
+  .slide.active .d3{transition-delay:.45s}.slide.active .d4{transition-delay:.6s}.slide.active .d5{transition-delay:.75s}
+
+  /* Cover */
+  .cover-date{font-family:var(--mono);font-size:14px;color:var(--ink3);margin-top:3.5rem}
+  .cover-glow{position:absolute;right:-12vw;top:50%;transform:translateY(-50%);width:56vw;height:56vw;
+    border-radius:50%;background:radial-gradient(circle,rgba(126,244,116,.5) 0%,rgba(126,244,116,.12) 42%,transparent 68%);
+    filter:blur(10px);pointer-events:none}
+
+  /* Chain */
+  .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:3rem}
+  .chain-card{background:var(--white);border:.5px solid rgba(0,0,0,.09);border-radius:16px;padding:26px 22px;position:relative}
+  .chain-num{font-family:var(--mono);font-size:12px;color:var(--gd);margin-bottom:12px}
+  .chain-t{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:8px}
+  .chain-d{font-size:14.5px;color:var(--ink2);font-weight:300;line-height:1.55}
+  .chain-card:not(:last-child)::after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);
+    color:var(--gd);font-size:18px;z-index:2}
+  .chain-card.last{background:var(--ink);color:var(--t)}
+  .chain-card.last .chain-t{color:var(--g)}
+  .chain-card.last .chain-d{color:var(--t2)}
+
+  /* Big number */
+  .money{font-family:var(--mono);font-size:clamp(3rem,9vw,7rem);font-weight:500;color:var(--g);
+    letter-spacing:-.04em;line-height:1;text-shadow:0 0 60px rgba(126,244,116,.25)}
+  .money-unit{font-size:clamp(1.2rem,2.6vw,2rem);color:var(--t2);font-weight:300}
+  .math{display:flex;gap:3.5rem;margin-top:3rem;flex-wrap:wrap}
+  .math-item .mono-label{color:var(--t3);margin-bottom:6px;display:block}
+  .math-item .val{font-family:var(--mono);font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--t)}
+
+  /* Resultados */
+  .res-list{display:flex;flex-direction:column;gap:22px;margin-top:2.8rem;max-width:760px}
+  .res-item{display:flex;gap:18px;align-items:flex-start}
+  .res-num{font-family:var(--mono);font-size:14px;color:var(--g);flex-shrink:0;margin-top:6px}
+  .res-t{font-size:clamp(1.2rem,2.1vw,1.6rem);font-weight:500;line-height:1.4}
+  .res-s{font-size:15px;color:var(--t3);font-weight:300;margin-top:5px;line-height:1.6}
+
+  /* Units grid */
+  .units-wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:5vw;align-items:center;margin-top:1rem}
+  .units{display:grid;grid-template-columns:repeat(20,1fr);gap:5px;max-width:560px}
+  .unit{aspect-ratio:1;border-radius:3px;background:rgba(255,255,255,.07);transition:background .4s,box-shadow .4s}
+  .unit.on{background:var(--g);box-shadow:0 0 6px rgba(126,244,116,.5)}
+  .unit.warn{background:var(--amber)}
+  .unit.risk{background:var(--red)}
+  .legend{display:flex;gap:22px;margin-top:18px;font-family:var(--mono);font-size:11.5px;color:var(--t3)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .legend i{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .feat{display:flex;flex-direction:column;gap:20px}
+  .feat-item{display:flex;gap:16px;align-items:flex-start}
+  .feat-dot{width:8px;height:8px;border-radius:50%;background:var(--g);margin-top:9px;flex-shrink:0}
+  .feat-t{font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:500;line-height:1.4}
+  .feat-s{font-size:14.5px;color:var(--t3);font-weight:300;margin-top:3px}
+
+  /* Cards generic */
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:3rem}
+  .cards2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:3rem}
+  .card{border-radius:18px;padding:30px 26px}
+  .slide.dark .card{background:var(--dark2);border:.5px solid rgba(255,255,255,.08)}
+  .slide.light .card{background:var(--white);border:.5px solid rgba(0,0,0,.09)}
+  .card-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+  .slide.light .card-label{color:var(--gd)}
+  .card-t{font-size:18px;font-weight:600;line-height:1.35;margin-bottom:10px}
+  .card-d{font-size:15px;font-weight:300;line-height:1.65}
+  .slide.dark .card-d{color:var(--t2)} .slide.light .card-d{color:var(--ink2)}
+
+  /* Roadmap phases */
+  .roadmap{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;margin-top:2.8rem}
+  .rm-card{border-radius:16px;padding:22px 20px;position:relative;display:flex;flex-direction:column}
+  .rm-card.now{background:var(--dark2);border:1.5px solid var(--g)}
+  .rm-card.next{background:var(--dark2);border:.5px solid rgba(255,255,255,.1)}
+  .rm-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    padding:3px 10px;border-radius:4px;display:inline-flex;align-self:flex-start;margin-bottom:12px}
+  .rm-card.now .rm-tag{background:rgba(126,244,116,.12);color:var(--g);border:1px solid rgba(126,244,116,.3)}
+  .rm-card.next .rm-tag{background:rgba(255,255,255,.05);color:var(--t3);border:1px solid rgba(255,255,255,.1)}
+  .rm-t{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:8px}
+  .rm-card.now .rm-t{color:var(--g)}
+  .rm-card.next .rm-t{color:var(--t2)}
+  .rm-d{font-size:15px;color:var(--t3);font-weight:300;line-height:1.55;flex:1}
+  .rm-price{font-family:var(--mono);font-size:14px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+  .rm-card.now .rm-price{color:var(--g)}
+  .rm-card.next .rm-price{color:var(--t3)}
+
+  /* Alcance */
+  .alcance-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;margin-top:2.6rem}
+  .alc-col h3{font-size:19px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .alc-col h3 .dot{width:8px;height:8px;border-radius:50%}
+  .alc-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:15.5px;line-height:1.55}
+  .alc-item .bullet{width:6px;height:6px;border-radius:50%;margin-top:7px;flex-shrink:0}
+  .alc-yes .bullet{background:var(--gd)}
+  .alc-no .bullet{border:1px solid var(--ink3);background:transparent}
+  .alc-no{color:var(--ink3)}
+  .alc-note{font-size:13px;color:var(--gd);font-weight:500;margin-top:6px;font-style:italic}
+
+  /* Entregables */
+  .ent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.4rem}
+  .ent-card{background:var(--dark2);border:.5px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 20px}
+  .ent-num{font-family:var(--mono);font-size:13px;color:var(--g);margin-bottom:10px;letter-spacing:.08em}
+  .ent-t{font-size:17px;font-weight:600;line-height:1.35;margin-bottom:8px;color:var(--t)}
+  .ent-d{font-size:15px;color:var(--t3);font-weight:300;line-height:1.55}
+
+  /* Timeline */
+  .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.4rem;position:relative}
+  .tl::before{content:'';position:absolute;top:31px;left:31px;right:calc(33.33% - 31px);height:1px;
+    background:linear-gradient(90deg,var(--gd),rgba(30,112,24,.35))}
+  .tl-item{padding-right:2.5rem;position:relative}
+  .tl-dot{width:62px;height:62px;border-radius:50%;background:var(--white);border:1px solid rgba(0,0,0,.14);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;position:relative;z-index:2}
+  .tl-item.hot .tl-dot{border-color:var(--gd);box-shadow:0 0 0 5px rgba(30,112,24,.08)}
+  .tl-num{font-family:var(--mono);font-size:16px;color:var(--gd);font-weight:500}
+  .tl-week{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase}
+  .tl-t{font-size:20px;font-weight:600;margin-bottom:8px}
+  .tl-d{font-size:15px;color:var(--ink2);font-weight:300;line-height:1.6}
+  .milestone{margin-top:3rem;display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--t);
+    border-radius:14px;padding:18px 26px}
+  .milestone b{color:var(--g);font-weight:600}
+  .pulse{width:9px;height:9px;border-radius:50%;background:var(--g);flex-shrink:0;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(126,244,116,.5)}50%{box-shadow:0 0 0 8px rgba(126,244,116,0)}}
+
+  /* Inversion */
+  .inv-num{font-family:var(--mono);font-size:clamp(3rem,8vw,6.2rem);font-weight:500;color:var(--gd);letter-spacing:-.03em;line-height:1}
+  .inv-iva{font-size:clamp(1rem,1.8vw,1.4rem);color:var(--ink3);font-weight:300;margin-left:8px}
+  .inv-split{display:flex;gap:12px;margin-top:2.4rem;max-width:560px}
+  .inv-chip{flex:1;background:var(--white);border:.5px solid rgba(0,0,0,.1);border-radius:12px;padding:16px 18px;text-align:center}
+  .inv-chip .pct{font-family:var(--mono);font-size:22px;color:var(--ink)}
+  .inv-chip .lbl{font-size:12px;color:var(--ink3);margin-top:4px;line-height:1.4}
+  .anchor-line{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(0,0,0,.1);max-width:660px;
+    font-size:clamp(1rem,1.6vw,1.25rem);font-weight:300;color:var(--ink2);line-height:1.7}
+  .anchor-line b{color:var(--gd);font-weight:600}
+
+  .attrib{margin-top:2.2rem;font-family:var(--mono);font-size:14px;color:var(--t3)}
+
+  /* Condiciones fase 2 */
+  .cond{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2.6rem;max-width:none}
+  .cond-item{display:flex;gap:16px;align-items:flex-start;background:var(--dark2);
+    border:.5px solid rgba(255,255,255,.08);border-radius:14px;padding:24px 22px}
+  .cond-num{font-family:var(--mono);font-size:13px;color:var(--g);flex-shrink:0;margin-top:3px}
+  .cond-t{font-size:16.5px;font-weight:500;line-height:1.4}
+  .cond-s{font-size:14px;color:var(--t3);font-weight:300;margin-top:4px;line-height:1.55}
+
+  /* Vision list */
+  .vision{display:flex;flex-direction:column;gap:18px;margin-top:2.8rem;max-width:680px}
+  .v-item{display:flex;gap:16px;align-items:flex-start;font-size:clamp(1.1rem,1.8vw,1.45rem);font-weight:300;line-height:1.55}
+  .v-check{color:var(--gd);font-weight:600;flex-shrink:0}
+
+  @media (max-width:900px){
+    .slide{padding:10vh 6vw 12vh}
+    .chain{grid-template-columns:1fr;gap:10px}
+    .chain-card:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-16px;transform:translateX(-50%)}
+    .cards3,.ent-grid{grid-template-columns:1fr;gap:12px;margin-top:2rem}
+    .cards2{grid-template-columns:1fr;gap:12px;margin-top:2rem}
+    .units-wrap{grid-template-columns:1fr;gap:2.5rem}
+    .tl{grid-template-columns:1fr} .tl::before{display:none} .tl-item{padding:0 0 2rem}
+    .inv-split{flex-direction:column}
+    .brand{padding:16px 6vw}
+    .h-giant{font-size:clamp(2.4rem,10vw,3.4rem)}
+    .roadmap{grid-template-columns:1fr;gap:10px}
+    .cond{grid-template-columns:1fr;gap:12px}
+    .alcance-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body data-mode="light">
+
+<div class="brand">
+  <span class="brand-logo"><span class="brand-mark"></span><span class="brand-name">Río Abierto</span></span>
+  <span class="brand-client">Hidroamerica · Julio 2026</span>
+</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide light" data-mode="light">
+    <div class="cover-glow"></div>
+    <div style="position:relative;z-index:2">
+      <div class="eyebrow reveal">Propuesta de trabajo · Trazabilidad total</div>
+      <h1 class="h-giant reveal d1">Toda la producción<br>en un solo lugar.</h1>
+      <p class="sub reveal d2" style="margin-top:1.6rem;font-size:clamp(1.2rem,2vw,1.55rem)">Del tablero macro de producción <span class="green" style="font-weight:500">a la luz sobre cada pieza.</span></p>
+      <div class="cover-date reveal d3">Julio 2026 · Preparada para Felipe y Sebastián</div>
+    </div>
+  </section>
+
+  <!-- 2 · PUNTO DE PARTIDA -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">El punto de partida · después de recorrer las tres plantas</div>
+    <p class="h-quote reveal d1" style="max-width:920px">Hoy la planeación de toda la producción vive en <span class="green">una sola cabeza.</span> Y el estado real de cada unidad, en la memoria de cada planta.</p>
+    <p class="sub reveal d2" style="margin-top:2.6rem">Fechas para clientes, importaciones a seis meses, la secuencia de cada planta: todo se decide sin poder ver la carga real ni el estado de las unidades. Cuando la información vive en un agujero negro, hasta la mejor intuición termina adivinando. Y el retraso se descubre cuando ya no hay nada que hacer.</p>
+  </section>
+
+  <!-- 3 · LA CADENA -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Cómo se rompe la operación</div>
+    <h2 class="h-big reveal d1">Un problema de información,<br>no de capacidad.</h2>
+    <div class="chain">
+      <div class="chain-card reveal d2">
+        <div class="chain-num">01</div>
+        <div class="chain-t">Se oferta a ciegas</div>
+        <div class="chain-d">Fechas comprometidas desde la intuición, sin ver la carga real de las plantas. Algunas nacen imposibles.</div>
+      </div>
+      <div class="chain-card reveal d3">
+        <div class="chain-num">02</div>
+        <div class="chain-t">El estado es invisible</div>
+        <div class="chain-d">Nadie sabe en qué va cada unidad sin llamar, preguntar o ir a mirar. El cronograma en Excel muere cada semana.</div>
+      </div>
+      <div class="chain-card reveal d4">
+        <div class="chain-num">03</div>
+        <div class="chain-t">Las piezas se pierden</div>
+        <div class="chain-d">Unidades de 4 días de ensamble que duran 20, porque faltó una pieza que nadie sabía dónde estaba.</div>
+      </div>
+      <div class="chain-card last reveal d5">
+        <div class="chain-num" style="color:var(--g)">04</div>
+        <div class="chain-t">El retraso se descubre tarde</div>
+        <div class="chain-d">La empresa se entera del incumplimiento cuando ya ocurrió. Cada semana, margen que no vuelve.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · EL COSTO -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">El costo de seguir así · con sus números</div>
+    <div class="reveal d1"><span class="money">$4.000–5.400M</span> <span class="money-unit">/ año</span></div>
+    <p class="sub reveal d2" style="margin-top:1.8rem">Margen que la maquinaria ya permite capturar, y la operación no está capturando.</p>
+    <div class="math">
+      <div class="math-item reveal d3"><span class="mono-label">Margen por unidad</span><span class="val">$13–15M</span></div>
+      <div class="math-item reveal d3"><span class="mono-label">Unidades que no salen</span><span class="val">25–30 / mes</span></div>
+      <div class="math-item reveal d4"><span class="mono-label">Cada mes que pasa</span><span class="val" style="color:var(--g)">$325–450M</span></div>
+    </div>
+  </section>
+
+  <!-- 5 · RESULTADO FASE 1 -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow eyebrow-pill reveal">Fase 1 · El resultado</div>
+    <h2 class="h-big reveal d1">Dejar de operar<br><span class="green">de memoria.</span></h2>
+    <div class="res-list">
+      <div class="res-item reveal d2">
+        <div class="res-num">01</div>
+        <div>
+          <div class="res-t">Ofertar fechas que sí se pueden cumplir</div>
+          <div class="res-s">Por primera vez, la planeación se hace viendo la carga real de las tres plantas. El compromiso con el cliente nace de datos, no de intuición.</div>
+        </div>
+      </div>
+      <div class="res-item reveal d3">
+        <div class="res-num">02</div>
+        <div>
+          <div class="res-t">Ver el retraso semanas antes, no cuando explota</div>
+          <div class="res-s">Cada unidad reporta su estado, sus bloqueos y qué necesita para avanzar. Las alertas llegan a tiempo para actuar.</div>
+        </div>
+      </div>
+      <div class="res-item reveal d4">
+        <div class="res-num">03</div>
+        <div>
+          <div class="res-t">Un equipo que se coordina sin pasar por Felipe</div>
+          <div class="res-s">Cada planta ve sus prioridades y sus fechas. Las decisiones quedan en el sistema, no se evaporan en WhatsApp.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · LO QUE CONSTRUIMOS -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow eyebrow-pill reveal">Fase 1 · Lo que construimos</div>
+    <h2 class="h-big reveal d1">Todo el backlog,<br>vivo y en tiempo real.</h2>
+    <div class="units-wrap">
+      <div class="reveal d2">
+        <div class="units" id="units-grid"></div>
+        <div class="legend">
+          <span><i style="background:var(--g)"></i>A tiempo</span>
+          <span><i style="background:var(--amber)"></i>Con novedades</span>
+          <span><i style="background:var(--red)"></i>En riesgo</span>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-item reveal d2"><div class="feat-dot"></div><div><div class="feat-t">Cada unidad del backlog con estado y fecha</div><div class="feat-s">La pregunta "¿cuándo sale?" deja de necesitar una llamada.</div></div></div>
+        <div class="feat-item reveal d3"><div class="feat-dot"></div><div><div class="feat-t">La planeación se hace desde dirección</div><div class="feat-s">Fecha de entrega hacia atrás: cuándo debe vivir cada unidad en cada etapa para llegar a tiempo.</div></div></div>
+        <div class="feat-item reveal d4"><div class="feat-dot"></div><div><div class="feat-t">La actualización nace en la planta</div><div class="feat-s">Los supervisores reportan avance, novedades y bloqueos: qué falta, para cuándo y quién destraba.</div></div></div>
+        <div class="feat-item reveal d5"><div class="feat-dot"></div><div><div class="feat-t">Las alertas suben solas</div><div class="feat-s">Lo que está en riesgo escala a dirección para repriorizar antes de que sea tarde.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · HOJA DE RUTA -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">La ruta completa</div>
+    <h2 class="h-big reveal d1" style="margin-bottom:20px">De lo general a lo específico.<br><span class="green">Como lo pensamos juntos.</span></h2>
+    <p class="sub reveal d2" style="font-size:clamp(.95rem,1.4vw,1.15rem);max-width:900px">Primero la visual macro de toda la producción. Después, la luz sobre cada pieza. Cada fase entrega valor completo por sí sola y construye la base de la siguiente.</p>
+    <div class="roadmap">
+      <div class="rm-card now reveal d2">
+        <div class="rm-tag">Fase 1 · 4-6 semanas</div>
+        <div class="rm-t">Trazabilidad del vehículo</div>
+        <div class="rm-d">El tablero macro de todo el backlog, vivo. Planeación desde dirección, actualización desde la planta, alertas que suben solas.</div>
+        <div class="rm-price">$70M + IVA</div>
+      </div>
+      <div class="rm-card next reveal d3">
+        <div class="rm-tag">Fase 2 · 6-8 semanas</div>
+        <div class="rm-t">Trazabilidad de componentes</div>
+        <div class="rm-d">La luz sobre el agujero negro: cada pieza identificada, ubicada y rastreada desde el corte hasta el ensamble. Entrada y salida de material bajo control en las tres plantas.</div>
+        <div class="rm-price">$220M + IVA</div>
+      </div>
+      <div class="rm-card next reveal d4">
+        <div class="rm-tag">Lo que sigue</div>
+        <div class="rm-t">El camino se hace evidente</div>
+        <div class="rm-d">Con las fases 1 y 2 operando, las oportunidades siguientes se vuelven obvias para todos: módulos puntuales que se cotizan sobre datos reales, no sobre supuestos.</div>
+        <div class="rm-price">Se define al cerrar Fase 2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · RESULTADO FASE 2 -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow eyebrow-pill reveal">Fase 2 · El resultado</div>
+    <h2 class="h-big reveal d1">Prenderle la luz<br><span class="green">al agujero negro.</span></h2>
+    <div class="res-list" style="max-width:960px">
+      <div class="res-item reveal d2">
+        <div class="res-num">01</div>
+        <div>
+          <div class="res-t">Nunca más una unidad parada por una pieza que nadie encuentra</div>
+          <div class="res-s">Cada pieza que se corta queda identificada desde la máquina. El sistema sabe qué existe, qué va para doblez y qué es prioritario.</div>
+        </div>
+      </div>
+      <div class="res-item reveal d3">
+        <div class="res-num">02</div>
+        <div>
+          <div class="res-t">Encontrar cualquier pieza en segundos, sin excavar la bodega</div>
+          <div class="res-s">Todo lo que entra a una planta queda ubicado. Lo que sale, queda asignado a su unidad. Se acaba el material enterrado que nadie recuerda.</div>
+        </div>
+      </div>
+      <div class="res-item reveal d4">
+        <div class="res-num">03</div>
+        <div>
+          <div class="res-t">El sistema aprende por qué se retrasan las cosas</div>
+          <div class="res-s">Cada faltante y cada bloqueo queda registrado con su causa. Esa información alimenta las compras, la planeación y todo lo que viene después.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · CONDICIONES FASE 2 -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow eyebrow-pill reveal">Fase 2 · Para que funcione</div>
+    <h2 class="h-big reveal d1"><span class="green">Tres condiciones,</span><br>claras desde hoy.</h2>
+    <p class="sub reveal d2" style="margin-top:1.2rem;max-width:820px">La Fase 2 es la más ambiciosa del proyecto. Preferimos decirles desde ahora qué necesita de Hidroamerica, y no descubrirlo a mitad de camino.</p>
+    <div class="cond">
+      <div class="cond-item reveal d3">
+        <div class="cond-num">01</div>
+        <div>
+          <div class="cond-t">Conteo del material</div>
+          <div class="cond-s">Construimos un sistema que empieza a rastrear las piezas que producimos. Las piezas que ya están en inventario se podrán incorporar paulatinamente al sistema.</div>
+        </div>
+      </div>
+      <div class="cond-item reveal d4">
+        <div class="cond-num">02</div>
+        <div>
+          <div class="cond-t">Equipos de identificación y lectura</div>
+          <div class="cond-s">Impresoras y lectores de código aptos para planta. La inversión la hace Hidroamerica y queda como activo propio. Los cotizamos y recomendamos nosotros.</div>
+        </div>
+      </div>
+      <div class="cond-item reveal d5">
+        <div class="cond-num">03</div>
+        <div>
+          <div class="cond-t">Un responsable de almacén asignado</div>
+          <div class="cond-s">El proceso de entrada y salida de material necesita un dueño con nombre. Nosotros lo entrenamos y le construimos la herramienta.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · ALCANCE FASE 1 -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Alcance de la Fase 1</div>
+    <h2 class="h-big reveal d1">Qué incluye. <span class="green">Qué no.</span></h2>
+    <div class="alcance-grid">
+      <div class="alc-col reveal d2">
+        <h3><span class="dot" style="background:var(--gd)"></span>Qué sí incluye</h3>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Cronograma maestro vivo de todo el backlog, con fecha de entrega y etapas hacia atrás</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Vista por planta: Cerrito, Vallarta y Montana, cada una con sus unidades, prioridades y fechas</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Registro de novedades y bloqueos por unidad: qué falta, para cuándo y quién destraba</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Alertas que escalan solas a dirección cuando una entrega entra en riesgo</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Mapa de planta en pantalla: qué se trabaja en cada estación y cuándo debe salir</div>
+        <div class="alc-item alc-yes"><div class="bullet"></div>Supervisores y coordinadores capacitados para operar y alimentar el sistema</div>
+      </div>
+      <div class="alc-col reveal d3">
+        <h3><span class="dot" style="background:var(--ink3)"></span>Qué no incluye</h3>
+        <div class="alc-item alc-no"><div class="bullet"></div>Trazabilidad de piezas y componentes (Fase 2)</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Gestión de inventario y ubicaciones (Fase 2)</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Planeación y asignación del trabajo de cada área</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Lista de materiales detallada por referencia</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Sistema comercial ni cotizaciones</div>
+        <div class="alc-item alc-no"><div class="bullet"></div>Visibilidad financiera ni costeo por unidad</div>
+        <div class="alc-note">Todo lo demás se evalúa como fase adicional, con acuerdo escrito.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · ENTREGABLES FASE 1 -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Entregables de la Fase 1</div>
+    <h2 class="h-big reveal d1">Lo que recibe Hidroamerica.</h2>
+    <div class="ent-grid">
+      <div class="ent-card reveal d2">
+        <div class="ent-num">01</div>
+        <div class="ent-t">Cronograma maestro vivo</div>
+        <div class="ent-d">Todo el backlog en una vista, con fechas, etapas y buffers. Se actualiza solo con lo que reporta la planta.</div>
+      </div>
+      <div class="ent-card reveal d2">
+        <div class="ent-num">02</div>
+        <div class="ent-t">Vista por planta</div>
+        <div class="ent-d">Cada planta ve sus unidades, su secuencia y sus prioridades sin preguntarle a nadie.</div>
+      </div>
+      <div class="ent-card reveal d3">
+        <div class="ent-num">03</div>
+        <div class="ent-t">Sistema de novedades y bloqueos</div>
+        <div class="ent-d">Los supervisores reportan qué falta, para cuándo y quién destraba. Con trazabilidad de cada decisión.</div>
+      </div>
+      <div class="ent-card reveal d3">
+        <div class="ent-num">04</div>
+        <div class="ent-t">Alertas a dirección</div>
+        <div class="ent-d">Lo que entra en riesgo escala solo. Felipe y Sebastián deciden con datos, a tiempo.</div>
+      </div>
+      <div class="ent-card reveal d4">
+        <div class="ent-num">05</div>
+        <div class="ent-t">Mapa de planta en pantalla</div>
+        <div class="ent-d">La misma información, en grande, visible en planta: qué se trabaja en cada estación y cuándo sale.</div>
+      </div>
+      <div class="ent-card reveal d4">
+        <div class="ent-num">06</div>
+        <div class="ent-t">Equipo capacitado y operando</div>
+        <div class="ent-d">Supervisores y coordinadores entrenados. El proyecto no cierra hasta que el sistema esté en uso real.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · CÓMO TRABAJAMOS -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Cómo trabajamos la Fase 1</div>
+    <h2 class="h-big reveal d1">4 semanas. Sin detener la producción.</h2>
+    <div class="tl">
+      <div class="tl-item hot reveal d2">
+        <div class="tl-dot"><span class="tl-num">01</span></div>
+        <div class="tl-week">Semana 1</div>
+        <div class="tl-t">Análisis</div>
+        <div class="tl-d">En planta: cargamos el backlog real, definimos etapas y tiempos por referencia con ustedes, y diseñamos cómo reporta cada supervisor.</div>
+      </div>
+      <div class="tl-item reveal d3">
+        <div class="tl-dot"><span class="tl-num">02</span></div>
+        <div class="tl-week">Semanas 2-3</div>
+        <div class="tl-t">Desarrollo</div>
+        <div class="tl-d">Construcción del sistema con datos reales desde el primer día. El tablero se llena con su producción, no con ejemplos.</div>
+      </div>
+      <div class="tl-item reveal d4">
+        <div class="tl-dot"><span class="tl-num">03</span></div>
+        <div class="tl-week">Semanas 4-6</div>
+        <div class="tl-t">Implementación</div>
+        <div class="tl-d">Su equipo operando dentro del sistema, con presencia nuestra en planta. No cerramos cuando exista. Cerramos cuando lo usen.</div>
+      </div>
+    </div>
+    <div class="milestone reveal d5"><span class="pulse"></span><span><b>Semana 3:</b> ustedes abren el tablero y ven, por primera vez, toda su producción en una sola pantalla.</span></div>
+  </section>
+
+  <!-- 13 · RIESGO -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Nuestro compromiso con el riesgo</div>
+    <h2 class="h-big reveal d1">El negocio es simple.<br><span class="green">Nosotros ganamos cuando ustedes ganan.</span></h2>
+    <div class="cards3">
+      <div class="card reveal d2">
+        <div class="card-label">Valor completo</div>
+        <div class="card-t">La Fase 1 se sostiene sola</div>
+        <div class="card-d">Aunque no continúe con la Fase 2, Hidroamerica se queda con un sistema funcionando: la visual de toda su producción, viva y operada por su equipo. Ningún entregable depende de comprar el siguiente.</div>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-label">Cuota final</div>
+        <div class="card-t">Se paga con el sistema en uso</div>
+        <div class="card-d">El 30% final solo se factura cuando su equipo esté operando el sistema. No cuando exista. Cuando lo usen.</div>
+      </div>
+      <div class="card reveal d4">
+        <div class="card-label">Siempre</div>
+        <div class="card-t">Sus datos son suyos, siempre</div>
+        <div class="card-d">Sus datos, sus procesos y sus documentos son de Hidroamerica desde el día uno, exportables en cualquier momento.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · INVERSION -->
+  <section class="slide light" data-mode="light">
+    <div class="eyebrow reveal">Inversión · Fase 1</div>
+    <div class="reveal d1"><span class="inv-num">$70M</span><span class="inv-iva">+ IVA</span></div>
+    <div class="inv-split">
+      <div class="inv-chip reveal d2"><div class="pct">40%</div><div class="lbl">Anticipo<br>al arrancar</div></div>
+      <div class="inv-chip reveal d3"><div class="pct">30%</div><div class="lbl">Al terminar<br>desarrollo</div></div>
+      <div class="inv-chip reveal d4"><div class="pct">30%</div><div class="lbl">Con el sistema<br>en uso</div></div>
+    </div>
+    <p class="anchor-line reveal d5">Equivale al margen de <b>5 unidades</b>, de las 25 a 30 mensuales que hoy no están saliendo. El problema que atacamos deja sobre la mesa entre <b>$4.000M y $5.400M al año.</b> La Fase 2, donde está la parte más grande del valor, se confirma al cerrar la Fase 1: <b>$220M + IVA</b>, con el mismo esquema de pago.</p>
+  </section>
+
+  <!-- 15 · VISION -->
+  <section class="slide light" data-mode="light">
+    <h2 class="h-big reveal d1">Imagínense ese día...</h2>
+    <div class="vision">
+      <div class="v-item reveal d2"><span class="v-check">✓</span><span>Felipe cotiza una orden nueva viendo la carga real de las tres plantas. La fecha que promete, la puede cumplir.</span></div>
+      <div class="v-item reveal d3"><span class="v-check">✓</span><span>Un supervisor reporta un bloqueo el martes. El miércoles está resuelto. Antes, se descubría cuando la entrega ya estaba perdida.</span></div>
+      <div class="v-item reveal d4"><span class="v-check">✓</span><span>Sebastián abre el tablero desde su teléfono y sabe, sin llamar a nadie, en qué va toda la producción.</span></div>
+    </div>
+  </section>
+
+  <!-- 16 · CIERRE -->
+  <section class="slide dark" data-mode="dark">
+    <div class="eyebrow reveal">Comencemos</div>
+    <h2 class="h-giant reveal d1">En cuatro semanas, esto<br><span class="green">deja de ser una propuesta.</span></h2>
+    <p class="sub reveal d2" style="margin-top:2.2rem;max-width:none">Confirmación y anticipo esta semana. Arranque la semana siguiente.<br>Cada mes que la producción corre a ciegas cuesta entre $325M y $450M de margen que no vuelve.</p>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter"></div>
+<div class="navhint" id="navhint">← → para navegar</div>
+<div class="arrows">
+  <button class="arrow" id="prev" aria-label="Anterior">←</button>
+  <button class="arrow" id="next" aria-label="Siguiente">→</button>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var progress=document.getElementById('progress');
+  var counter=document.getElementById('counter');
+  var navhint=document.getElementById('navhint');
+  var i=0,n=slides.length;
+
+  function pad(x){return (x<10?'0':'')+x}
+  function go(k){
+    if(k<0||k>=n)return;
+    slides[i].classList.remove('active');
+    i=k;
+    slides[i].classList.add('active');
+    document.body.setAttribute('data-mode',slides[i].getAttribute('data-mode'));
+    progress.style.width=((i+1)/n*100)+'%';
+    counter.textContent=pad(i+1)+' / '+pad(n);
+    if(i>0)navhint.classList.add('fade');
+    if(slides[i].querySelector('#units-grid'))animateUnits();
+  }
+
+  document.getElementById('next').addEventListener('click',function(){go(i+1)});
+  document.getElementById('prev').addEventListener('click',function(){go(i-1)});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    if(e.key==='Home')go(0);if(e.key==='End')go(n-1);
+  });
+  var startX=null;
+  document.addEventListener('touchstart',function(e){startX=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(startX===null)return;
+    var dx=e.changedTouches[0].clientX-startX;
+    if(dx<-50)go(i+1);else if(dx>50)go(i-1);
+    startX=null;
+  },{passive:true});
+
+  var grid=document.getElementById('units-grid');
+  var states=[];
+  var TOTAL=200;
+  for(var u=0;u<TOTAL;u++){
+    var d=document.createElement('div');
+    d.className='unit';
+    grid.appendChild(d);
+    var r=Math.random();
+    states.push(r<0.64?'on':(r<0.87?'warn':'risk'));
+  }
+  var animated=false;
+  function animateUnits(){
+    if(animated)return;animated=true;
+    var cells=grid.children;
+    for(var u=0;u<TOTAL;u++){
+      (function(u){setTimeout(function(){cells[u].classList.add(states[u])},300+u*8)})(u);
+    }
+  }
+  go(0);
+})();
+</script>
+</body>
+</html>
