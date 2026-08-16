@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/desorden", "destination": "https://os.rioabierto.co/desorden" }
+  ]
+}

@@ -589,7 +589,7 @@
     </h1>
     <p class="hero-sub">Construimos sistemas a la medida que conectan tus herramientas, automatizan el trabajo repetitivo y te muestran en tiempo real qué está pasando en tu empresa.</p>
     <div class="hero-actions">
-      <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary">AGENDAR LLAMADA <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <a href="/desorden" class="btn-primary">CALCULAR MI DESORDEN <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
       <a href="#metodo" class="btn-ghost-light">Cómo trabajamos</a>
     </div>
   </div>
@@ -868,24 +868,25 @@
 <section class="light-s cta-section" id="cta">
   <div class="cta-inner">
     <div>
-      <h2 class="section-h2 reveal">Empieza con una<br><em>llamada de reconocimiento.</em></h2>
-      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0;">15 minutos. Sin costo. Sin presentación de ventas. Escuchamos tu situación y te decimos si podemos ayudarte, o no.</p>
+      <h2 class="section-h2 reveal">Ponle un número<br><em>a tu desorden.</em></h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0;">13 preguntas. 4 minutos. Sin agendar nada y sin hablar con nadie: respondes sobre tu operación y te decimos cuánto te está costando el desorden cada mes, en pesos.</p>
       <div class="cta-bullets reveal reveal-delay-3">
-        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Seleccionas el horario que mejor te quede</span></div>
-        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Nos cuentas el problema en tus palabras</span></div>
-        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Evaluamos si hay fit real entre lo que necesitas y lo que hacemos</span></div>
-        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Si no podemos aportar valor, te lo decimos directamente</span></div>
+        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Respondes 13 preguntas sobre cómo opera tu empresa hoy</span></div>
+        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Cruzamos tus respuestas con promedios de tu sector</span></div>
+        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Ves tu número al instante y te llega el informe completo al correo</span></div>
+        <div class="cta-bullet"><div class="cta-bullet-dot"></div><span>Con el informe en mano, tú decides si hablamos, o no</span></div>
       </div>
     </div>
     <div class="reveal reveal-delay-2">
       <div class="cta-card" style="background:var(--card-bg);border:0.5px solid var(--border);border-radius:16px;padding:3rem;box-shadow:0 2px 16px rgba(0,0,0,0.09);">
-        <div class="cta-card-title">La llamada es gratis.<br>Tu desorden, no.</div>
-        <div class="cta-card-sub">15 minutos para saber si tiene sentido trabajar juntos, o para que inviertas ese tiempo en otra cosa. Sin rodeos.</div>
-        <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" class="btn-primary cta-card-btn mag-btn" id="mag-cta" style="display:flex;text-decoration:none;justify-content:center;width:100%;">
-          AGENDAR LLAMADA
+        <div class="cta-card-title">Lo que no mides,<br>lo sigues pagando.</div>
+        <div class="cta-card-sub">Cada mes sin saber cuánto te cuesta el desorden es un mes pagándolo completo. 13 preguntas y tienes el número: en pesos, con base en tu operación real.</div>
+        <a href="/desorden" class="btn-primary cta-card-btn mag-btn" id="mag-cta" style="display:flex;text-decoration:none;justify-content:center;width:100%;">
+          CALCULAR MI DESORDEN
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:10px;"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
-        <p class="cta-card-note">Confirmación inmediata</p>
+        <p class="cta-card-note">Resultado inmediato · Sin costo</p>
+        <p class="cta-card-note" style="margin-top:0.6rem;">¿Prefieres hablar directo? <a href="https://cal.com/juan-rio-abierto/15min" target="_blank" style="color:inherit;text-decoration:underline;">Agenda una llamada de 15 minutos</a></p>
       </div>
     </div>
   </div>
@@ -1301,6 +1302,23 @@
       },{threshold:0.3});
       barsObs.observe(document.getElementById('bd-src-bars'));
     }
+  })();
+</script>
+<!-- Atribución: reenvía utm_* y fbclid de la URL actual a los enlaces del
+     diagnóstico, para que el lead quede marcado con la campaña que lo trajo. -->
+<script>
+  (function () {
+    var origen = new URLSearchParams(location.search);
+    var claves = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
+    var q = new URLSearchParams();
+    claves.forEach(function (k) {
+      var v = origen.get(k);
+      if (v) q.set(k, v);
+    });
+    if (q.toString() === "") return;
+    document.querySelectorAll('a[href^="/desorden"]').forEach(function (a) {
+      a.href = "/desorden?" + q.toString();
+    });
   })();
 </script>
 </body>
