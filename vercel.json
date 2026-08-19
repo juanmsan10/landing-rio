@@ -1,5 +1,6 @@
 {
   "redirects": [
-    { "source": "/desorden", "destination": "https://os.rioabierto.co/desorden" }
+    { "source": "/desorden", "destination": "https://os.rioabierto.co/desorden" },
+    { "source": "/club", "destination": "https://os.rioabierto.co/desorden?utm_source=whatsapp&utm_medium=comunidad&utm_campaign=club" }
   ]
 }
